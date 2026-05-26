@@ -12,7 +12,7 @@ CMD ["npm", "run", "dev"]
 
 # ---------- Build ----------
 FROM base AS build
-RUN npm ci
+RUN npm  ci
 COPY . .
 RUN npm run build
 
@@ -21,8 +21,6 @@ RUN npm run build
 
 FROM nginx:alpine AS production
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci --omit=dev
 # Créer les dossiers nécessaires
 RUN mkdir -p /var/cache/nginx \
     && mkdir -p /var/run \
@@ -32,7 +30,7 @@ COPY --from=build /app/dist /usr/share/nginx/html
 USER nginx
 EXPOSE 8080
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s \
- CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
+ CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:8080/ || exit 1
 ENTRYPOINT ["nginx", "-c", "/etc/nginx/nginx.conf"]
 CMD ["-g", "daemon off;"]
 
