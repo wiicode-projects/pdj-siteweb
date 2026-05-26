@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { overflow-x: hidden; max-width: 100%; }
+
+/* ── Animations de base ─────────────────────────────────── */
+@keyframes float        { 0%,100%{ transform:translateY(0); }       50%{ transform:translateY(-10px); } }
+@keyframes floatDelayed { 0%,100%{ transform:translateY(0); }       50%{ transform:translateY(-14px); } }
+@keyframes slideUp      { from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+@keyframes popIn        { from{ opacity:0; transform:scale(.96); }       to{ opacity:1; transform:scale(1); } }
+
+.animate-float         { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: floatDelayed 7s ease-in-out infinite; }
+.animate-slide-up      { animation: slideUp .7s ease-out forwards; }
+.animate-pop-in        { animation: popIn .5s ease-out both; }
+.animate-secousse      { animation: secousse 5s ease-in-out infinite; }
+
+@keyframes secousse {
+  0%,78%,100%{ transform:rotate(0) scale(1); }
+  80%{ transform:rotate(-14deg) scale(1.08); }
+  83%{ transform:rotate(14deg)  scale(1.08); }
+  86%{ transform:rotate(-10deg) scale(1.05); }
+  89%{ transform:rotate(10deg)  scale(1.05); }
+  92%{ transform:rotate(-5deg)  scale(1.02); }
+  95%{ transform:rotate(0)      scale(1); }
+}
+
+/* ── Keyframes fond animé (partagés clair + sombre) ──────── */
+@keyframes grille-defilement { 0%{ transform:translate(0,0) rotate(-8deg); } 100%{ transform:translate(120px,80px) rotate(-8deg); } }
+@keyframes lueur-flottante   { 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(18px,-14px); } }
+@keyframes tinte-derive      {
+  0%,100% { transform:translate(0,0) scale(1);      filter:hue-rotate(0deg); }
+  50%     { transform:translate(18px,-10px) scale(1.02); filter:hue-rotate(6deg); }
+}
+
+/*
+ * ── Fond animé CLAIR (fa) ────────────────────────────────
+ * Wrapper absolu sur le div racine (position:relative).
+ * Toutes les sections bg-transparent laissent ce fond transparaître.
+ *
+ * Usage :
+ *   <div class="fa">
+ *     <div class="fa-tinte" />
+ *     <div class="fa-grille" />
+ *     <div class="fa-lueur fa-l1" />
+ *     <div class="fa-lueur fa-l2" />
+ *   </div>
+ */
+.fa       { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; }
+.fa-tinte { position:absolute; inset:-20%;
+  background:
+    radial-gradient(600px 300px at 20% 10%,  rgba(193,17,30,.10), transparent 60%),
+    radial-gradient(500px 260px at 85% 80%,  rgba(255,196,0,.10), transparent 60%),
+    radial-gradient(420px 220px at 60% 30%,  rgba(193,17,30,.06), transparent 55%);
+  opacity:.9; animation:tinte-derive 12s ease-in-out infinite; }
+.fa-grille { position:absolute; inset:-40%;
+  background-image:
+    linear-gradient(to right,  rgba(0,0,0,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,.06) 1px, transparent 1px);
+  background-size:48px 48px; transform:rotate(-8deg);
+  opacity:.35; animation:grille-defilement 18s linear infinite; }
+.fa-lueur { position:absolute; width:520px; height:520px; border-radius:9999px;
+  filter:blur(80px); opacity:.55; animation:lueur-flottante 10s ease-in-out infinite; }
+.fa-l1    { left:-120px;  top:-120px;    background:rgba(193,17,30,.16); }
+.fa-l2    { right:-140px; bottom:-160px; background:rgba(255,196,0,.18); animation-delay:-3s; }
+
+/*
+ * ── Fond animé SOMBRE (fad) ──────────────────────────────
+ * Utilisé dans DownloadSection.
+ *
+ * Usage :
+ *   <div class="fad">
+ *     <div class="fad-tinte" />
+ *     <div class="fad-grille" />
+ *     <div class="fad-lueur fad-l1" />
+ *     <div class="fad-lueur fad-l2" />
+ *   </div>
+ */
+.fad        { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:1; }
+.fad-tinte  { position:absolute; inset:-20%;
+  background:
+    radial-gradient(600px 300px at 15% 15%, rgba(193,17,30,.30), transparent 60%),
+    radial-gradient(500px 260px at 80% 75%, rgba(255,71,87,.22),  transparent 60%),
+    radial-gradient(420px 220px at 55% 35%, rgba(193,17,30,.18),  transparent 55%);
+  opacity:.85; animation:tinte-derive 12s ease-in-out infinite; }
+.fad-grille { position:absolute; inset:-40%;
+  background-image:
+    linear-gradient(to right,  rgba(193,17,30,.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(193,17,30,.12) 1px, transparent 1px);
+  background-size:48px 48px; transform:rotate(-8deg);
+  opacity:.50; animation:grille-defilement 18s linear infinite; }
+.fad-lueur  { position:absolute; width:520px; height:520px; border-radius:9999px;
+  filter:blur(90px); animation:lueur-flottante 10s ease-in-out infinite; }
+.fad-l1     { left:-100px;  top:-100px;    background:rgba(193,17,30,.45); opacity:.65; }
+.fad-l2     { right:-120px; bottom:-140px; background:rgba(255,71,87,.30);  opacity:.50; animation-delay:-3s; }
+
+/* ── Point de statut pulsé (Hero) ───────────────────────── */
+.point-statut { width:8px; height:8px; border-radius:9999px; background:rgba(193,17,30,1);
+  box-shadow:0 0 0 0 rgba(193,17,30,.55); display:inline-block; flex:0 0 auto;
+  animation:pulsation 1.4s ease-in-out infinite; }
+@media (prefers-reduced-motion:reduce){ .point-statut{ animation:none; } }
+@keyframes pulsation {
+  0%  { transform:scale(.9); opacity:.75; box-shadow:0 0 0 0    rgba(193,17,30,.45); }
+  70% { transform:scale(1);  opacity:1;   box-shadow:0 0 0 10px rgba(193,17,30,0); }
+  100%{ transform:scale(.9); opacity:.75; box-shadow:0 0 0 0    rgba(193,17,30,0); }
+}
