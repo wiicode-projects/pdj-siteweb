@@ -1,0 +1,27 @@
+
+
+#=======================================
+# Docker Compose for Staging Environment
+#=======================================
+
+name: sitepdj-staging
+services:
+  sitepdj:
+    image: ghcr.io/wiicode-projects/sitepdj:${IMAGE_TAG:-latest}
+    container_name: sitepdj
+    restart: unless-stopped
+    networks:
+      - proxy-network
+    #ports:
+     # - "8082:8080"
+  
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  proxy-network:
+    external: true

@@ -15,8 +15,6 @@ permissions:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: sitepdj
-  DEPLOY_PATH: /home/wiicodeadmin/projets/pdj/site
-  #DEPLOY_PATH_PROD: /home/wiicodeadmin/projets/direct-colis/api/prod
   
 jobs:
   
@@ -61,6 +59,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/dev'
+    environment:
+      name: staging
     steps:
       - name: checkout
         uses: actions/checkout@v4
@@ -72,69 +72,71 @@ jobs:
       - name: Copy compose file to server
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.DEV_SERVER_HOST }}
-          username: ${{ secrets.DEV_SERVER_USER }}
-          key: ${{ secrets.DEV_SERVER_SSH_KEY }}
-          port: ${{ secrets.DEV_SERVER_SSH_PORT }}
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_SSH_PORT }}
           source: "docker/docker-compose.staging.yml"
-          target: ${{ env.DEPLOY_PATH }}
+          target: ${{ vars.DEPLOY_PATH }}
           strip_components: 1
 
       - name: Deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.DEV_SERVER_HOST }}
-          username: ${{ secrets.DEV_SERVER_USER }}
-          key: ${{ secrets.DEV_SERVER_SSH_KEY }}
-          port: ${{ secrets.DEV_SERVER_SSH_PORT }}
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_SSH_PORT }}
           script: |
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.repository_owner }}" --password-stdin
-            cd ${{ env.DEPLOY_PATH }}
+            echo "${{ secrets.GHCR_PAT}}" | docker login ghcr.io -u "${{ github.repository_owner }}" --password-stdin
+            cd ${{ vars.DEPLOY_PATH }}
             mv docker-compose.staging.yml docker-compose.yml
             IMAGE_TAG=${{ steps.vars.outputs.SHA_SHORT }} \
             docker compose up -d --pull always --force-recreate --remove-orphans sitepdj
             docker image prune -f
   
 
-#   ============================================================
-#   JOB 3 — DEPLOY PROD
-#   Uniquement sur main (merge depuis dev)
-#   ============================================================
+  #============================================================
+  #JOB 3 — DEPLOY PROD
+  #Uniquement sur main (merge depuis dev)
+  #============================================================
 
-#   deploy-production:
-#     name: Deploy to Production
-#     needs: build
-#     runs-on: ubuntu-latest
-#     if: github.ref == 'refs/heads/main'
-#     steps:
-#       - name: checkout
-#         uses: actions/checkout@v4
+  deploy-production:
+    name: Deploy to Production
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: production
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
 
-#       - name: Copy compose file to server
-#         uses: appleboy/scp-action@v0.1.7
-#         with:
-#           host: ${{ secrets.PROD_SERVER_HOST }}
-#           username: ${{ secrets.PROD_SERVER_USER }}
-#           key: ${{ secrets.PROD_SERVER_SSH_KEY }}
-#           port: ${{ secrets.PROD_SERVER_SSH_PORT }}
-#           source: "docker/docker-compose.production.yml"
-#           target: ${{ env.DEPLOY_PATH_PROD }}
-#           strip_components: 1
+      - name: Copy compose file to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_SSH_PORT }}
+          source: "docker/docker-compose.production.yml"
+          target: ${{ vars.DEPLOY_PATH }}
+          strip_components: 1
 
-#       - name: Deploy
-#         uses: appleboy/ssh-action@v1.0.3
-#         with:
-#           host: ${{ secrets.PROD_SERVER_HOST }}
-#           username: ${{ secrets.PROD_SERVER_USER }}
-#           key: ${{ secrets.PROD_SERVER_SSH_KEY }}
-#           port: ${{ secrets.PROD_SERVER_SSH_PORT }}
-#           script: |
-#             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.repository_owner }}" --password-stdin
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          port: ${{ secrets.SERVER_SSH_PORT }}
+          script: |
+            echo "${{ secrets.GHCR_PAT}}" | docker login ghcr.io -u "${{ github.repository_owner }}" --password-stdin
             
-#             cd ${{ env.DEPLOY_PATH_PROD }}
+            cd ${{ vars.DEPLOY_PATH}}
 
-#             mv docker-compose.production.yml docker-compose.yml
+            mv docker-compose.production.yml docker-compose.yml
 
-#             IMAGE_TAG=${{ steps.vars.outputs.SHA_SHORT }} \
-#             docker compose up -d --pull always --force-recreate --remove-orphans drc-backoffice
-#             docker image prune -f
+            IMAGE_TAG=${{ steps.vars.outputs.SHA_SHORT }} \
+            docker compose up -d --pull always --force-recreate --remove-orphans sitepdj
+            docker image prune -f
