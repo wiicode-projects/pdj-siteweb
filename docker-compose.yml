@@ -1,0 +1,15 @@
+name: pdjsiteweb
+version: '3.8'
+services:
+  pdjsiteweb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    ports:
+     - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+      - /app/node_modules
