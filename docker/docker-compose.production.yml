@@ -4,7 +4,7 @@
 # Docker Compose for Production Environment
 #=======================================
 
-name: sitepdj-production
+name: siteweb
 services:
   sitepdj:
     image: ghcr.io/wiicode-projects/sitepdj:${IMAGE_TAG:-latest}
@@ -13,9 +13,7 @@ services:
     networks:
       - proxy-network
     ports:
-     - "82:8080"
-     #- "127.0.0.1:82:8080"
-  
+     - "127.0.0.1:82:8080"
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/health || exit 1"]
       interval: 30s
