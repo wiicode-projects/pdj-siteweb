@@ -85,7 +85,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
-          source: "docker/docker-compose.staging.yml"
+          source: "docker/docker-compose.staging.yml, scripts/deploy.sh"
           target: ${{ vars.DEPLOY_PATH }}
           strip_components: 1
 
@@ -102,11 +102,14 @@ jobs:
 
             cd ${{ vars.DEPLOY_PATH }}
             mv docker-compose.staging.yml docker-compose.yml
+            chmod +x deploy.sh
+            bash deploy.sh ${{ steps.vars.outputs.SHA_SHORT }}
 
-            IMAGE_TAG=${{ steps.vars.outputs.SHA_SHORT }} \
-              docker compose up -d --pull always sitepdj
 
-            docker image prune -f
+            # IMAGE_TAG=${{ steps.vars.outputs.SHA_SHORT }} \
+            #   docker compose up -d --pull always sitepdj
+
+           
 
   # ============================================================
   # JOB 3 — DEPLOY PRODUCTION
@@ -135,7 +138,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
-          source: "docker/docker-compose.production.yml"
+          source: "docker/docker-compose.production.yml, scripts/deploy-prod.sh"
           target: ${{ vars.DEPLOY_PATH }}
           strip_components: 1
 
@@ -152,8 +155,6 @@ jobs:
 
             cd ${{ vars.DEPLOY_PATH }}
             mv docker-compose.production.yml docker-compose.yml
+            chmod +x deploy-prod.sh
 
-            IMAGE_TAG=${{ steps.vars.outputs.SHA_SHORT }} \
-              docker compose up -d --pull always sitepdj
-
-            docker image prune -f
+            bash deploy-prod.sh ${{ steps.vars.outputs.SHA_SHORT }}
