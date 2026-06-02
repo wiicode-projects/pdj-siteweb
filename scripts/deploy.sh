@@ -29,7 +29,7 @@ echo "🚀 Nouveau tag : $NOUVEAU_TAG"
 # 2. Déployer la nouvelle image
 # -------------------------------------------------------------
 echo "Déploiement en cours..."
-IMAGE_TAG=$NOUVEAU_TAG docker compose up -d --pull always sitepdj
+IMAGE_TAG=$NOUVEAU_TAG docker compose up -d --pull always --force-recreate sitepdj
 
 # -------------------------------------------------------------
 # 3. Attendre que le conteneur soit healthy
@@ -70,7 +70,7 @@ echo "❌ Health check échoué — status final : $STATUS"
 
 if [ "$ANCIEN_TAG" != "none" ]; then
   echo "⏪ Rollback vers : $ANCIEN_TAG"
-  IMAGE_TAG=$ANCIEN_TAG docker compose up -d sitepdj
+  IMAGE_TAG=$ANCIEN_TAG docker compose up -d --force-recreate sitepdj
   echo "✅ Rollback effectué — tag restauré : $ANCIEN_TAG"
 else
   echo "⚠️ Premier déploiement — pas de rollback possible"
