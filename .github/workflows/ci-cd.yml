@@ -103,10 +103,11 @@ jobs:
             cd ${{ vars.DEPLOY_PATH }}
             mv docker-compose.staging.yml docker-compose.yml
             chmod +x deploy.sh
+            bash deploy.sh ${{ steps.vars.outputs.SHA_SHORT }}
 
 
-            IMAGE_TAG=${{ steps.vars.outputs.SHA_SHORT }} \
-              docker compose up -d --pull always sitepdj
+            # IMAGE_TAG=${{ steps.vars.outputs.SHA_SHORT }} \
+            #   docker compose up -d --pull always sitepdj
 
            
 
