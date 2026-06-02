@@ -85,7 +85,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
-          source: "docker/docker-compose.staging.yml, scripts/deploy.sh"
+          source: "docker/docker-compose.staging.yml, scripts/deploy-staging.sh"
           target: ${{ vars.DEPLOY_PATH }}
           strip_components: 1
 
@@ -102,8 +102,8 @@ jobs:
 
             cd ${{ vars.DEPLOY_PATH }}
             mv docker-compose.staging.yml docker-compose.yml
-            chmod +x deploy.sh
-            bash deploy.sh ${{ steps.vars.outputs.SHA_SHORT }}
+            chmod +x deploy-staging.sh
+            bash deploy-staging.sh ${{ steps.vars.outputs.SHA_SHORT }}
 
 
             # IMAGE_TAG=${{ steps.vars.outputs.SHA_SHORT }} \
@@ -138,7 +138,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
-          source: "docker/docker-compose.production.yml, scripts/deploy-prod.sh"
+          source: "docker/docker-compose.production.yml, scripts/deploy-production.sh"
           target: ${{ vars.DEPLOY_PATH }}
           strip_components: 1
 
@@ -155,6 +155,5 @@ jobs:
 
             cd ${{ vars.DEPLOY_PATH }}
             mv docker-compose.production.yml docker-compose.yml
-            chmod +x deploy-prod.sh
-
-            bash deploy-prod.sh ${{ steps.vars.outputs.SHA_SHORT }}
+            chmod +x deploy-production.sh
+            bash deploy-production.sh ${{ steps.vars.outputs.SHA_SHORT }}
