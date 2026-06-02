@@ -85,7 +85,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           port: ${{ secrets.SERVER_SSH_PORT }}
-          source: "docker/docker-compose.staging.yml"
+          source: "docker/docker-compose.staging.yml, scripts/deploy.sh"
           target: ${{ vars.DEPLOY_PATH }}
           strip_components: 1
 
@@ -102,11 +102,13 @@ jobs:
 
             cd ${{ vars.DEPLOY_PATH }}
             mv docker-compose.staging.yml docker-compose.yml
+            chmod +x deploy.sh
+
 
             IMAGE_TAG=${{ steps.vars.outputs.SHA_SHORT }} \
               docker compose up -d --pull always sitepdj
 
-            docker image prune -f
+           
 
   # ============================================================
   # JOB 3 — DEPLOY PRODUCTION
