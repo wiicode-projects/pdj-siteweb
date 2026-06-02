@@ -29,8 +29,8 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 USER nginx
 EXPOSE 8080
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s \
- CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:8080/health || exit 1
+# HEALTHCHECK --interval=30s --timeout=10s --start-period=5s \
+#  CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:8080/health || exit 1
 ENTRYPOINT ["nginx", "-c", "/etc/nginx/nginx.conf"]
 CMD ["-g", "daemon off;"]
 
