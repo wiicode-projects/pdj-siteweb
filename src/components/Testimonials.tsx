@@ -57,7 +57,7 @@ export function Testimonials() {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section id="testimonials" className="py-24 bg-transparent relative overflow-hidden">
+    <section id="testimonials" className="hidden py-24 bg-transparent relative overflow-hidden">
       <SectionContainer className="relative z-10">
 
         {/* Stats animées */}
