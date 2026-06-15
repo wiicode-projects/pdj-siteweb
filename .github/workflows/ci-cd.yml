@@ -20,6 +20,8 @@ permissions:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: sitepdj
+  STAGING_PORTAL_URL: https://pdj-backoffice-dev.wiicode.tech
+  PROD_PORTAL_URL: https://backoffice.leplatdujour.ch
 
 jobs:
 
@@ -45,6 +47,17 @@ jobs:
         id: vars
         run: echo "SHA_SHORT=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
+      - name: Set Vite build env
+        id: vite
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "app_env=production" >> "$GITHUB_OUTPUT"
+            echo "portal_url=${{ env.PROD_PORTAL_URL }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "app_env=staging" >> "$GITHUB_OUTPUT"
+            echo "portal_url=${{ env.STAGING_PORTAL_URL }}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build & Push
         uses: docker/build-push-action@v6
         with:
@@ -52,6 +65,9 @@ jobs:
           file: Dockerfile
           push: ${{ github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/main' }}
           target: production
+          build-args: |
+            VITE_APP_ENV=${{ steps.vite.outputs.app_env }}
+            VITE_RESTAURANT_PORTAL_URL=${{ steps.vite.outputs.portal_url }}
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.SHA_SHORT }}
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
