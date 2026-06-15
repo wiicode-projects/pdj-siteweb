@@ -3,6 +3,7 @@ import { ChefHat, TrendingUp, Users, Handshake } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeUp, fadeLeft, scaleIn, staggerContainer, defaultViewport } from '../animations/variants';
 import { useLanguage } from '../i18n/LanguageContext';
+import { getRestaurantSignupLink } from '../lib/getRestaurantPortalLink';
 import Mascotte from '../assets/Mascotte@2x.png';
 import RestaurantPhoto from '../assets/restaurant (1).png';
 
@@ -76,14 +77,14 @@ const RestaurantSection: React.FC = () => {
               ))}
             </div>
 
-            <motion.button variants={scaleIn}
-              className="group relative bg-gray-900 text-white px-8 py-4 rounded-full font-bold text-lg overflow-hidden shadow-xl transition-all hover:shadow-2xl hover:scale-105 active:scale-95">
+            <motion.a href={getRestaurantSignupLink()} target="_blank" rel="noreferrer" variants={scaleIn}
+              className="group relative inline-flex bg-gray-900 text-white px-8 py-4 rounded-full font-bold text-lg overflow-hidden shadow-xl transition-all hover:shadow-2xl hover:scale-105 active:scale-95">
               <span className="relative z-10 flex items-center gap-2">
                 {r.cta}
                 <Users size={20} className="group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-            </motion.button>
+            </motion.a>
           </motion.div>
 
         </div>

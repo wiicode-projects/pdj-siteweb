@@ -7,6 +7,7 @@ export interface AppTranslations {
     restaurants: string;
     pricing: string;
     testimonials: string;
+    restaurantPortal: string;
     download: string;
   };
   hero: {
@@ -177,6 +178,7 @@ const fr: AppTranslations = {
     restaurants: 'Restaurants',
     pricing: 'Tarifs',
     testimonials: 'Témoignages',
+    restaurantPortal: 'Espace restaurateur',
     download: "Télécharger l'app",
   },
   hero: {
@@ -404,6 +406,7 @@ const en: AppTranslations = {
     restaurants: 'Restaurants',
     pricing: 'Pricing',
     testimonials: 'Testimonials',
+    restaurantPortal: 'Restaurant portal',
     download: 'Download the app',
   },
   hero: {
@@ -631,6 +634,7 @@ const de: AppTranslations = {
     restaurants: 'Restaurants',
     pricing: 'Preise',
     testimonials: 'Bewertungen',
+    restaurantPortal: 'Restaurant-Portal',
     download: 'App herunterladen',
   },
   hero: {
@@ -858,6 +862,7 @@ const it: AppTranslations = {
     restaurants: 'Ristoranti',
     pricing: 'Prezzi',
     testimonials: 'Recensioni',
+    restaurantPortal: 'Area ristoratori',
     download: "Scarica l'app",
   },
   hero: {

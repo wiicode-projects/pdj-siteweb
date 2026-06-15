@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import Logo from '../assets/Logomascotte.svg';
 import { useScrolled } from '../hooks/useScrolled';
 import { getStoreLink } from '../lib/getStoreLink';
+import { getRestaurantPortalLink } from '../lib/getRestaurantPortalLink';
 import { useLanguage } from '../i18n/LanguageContext';
 import { LanguageSelector } from './ui/LanguageSelector';
 
@@ -44,6 +45,11 @@ const Header: React.FC = () => {
             {/* Sélecteur de langue */}
             <LanguageSelector />
 
+            <a href={getRestaurantPortalLink()} target="_blank" rel="noreferrer"
+              className="border border-gray-300 text-gray-700 px-5 py-2 rounded-full text-sm font-semibold hover:border-primary hover:text-primary transition-all whitespace-nowrap">
+              {t.nav.restaurantPortal}
+            </a>
+
             <a href={getStoreLink()} target="_blank" rel="noreferrer"
               className="bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-primary transition-all hover:scale-105 shadow-md whitespace-nowrap">
               {t.nav.download}
@@ -79,8 +85,15 @@ const Header: React.FC = () => {
             <LanguageSelector />
           </div>
 
+          <a href={getRestaurantPortalLink()} target="_blank" rel="noreferrer"
+            className="mt-2 w-full text-center border border-gray-300 text-gray-800 px-6 py-3.5 rounded-xl font-bold hover:border-primary hover:text-primary transition-all"
+            onClick={close}
+          >
+            {t.nav.restaurantPortal}
+          </a>
+
           <a href={getStoreLink()} target="_blank" rel="noreferrer"
-            className="mt-2 w-full text-center bg-primary text-white px-6 py-3.5 rounded-xl font-bold hover:brightness-95 transition-all shadow-md"
+            className="w-full text-center bg-primary text-white px-6 py-3.5 rounded-xl font-bold hover:brightness-95 transition-all shadow-md"
             onClick={close}
           >
             {t.nav.download}

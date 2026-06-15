@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { MapPin, Clock, Star, Compass } from "lucide-react";
 import { fadeUp, staggerContainer, defaultViewport } from "../animations/variants";
 import { useLanguage } from "../i18n/LanguageContext";
+import { getRestaurantSignupLink } from "../lib/getRestaurantPortalLink";
 import mascotteQuestion from "../assets/Mascotte-question.svg";
 
 const ICONS = [MapPin, Clock, Star, Compass];
@@ -121,7 +122,9 @@ export default function MascotSection() {
                 {m.cta}
               </a>
               <a
-                href="#restaurants"
+                href={getRestaurantSignupLink()}
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-xl font-semibold bg-white/80 border border-black/10 text-gray-700 hover:bg-white hover:border-black/20 shadow-sm hover:shadow-md transition-all text-sm"
               >
                 {m.ctaRestaurant}
