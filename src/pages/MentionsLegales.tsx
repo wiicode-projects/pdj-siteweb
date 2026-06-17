@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/Logomascotte.svg";
 
-const LAST_UPDATE = "Mars 2025";
+const LAST_UPDATE = "Juin 2026";
 
 export default function MentionsLegales() {
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -27,10 +27,9 @@ export default function MentionsLegales() {
         </h1>
         <p className="text-sm text-gray-400 mb-2">Dernière mise à jour : {LAST_UPDATE}</p>
         <p className="text-sm text-gray-500 mb-10 leading-relaxed">
-          Conformément aux obligations légales en vigueur (notamment la loi française LCEN du
-          21 juin 2004, le Code des obligations suisse et les directives européennes applicables),
-          vous trouverez ci-dessous toutes les informations légales relatives à l'éditeur du
-          service <strong>Plat du Jour</strong>.
+          Conformément aux obligations légales en vigueur en Suisse (Code des obligations, nLPD)
+          et aux directives européennes applicables, vous trouverez ci-dessous toutes les informations
+          légales relatives à l'éditeur du service <strong>Plat du Jour</strong>.
         </p>
 
         <div className="space-y-10 text-sm sm:text-base leading-relaxed">
@@ -38,16 +37,18 @@ export default function MentionsLegales() {
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-3">1. Éditeur du service</h2>
             <div className="bg-gray-50 rounded-xl p-5 space-y-2 text-gray-700">
-              <p><strong>Raison sociale :</strong> <span className="text-amber-600 italic">[À compléter]</span></p>
-              <p><strong>Forme juridique :</strong> <span className="text-amber-600 italic">[SA / Sàrl / SAS / SARL / Auto-entrepreneur / …]</span></p>
-              <p><strong>Capital social :</strong> <span className="text-amber-600 italic">[Montant] CHF / EUR</span></p>
-              <p><strong>Numéro d'immatriculation :</strong> <span className="text-amber-600 italic">[RC / SIRET / CHE-XXX.XXX.XXX]</span></p>
-              <p><strong>Siège social :</strong> <span className="text-amber-600 italic">[Adresse complète, code postal, ville, pays]</span></p>
-              <p><strong>Numéro TVA :</strong> <span className="text-amber-600 italic">[CHE-XXX.XXX.XXX TVA / FR XX XXX XXX XXX / BE XXXX.XXX.XXX]</span></p>
-              <p><strong>Directeur de la publication :</strong> <span className="text-amber-600 italic">[Prénom NOM, qualité]</span></p>
-              <p><strong>Téléphone :</strong> <span className="text-amber-600 italic">[+XX XX XXX XX XX]</span></p>
+              <p><strong>Raison sociale :</strong> D.G.E. Concept SàRL</p>
+              <p><strong>Forme juridique :</strong> SàRL</p>
+              <p><strong>Capital social :</strong> 20'000 CHF</p>
+              <p><strong>Numéro d'immatriculation :</strong> CHE-456.471.738</p>
+              <p><strong>Siège social :</strong> 1273 Arzier-Le Muids, Suisse</p>
+              <p><strong>Numéro TVA :</strong> Non assujetti — seuil de chiffre d'affaires non atteint</p>
+              <p><strong>Directeur de la publication :</strong> Gwenaël Eude, Président</p>
+              <p><strong>Téléphone :</strong>{" "}
+                <a href="tel:+41799607371" className="text-primary underline">+41 79 960 73 71</a>
+              </p>
               <p><strong>E-mail de contact :</strong>{" "}
-                <a href="mailto:info@platdujour.ch" className="text-primary underline">info@platdujour.ch</a>
+                <a href="mailto:admin@dgeconcept.ch" className="text-primary underline">admin@dgeconcept.ch</a>
               </p>
             </div>
           </section>
@@ -56,21 +57,21 @@ export default function MentionsLegales() {
             <h2 className="text-xl font-bold text-gray-900 mb-3">2. Hébergement</h2>
             <div className="bg-gray-50 rounded-xl p-5 space-y-3 text-gray-700">
               <div>
-                <p className="font-semibold text-gray-800 mb-1">Site web (front-end)</p>
+                <p className="font-semibold text-gray-800 mb-1">Hébergeur (Suisse)</p>
                 <p>
-                  <strong>Vercel Inc.</strong><br />
-                  340 Pine Street Suite 701<br />
-                  San Francisco, CA 94104 — États-Unis<br />
-                  <a href="https://vercel.com" target="_blank" rel="noreferrer" className="text-primary underline">vercel.com</a>
+                  <strong>Infomaniak Network SA</strong><br />
+                  Rue Eugène-Marziano 25<br />
+                  1227 Les Acacias (GE), Suisse<br />
+                  IDE : CHE-103.167.648<br />
+                  <a href="https://www.infomaniak.com" target="_blank" rel="noreferrer" className="text-primary underline">infomaniak.com</a>
+                </p>
+                <p className="mt-3 text-gray-600">
+                  Le site web, l'application et les données associées sont hébergés en Suisse par Infomaniak.
                 </p>
               </div>
               <div>
-                <p className="font-semibold text-gray-800 mb-1">Serveur applicatif et base de données</p>
-                <p className="text-amber-600 italic">[Nom de votre hébergeur, adresse complète, site web]</p>
-              </div>
-              <div>
                 <p className="font-semibold text-gray-800 mb-1">Prestataire de paiement</p>
-                <p className="text-amber-600 italic">[Nom : Stripe / Datatrans / Mollie / … — adresse et site]</p>
+                <p className="text-amber-600 italic">[Nom : MyPos / TWINT / PayPal / … — adresse et site]</p>
               </div>
             </div>
           </section>
@@ -123,8 +124,8 @@ export default function MentionsLegales() {
             </p>
             <p className="mt-3 text-gray-700">
               Pour toute demande relative à vos données personnelles (accès, rectification,
-              suppression, portabilité), contactez-nous à :{" "}
-              <a href="mailto:info@platdujour.ch" className="text-primary underline">info@platdujour.ch</a>.
+              suppression, portabilité),               contactez-nous à :{" "}
+              <a href="mailto:admin@dgeconcept.ch" className="text-primary underline">admin@dgeconcept.ch</a>.
             </p>
           </section>
 
@@ -194,31 +195,28 @@ export default function MentionsLegales() {
             <p className="text-gray-700">
               En cas de litige avec l'éditeur, l'utilisateur est invité à contacter en premier lieu
               le service client à{" "}
-              <a href="mailto:info@platdujour.ch" className="text-primary underline">info@platdujour.ch</a>{" "}
+              <a href="mailto:admin@dgeconcept.ch" className="text-primary underline">admin@dgeconcept.ch</a>{" "}
               afin de rechercher une solution amiable.
             </p>
             <p className="mt-3 text-gray-700">
               À défaut de résolution amiable dans un délai de 30 jours, les utilisateurs résidant
               dans l'Union Européenne peuvent recourir à la plateforme européenne de règlement en
-              ligne des litiges (RLL) de la Commission Européenne.
+              ligne des litiges (RLL) de la Commission Européenne, accessible à{" "}
+              <a href="https://ec.europa.eu/consumers/odr" className="text-primary underline" target="_blank" rel="noopener noreferrer">
+                ec.europa.eu/consumers/odr
+              </a>.
             </p>
-            <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-800">
-              <strong>À compléter selon votre pays :</strong><br />
-              <span className="text-amber-700">En France et en Belgique, vous devez désigner un médiateur agréé et indiquer
-              ici son nom et son URL. Ex. : Médiation de la consommation FEVAD, CNPM Médiation
-              de la consommation, etc.</span>
-            </div>
           </section>
 
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-3">10. Droit applicable et juridiction compétente</h2>
             <p className="text-gray-700">
               Les présentes mentions légales et l'ensemble des relations entre l'éditeur et les
-              utilisateurs du Service sont soumises au droit en vigueur dans le pays d'établissement
-              de l'éditeur (voir section 1). En cas de litige non résolu à l'amiable, les tribunaux
-              compétents du ressort du siège social de l'éditeur seront exclusivement saisis, sauf
-              disposition légale impérative contraire applicable au consommateur dans son pays de
-              résidence.
+              utilisateurs du Service sont soumises au droit suisse, notamment le Code des obligations
+              (CO) et la Loi sur la protection des données (nLPD). En cas de litige non résolu à
+              l'amiable, les tribunaux compétents du Tribunal d'arrondissement de La Côte (Nyon,
+              canton de Vaud, Suisse) seront exclusivement saisis, sauf disposition légale impérative
+              contraire applicable au consommateur dans son pays de résidence.
             </p>
           </section>
 
@@ -228,7 +226,7 @@ export default function MentionsLegales() {
               L'éditeur s'engage à améliorer progressivement l'accessibilité de son Service pour les
               personnes en situation de handicap, conformément aux recommandations WCAG 2.1 (niveau AA).
               Si vous rencontrez des difficultés d'accessibilité, contactez-nous à{" "}
-              <a href="mailto:info@platdujour.ch" className="text-primary underline">info@platdujour.ch</a>{" "}
+              <a href="mailto:admin@dgeconcept.ch" className="text-primary underline">admin@dgeconcept.ch</a>{" "}
               afin que nous puissions vous apporter une assistance adaptée ou améliorer le Service.
             </p>
           </section>
@@ -249,66 +247,6 @@ export default function MentionsLegales() {
             </p>
           </section>
 
-        </div>
-
-        {/* ─── ENCART POINTS À COMPLÉTER ──────────────────────────────────────── */}
-        <div className="mt-16 rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50 p-6 sm:p-8">
-          <h2 className="text-lg font-bold text-amber-800 mb-1">
-            ⚠️ Points à compléter par l'éditeur
-          </h2>
-          <p className="text-sm text-amber-700 mb-5">
-            Les mentions légales sont obligatoires dans la plupart des pays européens et en Suisse.
-            Voici ce que vous devez impérativement renseigner selon votre situation :
-          </p>
-          <ul className="space-y-3 text-sm text-amber-900">
-            {[
-              {
-                label: "Identité complète de l'éditeur (tous pays)",
-                detail: "Raison sociale, forme juridique, capital social, numéro d'immatriculation (SIRET pour la France, CHE-XXX.XXX.XXX pour la Suisse, numéro BCE pour la Belgique) et adresse du siège. Obligatoire partout.",
-              },
-              {
-                label: "Directeur de la publication (France)",
-                detail: "En droit français (LCEN art. 6 III), le nom et la qualité du directeur de publication doivent figurer obligatoirement pour tout service de communication au public en ligne.",
-              },
-              {
-                label: "Numéro TVA (UE)",
-                detail: "Si vous êtes assujetti à la TVA dans un pays de l'UE, ce numéro doit figurer sur toutes vos communications commerciales et sur vos factures.",
-              },
-              {
-                label: "Numéro IDE / CHE (Suisse)",
-                detail: "En Suisse, le numéro d'identification des entreprises (IDE) au format CHE-XXX.XXX.XXX est obligatoire sur toute communication professionnelle.",
-              },
-              {
-                label: "Hébergeur de données applicatives",
-                detail: "Mentionnez nominativement l'hébergeur de votre API/backend et base de données si différent de Vercel (ex. Supabase, PlanetScale, Railway, OVH, Infomaniak…).",
-              },
-              {
-                label: "Médiateur de la consommation (France/Belgique obligatoire)",
-                detail: "En France, tout professionnel vendant à des consommateurs doit désigner un médiateur agréé (art. L.616-1 Code de la consommation). Indiquez son nom, son adresse et son URL. En Belgique, l'obligation est similaire via le Service de Médiation pour le Consommateur.",
-              },
-              {
-                label: "Photographies et crédits iconographiques",
-                detail: "Précisez l'origine de toutes les photos et illustrations utilisées. Vérifiez les licences des banques d'images utilisées (Unsplash, Adobe Stock, Shutterstock…) et ajoutez les attributions requises.",
-              },
-              {
-                label: "Agrément professionnel (si applicable)",
-                detail: "Si votre activité est soumise à un agrément, une autorisation ou une accréditation (ex. services de paiement, intermédiaire en assurance, activité réglementée), mentionnez l'autorité de tutelle et le numéro d'agrément.",
-              },
-              {
-                label: "Droit applicable — précision",
-                detail: "Indiquez explicitement la loi applicable : droit suisse (CO, nLPD), droit français (Code civil, Code de la consommation), droit belge ou autre. Cela doit correspondre au pays d'immatriculation de l'éditeur.",
-              },
-            ].map((item, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="flex-shrink-0 w-5 h-5 rounded border-2 border-amber-400 bg-white mt-0.5" />
-                <span><strong>{item.label} :</strong> {item.detail}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-5 text-xs text-amber-600 italic">
-            Ce document ne constitue pas un avis juridique. Faites-le valider par un juriste ou un
-            avocat spécialisé avant toute mise en ligne définitive.
-          </p>
         </div>
 
       </main>

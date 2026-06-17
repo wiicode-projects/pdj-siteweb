@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './i18n/LanguageContext';
+import { WebsiteContentProvider } from './i18n/WebsiteContentContext';
 import Cgu from './pages/Cgu';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import MentionsLegales from './pages/MentionsLegales';
@@ -39,6 +40,12 @@ const Fondu = ({ de, vers }: { de: string; vers: string }) => (
 
 /** Page d'accueil complète */
 const HomePage: React.FC = () => (
+  <WebsiteContentProvider>
+    <HomePageContent />
+  </WebsiteContentProvider>
+);
+
+const HomePageContent: React.FC = () => (
   <div className="relative font-sans text-gray-800 bg-white selection:bg-primary selection:text-white w-full overflow-x-hidden">
     <div className="fa">
       <div className="fa-tinte" />
