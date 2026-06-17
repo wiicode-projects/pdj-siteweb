@@ -5,10 +5,12 @@ import { useScrolled } from '../hooks/useScrolled';
 import { getStoreLink } from '../lib/getStoreLink';
 import { getRestaurantPortalLink } from '../lib/getRestaurantPortalLink';
 import { useLanguage } from '../i18n/LanguageContext';
+import { useWebsiteContent } from '../i18n/WebsiteContentContext';
 import { LanguageSelector } from './ui/LanguageSelector';
 
 const Header: React.FC = () => {
   const { t } = useLanguage();
+  const { showSection } = useWebsiteContent();
   const isScrolled = useScrolled(20);
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
@@ -18,7 +20,7 @@ const Header: React.FC = () => {
     { name: t.nav.features,     href: '#features'     },
     { name: t.nav.restaurants,  href: '#restaurants'  },
     { name: t.nav.pricing,      href: '#tarifs'       },
-    { name: t.nav.testimonials, href: '#testimonials' },
+    ...(showSection ? [{ name: t.nav.testimonials, href: '#testimonials' }] : []),
   ];
 
   return (

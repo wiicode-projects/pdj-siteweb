@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { Instagram, Facebook } from 'lucide-react';
 import Logo from '../assets/Logomascotte.svg';
 import { useLanguage } from '../i18n/LanguageContext';
+import { useWebsiteContent } from '../i18n/WebsiteContentContext';
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
+  const { showSection } = useWebsiteContent();
   const f = t.footer;
   const year = new Date().getFullYear();
 
@@ -40,7 +42,9 @@ const Footer: React.FC = () => {
             <h4 className="font-bold text-white mb-6">{f.quickLinks}</h4>
             <ul className="space-y-3 text-sm text-gray-400">
               <li><a href="#how-it-works" className="hover:text-primary transition-colors">{f.links.howItWorks}</a></li>
-              <li><a href="#testimonials" className="hover:text-primary transition-colors">{f.links.testimonials}</a></li>
+              {showSection && (
+                <li><a href="#testimonials" className="hover:text-primary transition-colors">{f.links.testimonials}</a></li>
+              )}
               <li><a href="#download" className="hover:text-primary transition-colors">{f.links.download}</a></li>
             </ul>
           </div>

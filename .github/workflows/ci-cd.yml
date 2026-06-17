@@ -22,6 +22,8 @@ env:
   IMAGE_NAME: sitepdj
   STAGING_PORTAL_URL: https://pdj-backoffice-dev.wiicode.tech
   PROD_PORTAL_URL: https://backoffice.leplatdujour.ch
+  STAGING_API_URL: https://pdj-dev-api.wiicode.tech/api/v1
+  PROD_API_URL: https://backoffice.leplatdujour.ch/api/v1
 
 jobs:
 
@@ -53,9 +55,11 @@ jobs:
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
             echo "app_env=production" >> "$GITHUB_OUTPUT"
             echo "portal_url=${{ env.PROD_PORTAL_URL }}" >> "$GITHUB_OUTPUT"
+            echo "api_url=${{ env.PROD_API_URL }}" >> "$GITHUB_OUTPUT"
           else
             echo "app_env=staging" >> "$GITHUB_OUTPUT"
             echo "portal_url=${{ env.STAGING_PORTAL_URL }}" >> "$GITHUB_OUTPUT"
+            echo "api_url=${{ env.STAGING_API_URL }}" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Build & Push
@@ -68,6 +72,7 @@ jobs:
           build-args: |
             VITE_APP_ENV=${{ steps.vite.outputs.app_env }}
             VITE_RESTAURANT_PORTAL_URL=${{ steps.vite.outputs.portal_url }}
+            VITE_API_URL=${{ steps.vite.outputs.api_url }}
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.SHA_SHORT }}
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest

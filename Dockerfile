@@ -14,8 +14,10 @@ CMD ["npm", "run", "dev"]
 FROM base AS build
 ARG VITE_APP_ENV=staging
 ARG VITE_RESTAURANT_PORTAL_URL=https://pdj-backoffice-dev.wiicode.tech
+ARG VITE_API_URL=https://pdj-dev-api.wiicode.tech/api/v1
 ENV VITE_APP_ENV=$VITE_APP_ENV
 ENV VITE_RESTAURANT_PORTAL_URL=$VITE_RESTAURANT_PORTAL_URL
+ENV VITE_API_URL=$VITE_API_URL
 RUN npm ci
 COPY . .
 RUN npm run build
