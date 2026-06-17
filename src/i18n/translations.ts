@@ -164,6 +164,7 @@ export interface AppTranslations {
     contactSupport: string;
     terms: string;
     privacy: string;
+    legalNotice: string;
     allRights: string;
     madeBy: string;
     links: { howItWorks: string; testimonials: string; download: string };
@@ -392,6 +393,7 @@ const fr: AppTranslations = {
     contactSupport: 'Contactez le support',
     terms: 'CGU',
     privacy: 'Politique de confidentialité',
+    legalNotice: 'Mentions légales',
     allRights: 'Tous droits réservés.',
     madeBy: 'Fait par',
     links: { howItWorks: 'Comment ça marche', testimonials: 'Témoignages', download: "Télécharger l'app" },
@@ -620,6 +622,7 @@ const en: AppTranslations = {
     contactSupport: 'Contact support',
     terms: 'Terms of Use',
     privacy: 'Privacy Policy',
+    legalNotice: 'Legal Notice',
     allRights: 'All rights reserved.',
     madeBy: 'Made by',
     links: { howItWorks: 'How It Works', testimonials: 'Testimonials', download: 'Download the app' },
@@ -848,6 +851,7 @@ const de: AppTranslations = {
     contactSupport: 'Support kontaktieren',
     terms: 'Nutzungsbedingungen',
     privacy: 'Datenschutzerklärung',
+    legalNotice: 'Impressum',
     allRights: 'Alle Rechte vorbehalten.',
     madeBy: 'Gemacht von',
     links: { howItWorks: 'So funktioniert es', testimonials: 'Bewertungen', download: 'App herunterladen' },
@@ -1076,6 +1080,7 @@ const it: AppTranslations = {
     contactSupport: 'Contatta il supporto',
     terms: 'Termini di utilizzo',
     privacy: 'Informativa sulla privacy',
+    legalNotice: 'Note legali',
     allRights: 'Tutti i diritti riservati.',
     madeBy: 'Fatto da',
     links: { howItWorks: 'Come funziona', testimonials: 'Recensioni', download: "Scarica l'app" },
