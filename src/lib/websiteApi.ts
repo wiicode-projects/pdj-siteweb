@@ -15,11 +15,19 @@ export type LandingStat = {
   isDecimal: boolean;
 };
 
+export type PublicFaqItem = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
 export type WebsitePublicData = {
   statsEnabled: boolean;
   testimonialsEnabled: boolean;
+  faqEnabled: boolean;
   stats: LandingStat[];
   testimonials: PublicTestimonial[];
+  faqItems: PublicFaqItem[];
 };
 
 export type TombolaRewardRank = 1 | 2 | 3;
@@ -53,8 +61,10 @@ export type TombolaHistoryResponse = {
 const HIDDEN_DEFAULT: WebsitePublicData = {
   statsEnabled: false,
   testimonialsEnabled: false,
+  faqEnabled: false,
   stats: [],
   testimonials: [],
+  faqItems: [],
 };
 
 export function getApiBaseUrl(): string {
@@ -71,12 +81,13 @@ export function resolveMediaUrl(path: string | null | undefined): string | null 
   return `${base}${path.startsWith('/') ? path : `/${path}`}`;
 }
 
-export async function fetchWebsitePublic(): Promise<WebsitePublicData> {
+export async function fetchWebsitePublic(lang = 'fr'): Promise<WebsitePublicData> {
   const apiUrl = import.meta.env.VITE_API_URL?.replace(/\/$/, '');
   if (!apiUrl) return HIDDEN_DEFAULT;
 
   try {
-    const res = await fetch(`${apiUrl}/website/public`, {
+    const params = new URLSearchParams({ lang });
+    const res = await fetch(`${apiUrl}/website/public?${params}`, {
       headers: { Accept: 'application/json' },
     });
     if (!res.ok) return HIDDEN_DEFAULT;
@@ -84,8 +95,10 @@ export async function fetchWebsitePublic(): Promise<WebsitePublicData> {
     return {
       statsEnabled: Boolean(data.statsEnabled),
       testimonialsEnabled: Boolean(data.testimonialsEnabled),
+      faqEnabled: Boolean(data.faqEnabled),
       stats: Array.isArray(data.stats) ? data.stats : [],
       testimonials: Array.isArray(data.testimonials) ? data.testimonials : [],
+      faqItems: Array.isArray(data.faqItems) ? data.faqItems : [],
     };
   } catch {
     return HIDDEN_DEFAULT;

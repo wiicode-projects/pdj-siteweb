@@ -3,6 +3,7 @@ import { ChevronDown, HelpCircle, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionContainer } from "./ui/SectionContainer";
 import { useLanguage } from "../i18n/LanguageContext";
+import { useWebsiteContent } from "../i18n/WebsiteContentContext";
 
 const itemClass = `
   rounded-2xl overflow-hidden border
@@ -54,7 +55,14 @@ function FaqColumn({ list, offset = 0 }: { list: FaqItem[]; offset?: number }) {
 
 export function Faq() {
   const { t } = useLanguage();
-  const items = t.faq.items;
+  const { faqEnabled, faqItems, loaded } = useWebsiteContent();
+
+  if (loaded && !faqEnabled) return null;
+
+  const items =
+    faqItems.length > 0
+      ? faqItems.map((item) => ({ q: item.question, a: item.answer }))
+      : t.faq.items;
   const midPoint = Math.ceil(items.length / 2);
   const column1 = items.slice(0, midPoint);
   const column2 = items.slice(midPoint);
