@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           {/* Marque */}
           <div className="col-span-1">
             <div className="mb-6">
-              <img src={Logo} alt="Plat du Jour" className="w-20 h-auto object-contain" draggable={false} />
+              <img src={Logo} alt="Le Plat du Jour" className="w-20 h-auto object-contain" draggable={false} />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">{f.tagline}</p>
             <div className="flex gap-4">
@@ -46,6 +46,7 @@ const Footer: React.FC = () => {
                 <li><a href="#testimonials" className="hover:text-primary transition-colors">{f.links.testimonials}</a></li>
               )}
               <li><a href="#download" className="hover:text-primary transition-colors">{f.links.download}</a></li>
+              <li><Link to="/tombola" className="hover:text-primary transition-colors">{f.links.tombola}</Link></li>
             </ul>
           </div>
 
@@ -79,7 +80,7 @@ const Footer: React.FC = () => {
         {/* Bas de page */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500">
-            © {year} <strong className="text-gray-300">Plat du Jour</strong>. {f.allRights}
+            © {year} <strong className="text-gray-300">Le Plat du Jour</strong>. {f.allRights}
           </p>
           <div className="text-xs text-gray-500">
             {f.madeBy}{' '}

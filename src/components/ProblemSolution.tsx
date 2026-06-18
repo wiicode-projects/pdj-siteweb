@@ -62,7 +62,7 @@ export default function ProblemSolution() {
             <div className="p-6 border-b border-black/5 bg-white/60">
               <div className="flex items-center gap-2 font-semibold text-gray-900">
                 <span className="inline-flex w-2 h-2 rounded-full bg-red-500" />
-                Plat du Jour
+                {t.hero.brandName}
               </div>
             </div>
 
@@ -109,7 +109,7 @@ export default function ProblemSolution() {
                 <div className="rounded-xl border border-black/5 bg-white/60 p-4">
                   <div className="flex items-center gap-2 font-semibold text-gray-900">
                     <span className="inline-flex w-2 h-2 rounded-full bg-red-500" />
-                    Plat du Jour
+                    {t.hero.brandName}
                   </div>
                   <p className="mt-2 text-gray-700 font-medium">{r.after}</p>
                 </div>

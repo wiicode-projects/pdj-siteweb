@@ -12,6 +12,7 @@ export interface AppTranslations {
   };
   hero: {
     badge: string;
+    brandName: string;
     h1pre: string;
     h1post: string;
     subtitle: string;
@@ -154,6 +155,24 @@ export interface AppTranslations {
     found: string;
     country: string;
   };
+  tombola: {
+    pageTitle: string;
+    subtitle: string;
+    rank_first: string;
+    rank_second: string;
+    rank_third: string;
+    history_empty: string;
+    winner_pending: string;
+    drawn_at: string;
+    cta_download: string;
+    load_error: string;
+    retry: string;
+    prize_label: string;
+    winner_label: string;
+    draw_label: string;
+    view_prize: string;
+    close: string;
+  };
   footer: {
     tagline: string;
     quickLinks: string;
@@ -167,7 +186,7 @@ export interface AppTranslations {
     legalNotice: string;
     allRights: string;
     madeBy: string;
-    links: { howItWorks: string; testimonials: string; download: string };
+    links: { howItWorks: string; testimonials: string; download: string; tombola: string };
   };
 }
 
@@ -184,6 +203,7 @@ const fr: AppTranslations = {
   },
   hero: {
     badge: "Déjà adopté par des milliers d'utilisateurs !",
+    brandName: 'Le Plat du Jour',
     h1pre: 'Le',
     h1post: 'juste à côté.',
     subtitle: "Fini l'indécision du midi. Découvrez les menus du jour en temps réel et réservez votre table en un clin d'œil.",
@@ -198,7 +218,7 @@ const fr: AppTranslations = {
   problem: {
     badge: 'PROBLÈME → SOLUTION',
     h2: 'Vous ne savez jamais quoi manger ?',
-    subtitle: 'En quelques secondes, Plat du Jour vous aide à trouver un menu dispo près de vous — sans appels, sans recherches, sans surprise.',
+    subtitle: 'En quelques secondes, Le Plat du Jour vous aide à trouver un menu dispo près de vous — sans appels, sans recherches, sans surprise.',
     col1: 'Critère',
     col2: 'Le casse-tête',
     tagline: ['Trouvez. Choisissez. Savourez.', "Passez de l'hésitation à la décision en quelques instants."],
@@ -215,7 +235,7 @@ const fr: AppTranslations = {
     badge: 'Votre compagnon repas',
     h2: 'Que vais-je manger ce midi ?',
     lead: 'Mangez mieux, sans chercher.',
-    subtitle: "Plat du Jour trouve les meilleurs menus du jour autour de vous. Rapide, local et sans prise de tête.",
+    subtitle: "Le Plat du Jour trouve les meilleurs menus du jour autour de vous. Rapide, local et sans prise de tête.",
     cards: [
       { title: 'Recherche localisée', desc: 'Tous les menus disponibles autour de vous, en temps réel.' },
       { title: 'Choix simplifié', desc: 'Photos, prix et description pour décider en quelques secondes.' },
@@ -358,12 +378,12 @@ const fr: AppTranslations = {
   },
   faq: {
     h2: 'Questions fréquentes',
-    subtitle: 'Tout ce que vous devez savoir sur Plat du Jour',
+    subtitle: 'Tout ce que vous devez savoir sur Le Plat du Jour',
     noAnswer: 'Vous ne trouvez pas la réponse à votre question ?',
     contact: 'Contactez notre support',
     items: [
       { q: "L'application est-elle gratuite ?", a: "Oui, l'application de base est 100% gratuite pour les utilisateurs. Vous pouvez consulter les menus, lire les avis et rechercher des restaurants sans aucun frais. Un abonnement Premium offre des fonctionnalités avancées." },
-      { q: 'Où est disponible Plat du Jour ?', a: 'Nous sommes disponibles dans plusieurs villes et en pleine expansion. De nouvelles zones sont ajoutées régulièrement en fonction des restaurants partenaires.' },
+      { q: 'Où est disponible Le Plat du Jour ?', a: 'Nous sommes disponibles dans plusieurs villes et en pleine expansion. De nouvelles zones sont ajoutées régulièrement en fonction des restaurants partenaires.' },
       { q: 'Comment les restaurants publient-ils leurs menus ?', a: "Les restaurants publient via un espace dédié : photo + description + prix, en quelques secondes. Le menu est ensuite visible instantanément dans l'app." },
       { q: 'Puis-je réserver une table ?', a: "Oui, si le restaurant partenaire a activé les réservations. Vous recevez une confirmation immédiate. Les utilisateurs Premium peuvent bénéficier d'avantages selon les restaurants." },
       { q: 'Dois-je créer un compte ?', a: "Non pour consulter. Un compte (gratuit) est nécessaire pour réserver, mettre en favoris ou laisser un avis. L'inscription est rapide." },
@@ -377,11 +397,29 @@ const fr: AppTranslations = {
   download: {
     h2: 'Toute la ville',
     h2highlight: 'dans votre poche.',
-    subtitle: "De Berne à Zurich, trouvez les pépites culinaires autour de vous. Téléchargez Plat du Jour et commencez l'exploration.",
+    subtitle: "De Berne à Zurich, trouvez les pépites culinaires autour de vous. Téléchargez Le Plat du Jour et commencez l'exploration.",
     downloadOn: 'Télécharger sur',
     availableOn: 'Disponible sur',
     found: '10 restaurants trouvés',
     country: 'Suisse',
+  },
+  tombola: {
+    pageTitle: 'Gagnants de la tombola',
+    subtitle: 'Chaque mois, des participants de l\'app Le Plat du Jour tentent leur chance. Retrouvez ici les tirages passés et leurs gagnants.',
+    rank_first: '1er prix',
+    rank_second: '2e prix',
+    rank_third: '3e prix',
+    history_empty: 'Aucun tirage pour le moment. Revenez bientôt !',
+    winner_pending: 'Pseudo en attente',
+    drawn_at: 'Tirage le',
+    cta_download: 'Participez au prochain tirage en téléchargeant l\'application.',
+    load_error: 'Impossible de charger l\'historique. Veuillez réessayer.',
+    retry: 'Réessayer',
+    prize_label: 'Prix',
+    winner_label: 'Gagnant',
+    draw_label: 'Tirage',
+    view_prize: 'Voir le détail du prix',
+    close: 'Fermer',
   },
   footer: {
     tagline: 'La meilleure façon de découvrir les menus du jour autour de vous. Simple, rapide et gourmand.',
@@ -396,7 +434,7 @@ const fr: AppTranslations = {
     legalNotice: 'Mentions légales',
     allRights: 'Tous droits réservés.',
     madeBy: 'Fait par',
-    links: { howItWorks: 'Comment ça marche', testimonials: 'Témoignages', download: "Télécharger l'app" },
+    links: { howItWorks: 'Comment ça marche', testimonials: 'Témoignages', download: "Télécharger l'app", tombola: 'Gagnants tombola' },
   },
 };
 
@@ -413,6 +451,7 @@ const en: AppTranslations = {
   },
   hero: {
     badge: 'Already loved by thousands of users!',
+    brandName: 'Le Plat du Jour',
     h1pre: 'The',
     h1post: 'right around the corner.',
     subtitle: "No more lunchtime indecision. Discover today's menus in real time and book your table in a flash.",
@@ -427,7 +466,7 @@ const en: AppTranslations = {
   problem: {
     badge: 'PROBLEM → SOLUTION',
     h2: "Don't know what to eat?",
-    subtitle: 'In seconds, Plat du Jour helps you find an available menu near you — no calls, no searching, no surprises.',
+    subtitle: 'In seconds, Le Plat du Jour helps you find an available menu near you — no calls, no searching, no surprises.',
     col1: 'Topic',
     col2: 'The headache',
     tagline: ['Find it. Choose it. Enjoy it.', 'Go from hesitation to decision in moments.'],
@@ -444,7 +483,7 @@ const en: AppTranslations = {
     badge: 'Your meal companion',
     h2: 'What will I eat for lunch?',
     lead: 'Eat better, without searching.',
-    subtitle: "Plat du Jour finds the best daily specials around you. Fast, local and hassle-free.",
+    subtitle: "Le Plat du Jour finds the best daily specials around you. Fast, local and hassle-free.",
     cards: [
       { title: 'Local search', desc: 'All available menus around you, in real time.' },
       { title: 'Easy choice', desc: 'Photos, prices and descriptions to decide in seconds.' },
@@ -587,12 +626,12 @@ const en: AppTranslations = {
   },
   faq: {
     h2: 'Frequently Asked Questions',
-    subtitle: 'Everything you need to know about Plat du Jour',
+    subtitle: 'Everything you need to know about Le Plat du Jour',
     noAnswer: "Can't find the answer to your question?",
     contact: 'Contact our support',
     items: [
       { q: 'Is the app free?', a: 'Yes, the basic app is 100% free for users. You can browse menus, read reviews and search for restaurants at no cost. A Premium subscription offers advanced features.' },
-      { q: 'Where is Plat du Jour available?', a: 'We are available in several cities and expanding. New areas are added regularly as partner restaurants join.' },
+      { q: 'Where is Le Plat du Jour available?', a: 'We are available in several cities and expanding. New areas are added regularly as partner restaurants join.' },
       { q: 'How do restaurants publish their menus?', a: 'Restaurants publish via a dedicated space: photo + description + price, in seconds. The menu is then instantly visible in the app.' },
       { q: 'Can I book a table?', a: 'Yes, if the partner restaurant has enabled bookings. You receive immediate confirmation. Premium users may benefit from perks depending on the restaurant.' },
       { q: 'Do I need to create an account?', a: 'Not to browse. A (free) account is needed to book, save favourites or leave a review. Registration is quick.' },
@@ -606,11 +645,29 @@ const en: AppTranslations = {
   download: {
     h2: 'The whole city',
     h2highlight: 'in your pocket.',
-    subtitle: 'From Bern to Zurich, discover culinary gems around you. Download Plat du Jour and start exploring.',
+    subtitle: 'From Bern to Zurich, discover culinary gems around you. Download Le Plat du Jour and start exploring.',
     downloadOn: 'Download on',
     availableOn: 'Get it on',
     found: '10 restaurants found',
     country: 'Switzerland',
+  },
+  tombola: {
+    pageTitle: 'Tombola winners',
+    subtitle: 'Every month, Le Plat du Jour app users take part in a draw. Browse past draws and their winners here.',
+    rank_first: '1st prize',
+    rank_second: '2nd prize',
+    rank_third: '3rd prize',
+    history_empty: 'No draws yet. Check back soon!',
+    winner_pending: 'Username pending',
+    drawn_at: 'Drawn on',
+    cta_download: 'Join the next draw by downloading the app.',
+    load_error: 'Could not load history. Please try again.',
+    retry: 'Retry',
+    prize_label: 'Prize',
+    winner_label: 'Winner',
+    draw_label: 'Draw',
+    view_prize: 'View prize details',
+    close: 'Close',
   },
   footer: {
     tagline: 'The best way to discover daily menus around you. Simple, fast and delicious.',
@@ -625,7 +682,7 @@ const en: AppTranslations = {
     legalNotice: 'Legal Notice',
     allRights: 'All rights reserved.',
     madeBy: 'Made by',
-    links: { howItWorks: 'How It Works', testimonials: 'Testimonials', download: 'Download the app' },
+    links: { howItWorks: 'How It Works', testimonials: 'Testimonials', download: 'Download the app', tombola: 'Tombola winners' },
   },
 };
 
@@ -642,6 +699,7 @@ const de: AppTranslations = {
   },
   hero: {
     badge: 'Bereits von Tausenden genutzt!',
+    brandName: 'Le Plat du Jour',
     h1pre: 'Das',
     h1post: 'gleich um die Ecke.',
     subtitle: 'Kein Mittagsstress mehr. Entdecke die Tagesmenüs in Echtzeit und reserviere deinen Tisch im Handumdrehen.',
@@ -656,7 +714,7 @@ const de: AppTranslations = {
   problem: {
     badge: 'PROBLEM → LÖSUNG',
     h2: 'Weißt du nie, was du essen sollst?',
-    subtitle: 'In Sekunden hilft dir Plat du Jour, ein verfügbares Menü in deiner Nähe zu finden — ohne Anrufe, ohne Suchen, ohne Überraschungen.',
+    subtitle: 'In Sekunden hilft dir Le Plat du Jour, ein verfügbares Menü in deiner Nähe zu finden — ohne Anrufe, ohne Suchen, ohne Überraschungen.',
     col1: 'Thema',
     col2: 'Das Problem',
     tagline: ['Finden. Wählen. Genießen.', 'Von der Unentschlossenheit zur Entscheidung in Momenten.'],
@@ -673,7 +731,7 @@ const de: AppTranslations = {
     badge: 'Dein Essensbegleiter',
     h2: 'Was esse ich heute Mittag?',
     lead: 'Besser essen, ohne zu suchen.',
-    subtitle: "Plat du Jour findet die besten Tagesmenüs in deiner Nähe. Schnell, lokal und unkompliziert.",
+    subtitle: "Le Plat du Jour findet die besten Tagesmenüs in deiner Nähe. Schnell, lokal und unkompliziert.",
     cards: [
       { title: 'Lokale Suche', desc: 'Alle verfügbaren Menüs in deiner Nähe, in Echtzeit.' },
       { title: 'Einfache Wahl', desc: 'Fotos, Preise und Beschreibung, um in Sekunden zu entscheiden.' },
@@ -816,12 +874,12 @@ const de: AppTranslations = {
   },
   faq: {
     h2: 'Häufige Fragen',
-    subtitle: 'Alles, was Sie über Plat du Jour wissen müssen',
+    subtitle: 'Alles, was Sie über Le Plat du Jour wissen müssen',
     noAnswer: 'Keine Antwort auf Ihre Frage gefunden?',
     contact: 'Support kontaktieren',
     items: [
       { q: 'Ist die App kostenlos?', a: 'Ja, die Basis-App ist 100% kostenlos für Nutzer. Sie können Menüs durchsuchen, Bewertungen lesen und Restaurants suchen. Ein Premium-Abonnement bietet erweiterte Funktionen.' },
-      { q: 'Wo ist Plat du Jour verfügbar?', a: 'Wir sind in mehreren Städten verfügbar und expandieren. Neue Bereiche werden regelmäßig hinzugefügt, sobald Partnerrestaurants beitreten.' },
+      { q: 'Wo ist Le Plat du Jour verfügbar?', a: 'Wir sind in mehreren Städten verfügbar und expandieren. Neue Bereiche werden regelmäßig hinzugefügt, sobald Partnerrestaurants beitreten.' },
       { q: 'Wie veröffentlichen Restaurants ihre Menüs?', a: 'Restaurants veröffentlichen über einen dedizierten Bereich: Foto + Beschreibung + Preis, in Sekunden. Das Menü ist dann sofort in der App sichtbar.' },
       { q: 'Kann ich einen Tisch reservieren?', a: 'Ja, wenn das Partnerrestaurant Reservierungen aktiviert hat. Sie erhalten eine sofortige Bestätigung.' },
       { q: 'Muss ich ein Konto erstellen?', a: 'Nein, um zu stöbern. Ein (kostenloses) Konto ist nötig, um zu reservieren, Favoriten zu setzen oder eine Bewertung zu hinterlassen.' },
@@ -835,11 +893,29 @@ const de: AppTranslations = {
   download: {
     h2: 'Die ganze Stadt',
     h2highlight: 'in Ihrer Tasche.',
-    subtitle: 'Von Bern bis Zürich, entdecken Sie kulinarische Highlights in Ihrer Nähe. Laden Sie Plat du Jour herunter und beginnen Sie die Entdeckungstour.',
+    subtitle: 'Von Bern bis Zürich, entdecken Sie kulinarische Highlights in Ihrer Nähe. Laden Sie Le Plat du Jour herunter und beginnen Sie die Entdeckungstour.',
     downloadOn: 'Laden bei',
     availableOn: 'Jetzt bei',
     found: '10 Restaurants gefunden',
     country: 'Schweiz',
+  },
+  tombola: {
+    pageTitle: 'Tombola-Gewinner',
+    subtitle: 'Jeden Monat nehmen Nutzer der Le Plat du Jour App an einer Verlosung teil. Hier finden Sie vergangene Ziehungen und ihre Gewinner.',
+    rank_first: '1. Preis',
+    rank_second: '2. Preis',
+    rank_third: '3. Preis',
+    history_empty: 'Noch keine Ziehungen. Schauen Sie bald wieder vorbei!',
+    winner_pending: 'Benutzername ausstehend',
+    drawn_at: 'Gezogen am',
+    cta_download: 'Nehmen Sie an der nächsten Ziehung teil — laden Sie die App herunter.',
+    load_error: 'Verlauf konnte nicht geladen werden. Bitte erneut versuchen.',
+    retry: 'Erneut versuchen',
+    prize_label: 'Preis',
+    winner_label: 'Gewinner',
+    draw_label: 'Ziehung',
+    view_prize: 'Preisdetails anzeigen',
+    close: 'Schließen',
   },
   footer: {
     tagline: 'Der beste Weg, Tagesmenüs in Ihrer Nähe zu entdecken. Einfach, schnell und lecker.',
@@ -854,7 +930,7 @@ const de: AppTranslations = {
     legalNotice: 'Impressum',
     allRights: 'Alle Rechte vorbehalten.',
     madeBy: 'Gemacht von',
-    links: { howItWorks: 'So funktioniert es', testimonials: 'Bewertungen', download: 'App herunterladen' },
+    links: { howItWorks: 'So funktioniert es', testimonials: 'Bewertungen', download: 'App herunterladen', tombola: 'Tombola-Gewinner' },
   },
 };
 
@@ -871,6 +947,7 @@ const it: AppTranslations = {
   },
   hero: {
     badge: 'Già amato da migliaia di utenti!',
+    brandName: 'Le Plat du Jour',
     h1pre: 'Il',
     h1post: 'proprio qui vicino.',
     subtitle: "Basta indecisione a pranzo. Scopri i menu del giorno in tempo reale e prenota il tuo tavolo in un attimo.",
@@ -885,7 +962,7 @@ const it: AppTranslations = {
   problem: {
     badge: 'PROBLEMA → SOLUZIONE',
     h2: 'Non sai mai cosa mangiare?',
-    subtitle: 'In pochi secondi, Plat du Jour ti aiuta a trovare un menu disponibile vicino a te — senza chiamate, senza ricerche, senza sorprese.',
+    subtitle: 'In pochi secondi, Le Plat du Jour ti aiuta a trovare un menu disponibile vicino a te — senza chiamate, senza ricerche, senza sorprese.',
     col1: 'Argomento',
     col2: 'Il problema',
     tagline: ['Trova. Scegli. Assapora.', "Dalla indecisione alla decisione in pochi istanti."],
@@ -902,7 +979,7 @@ const it: AppTranslations = {
     badge: 'Il tuo compagno dei pasti',
     h2: 'Cosa mangio a pranzo?',
     lead: 'Mangia meglio, senza cercare.',
-    subtitle: "Plat du Jour trova i migliori piatti del giorno intorno a te. Rapido, locale e senza pensieri.",
+    subtitle: "Le Plat du Jour trova i migliori piatti del giorno intorno a te. Rapido, locale e senza pensieri.",
     cards: [
       { title: 'Ricerca localizzata', desc: 'Tutti i menu disponibili intorno a te, in tempo reale.' },
       { title: 'Scelta semplificata', desc: 'Foto, prezzi e descrizione per decidere in pochi secondi.' },
@@ -1045,12 +1122,12 @@ const it: AppTranslations = {
   },
   faq: {
     h2: 'Domande frequenti',
-    subtitle: 'Tutto quello che devi sapere su Plat du Jour',
+    subtitle: 'Tutto quello che devi sapere su Le Plat du Jour',
     noAnswer: 'Non trovi la risposta alla tua domanda?',
     contact: 'Contatta il nostro supporto',
     items: [
       { q: "L'app è gratuita?", a: "Sì, l'app di base è 100% gratuita per gli utenti. Puoi consultare i menu, leggere le recensioni e cercare ristoranti senza alcun costo." },
-      { q: 'Dove è disponibile Plat du Jour?', a: 'Siamo disponibili in diverse città e in continua espansione. Nuove zone vengono aggiunte regolarmente.' },
+      { q: 'Dove è disponibile Le Plat du Jour?', a: 'Siamo disponibili in diverse città e in continua espansione. Nuove zone vengono aggiunte regolarmente.' },
       { q: 'Come pubblicano i ristoranti i loro menu?', a: "I ristoranti pubblicano tramite uno spazio dedicato: foto + descrizione + prezzo, in pochi secondi. Il menu è poi visibile istantaneamente nell'app." },
       { q: 'Posso prenotare un tavolo?', a: "Sì, se il ristorante partner ha abilitato le prenotazioni. Ricevi una conferma immediata." },
       { q: 'Devo creare un account?', a: "No per consultare. Un account (gratuito) è necessario per prenotare, aggiungere ai preferiti o lasciare una recensione." },
@@ -1064,11 +1141,29 @@ const it: AppTranslations = {
   download: {
     h2: 'Tutta la città',
     h2highlight: 'in tasca.',
-    subtitle: 'Da Berna a Zurigo, scopri le gemme culinarie intorno a te. Scarica Plat du Jour e inizia l\'esplorazione.',
+    subtitle: 'Da Berna a Zurigo, scopri le gemme culinarie intorno a te. Scarica Le Plat du Jour e inizia l\'esplorazione.',
     downloadOn: 'Scarica su',
     availableOn: 'Disponibile su',
     found: '10 ristoranti trovati',
     country: 'Svizzera',
+  },
+  tombola: {
+    pageTitle: 'Vincitori della tombola',
+    subtitle: 'Ogni mese, gli utenti dell\'app Le Plat du Jour partecipano a un\'estrazione. Consulta qui i sorteggi passati e i vincitori.',
+    rank_first: '1° premio',
+    rank_second: '2° premio',
+    rank_third: '3° premio',
+    history_empty: 'Nessuna estrazione per ora. Torna presto!',
+    winner_pending: 'Username in attesa',
+    drawn_at: 'Estrazione del',
+    cta_download: 'Partecipa alla prossima estrazione scaricando l\'app.',
+    load_error: 'Impossibile caricare la cronologia. Riprova.',
+    retry: 'Riprova',
+    prize_label: 'Premio',
+    winner_label: 'Vincitore',
+    draw_label: 'Estrazione',
+    view_prize: 'Vedi dettagli del premio',
+    close: 'Chiudi',
   },
   footer: {
     tagline: 'Il modo migliore per scoprire i menu del giorno intorno a te. Semplice, veloce e gustoso.',
@@ -1083,7 +1178,7 @@ const it: AppTranslations = {
     legalNotice: 'Note legali',
     allRights: 'Tutti i diritti riservati.',
     madeBy: 'Fatto da',
-    links: { howItWorks: 'Come funziona', testimonials: 'Recensioni', download: "Scarica l'app" },
+    links: { howItWorks: 'Come funziona', testimonials: 'Recensioni', download: "Scarica l'app", tombola: 'Vincitori tombola' },
   },
 };
 

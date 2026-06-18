@@ -5,6 +5,7 @@ import { WebsiteContentProvider } from './i18n/WebsiteContentContext';
 import Cgu from './pages/Cgu';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import MentionsLegales from './pages/MentionsLegales';
+import TombolaHistory from './pages/TombolaHistory';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import MascotSection from './components/MascotSection';
@@ -94,6 +95,7 @@ const App: React.FC = () => (
         <Route path="/cgu" element={<Cgu />} />
         <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
         <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/tombola" element={<TombolaHistory />} />
       </Routes>
     </LanguageProvider>
   </BrowserRouter>

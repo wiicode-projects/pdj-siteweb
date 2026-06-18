@@ -30,9 +30,8 @@ const Hero: React.FC = () => {
               className="text-5xl lg:text-7xl font-black text-gray-900 leading-[1.1] mb-8 opacity-0 animate-slide-up"
               style={{ animationDelay: '0.1s' }}
             >
-              {t.hero.h1pre}{' '}
               <span className="text-primary relative inline-block">
-                Plat du Jour
+                {t.hero.brandName}
                 <svg className="absolute w-full h-4 -bottom-2 left-0 text-yellow-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 15 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                 </svg>
@@ -100,7 +99,7 @@ const Hero: React.FC = () => {
 
               <div className="absolute inset-0 bg-white rounded-[2.8rem] overflow-hidden">
                 <div className="absolute top-0 w-full p-6 pt-10 flex justify-between items-center z-30 bg-gradient-to-b from-black/60 to-transparent">
-                  <div className="text-white font-bold text-lg drop-shadow-md">Plat du Jour</div>
+                  <div className="text-white font-bold text-lg drop-shadow-md">{t.hero.brandName}</div>
                   <div className="w-8 h-8 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
                   </div>

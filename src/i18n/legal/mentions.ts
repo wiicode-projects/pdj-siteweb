@@ -8,7 +8,7 @@ const mentionsDocuments: Record<Lang, LegalDocument> = {
       version: '',
       effectiveDate: 'Juin 2026',
       intro:
-        "Conformément aux obligations légales en vigueur en Suisse (Code des obligations, nLPD) et aux directives européennes applicables, vous trouverez ci-dessous toutes les informations légales relatives à l'éditeur du service [strong:Plat du Jour].",
+        "Conformément aux obligations légales en vigueur en Suisse (Code des obligations, nLPD) et aux directives européennes applicables, vous trouverez ci-dessous toutes les informations légales relatives à l'éditeur du service [strong:Le Plat du Jour].",
     },
     sections: [
       {
@@ -70,7 +70,7 @@ const mentionsDocuments: Record<Lang, LegalDocument> = {
         blocks: [
           {
             kind: 'p',
-            text: "« Plat du Jour », le logo et la mascotte associés sont des marques ou des éléments distinctifs de l'éditeur. Toute utilisation non autorisée de ces éléments constitue une contrefaçon de marque susceptible d'engager la responsabilité civile et pénale de son auteur. L'éditeur se réserve le droit de déposer ces marques auprès des offices compétents (IGE en Suisse, INPI en France, EUIPO en Europe).",
+            text: "« Le Plat du Jour », le logo et la mascotte associés sont des marques ou des éléments distinctifs de l'éditeur. Toute utilisation non autorisée de ces éléments constitue une contrefaçon de marque susceptible d'engager la responsabilité civile et pénale de son auteur. L'éditeur se réserve le droit de déposer ces marques auprès des offices compétents (IGE en Suisse, INPI en France, EUIPO en Europe).",
           },
         ],
       },
@@ -189,7 +189,7 @@ const mentionsDocuments: Record<Lang, LegalDocument> = {
       version: '',
       effectiveDate: 'June 2026',
       intro:
-        'In accordance with the legal obligations in force in Switzerland (Code of Obligations, nFADP) and applicable European directives, you will find below all legal information relating to the publisher of the [strong:Plat du Jour] service.',
+        'In accordance with the legal obligations in force in Switzerland (Code of Obligations, nFADP) and applicable European directives, you will find below all legal information relating to the publisher of the [strong:Le Plat du Jour] service.',
     },
     sections: [
       {
@@ -251,7 +251,7 @@ const mentionsDocuments: Record<Lang, LegalDocument> = {
         blocks: [
           {
             kind: 'p',
-            text: '"Plat du Jour", the logo and associated mascot are trademarks or distinctive elements of the publisher. Any unauthorised use of these elements constitutes trademark infringement that may give rise to civil and criminal liability. The publisher reserves the right to register these trademarks with the competent offices (IGE in Switzerland, INPI in France, EUIPO in Europe).',
+            text: '"Le Plat du Jour", the logo and associated mascot are trademarks or distinctive elements of the publisher. Any unauthorised use of these elements constitutes trademark infringement that may give rise to civil and criminal liability. The publisher reserves the right to register these trademarks with the competent offices (IGE in Switzerland, INPI in France, EUIPO in Europe).',
           },
         ],
       },
@@ -370,7 +370,7 @@ const mentionsDocuments: Record<Lang, LegalDocument> = {
       version: '',
       effectiveDate: 'Juni 2026',
       intro:
-        'Gemäss den in der Schweiz geltenden gesetzlichen Verpflichtungen (Obligationenrecht, nDSG) und den anwendbaren europäischen Richtlinien finden Sie nachstehend alle rechtlichen Informationen zum Herausgeber des Dienstes [strong:Plat du Jour].',
+        'Gemäss den in der Schweiz geltenden gesetzlichen Verpflichtungen (Obligationenrecht, nDSG) und den anwendbaren europäischen Richtlinien finden Sie nachstehend alle rechtlichen Informationen zum Herausgeber des Dienstes [strong:Le Plat du Jour].',
     },
     sections: [
       {
@@ -432,7 +432,7 @@ const mentionsDocuments: Record<Lang, LegalDocument> = {
         blocks: [
           {
             kind: 'p',
-            text: '« Plat du Jour », das Logo und das zugehörige Maskottchen sind Marken oder Unterscheidungsmerkmale des Herausgebers. Jede unbefugte Nutzung dieser Elemente stellt eine Markenrechtsverletzung dar, die zivil- und strafrechtliche Haftung begründen kann. Der Herausgeber behält sich das Recht vor, diese Marken bei den zuständigen Ämtern (IGE in der Schweiz, INPI in Frankreich, EUIPO in Europa) anzumelden.',
+            text: '« Le Plat du Jour », das Logo und das zugehörige Maskottchen sind Marken oder Unterscheidungsmerkmale des Herausgebers. Jede unbefugte Nutzung dieser Elemente stellt eine Markenrechtsverletzung dar, die zivil- und strafrechtliche Haftung begründen kann. Der Herausgeber behält sich das Recht vor, diese Marken bei den zuständigen Ämtern (IGE in der Schweiz, INPI in Frankreich, EUIPO in Europa) anzumelden.',
           },
         ],
       },
@@ -551,7 +551,7 @@ const mentionsDocuments: Record<Lang, LegalDocument> = {
       version: '',
       effectiveDate: 'Giugno 2026',
       intro:
-        "Conformemente agli obblighi legali vigenti in Svizzera (Codice delle obbligazioni, nLPD) e alle direttive europee applicabili, di seguito troverete tutte le informazioni legali relative all'editore del servizio [strong:Plat du Jour].",
+        "Conformemente agli obblighi legali vigenti in Svizzera (Codice delle obbligazioni, nLPD) e alle direttive europee applicabili, di seguito troverete tutte le informazioni legali relative all'editore del servizio [strong:Le Plat du Jour].",
     },
     sections: [
       {
@@ -613,7 +613,7 @@ const mentionsDocuments: Record<Lang, LegalDocument> = {
         blocks: [
           {
             kind: 'p',
-            text: "« Plat du Jour », il logo e la mascotte associata sono marchi o elementi distintivi dell'editore. Qualsiasi utilizzo non autorizzato di tali elementi costituisce contraffazione di marchio suscettibile di comportare responsabilità civile e penale. L'editore si riserva il diritto di registrare tali marchi presso gli uffici competenti (IGE in Svizzera, INPI in Francia, EUIPO in Europa).",
+            text: "« Le Plat du Jour », il logo e la mascotte associata sono marchi o elementi distintivi dell'editore. Qualsiasi utilizzo non autorizzato di tali elementi costituisce contraffazione di marchio suscettibile di comportare responsabilità civile e penale. L'editore si riserva il diritto di registrare tali marchi presso gli uffici competenti (IGE in Svizzera, INPI in Francia, EUIPO in Europa).",
           },
         ],
       },
