@@ -32,7 +32,7 @@ const Header: React.FC = () => {
 
           {/* Logo */}
           <a href="#" aria-label="Accueil" className="flex items-center">
-            <img src={Logo} alt="Plat du Jour" className="h-12 lg:h-14 w-auto select-none" draggable={false} />
+            <img src={Logo} alt="Le Plat du Jour" className="h-12 lg:h-14 w-auto select-none" draggable={false} />
           </a>
 
           {/* Desktop Nav */}

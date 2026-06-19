@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook } from 'lucide-react';
+import { Instagram, Facebook, Phone } from 'lucide-react';
 import Logo from '../assets/Logomascotte.svg';
 import { useLanguage } from '../i18n/LanguageContext';
 import { useWebsiteContent } from '../i18n/WebsiteContentContext';
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
-  const { showSection } = useWebsiteContent();
+  const { showSection, supportEmail, supportPhone } = useWebsiteContent();
   const f = t.footer;
   const year = new Date().getFullYear();
 
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           {/* Marque */}
           <div className="col-span-1">
             <div className="mb-6">
-              <img src={Logo} alt="Plat du Jour" className="w-20 h-auto object-contain" draggable={false} />
+              <img src={Logo} alt="Le Plat du Jour" className="w-20 h-auto object-contain" draggable={false} />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">{f.tagline}</p>
             <div className="flex gap-4">
@@ -46,6 +46,7 @@ const Footer: React.FC = () => {
                 <li><a href="#testimonials" className="hover:text-primary transition-colors">{f.links.testimonials}</a></li>
               )}
               <li><a href="#download" className="hover:text-primary transition-colors">{f.links.download}</a></li>
+              <li><Link to="/tombola" className="hover:text-primary transition-colors">{f.links.tombola}</Link></li>
             </ul>
           </div>
 
@@ -63,12 +64,21 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold text-white mb-6">{f.contactTitle}</h4>
             <p className="text-sm text-gray-400 mb-4">{f.contactDesc}</p>
-            <a href="mailto:info@platdujour.ch" className="text-primary font-medium hover:underline">
-              info@platdujour.ch
+            <a href={`mailto:${supportEmail}`} className="text-primary font-medium hover:underline">
+              {supportEmail}
             </a>
+            {supportPhone && (
+              <a
+                href={`tel:${supportPhone.replace(/\s/g, '')}`}
+                className="mt-3 flex items-center gap-2 text-sm text-gray-300 hover:text-primary transition-colors"
+              >
+                <Phone size={16} className="text-primary" />
+                {supportPhone}
+              </a>
+            )}
             <div className="mt-6 text-sm text-gray-400">
               {f.help}{' '}
-              <a href="mailto:info@platdujour.ch" className="text-primary font-semibold hover:underline">
+              <a href={`mailto:${supportEmail}`} className="text-primary font-semibold hover:underline">
                 {f.contactSupport}
               </a>.
             </div>
@@ -77,17 +87,11 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bas de page */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/10 pt-8 text-center space-y-2">
           <p className="text-sm text-gray-500">
-            © {year} <strong className="text-gray-300">Plat du Jour</strong>. {f.allRights}
+            © {year} <strong className="text-gray-300">Le Plat du Jour</strong>. {f.allRights}
           </p>
-          <div className="text-xs text-gray-500">
-            {f.madeBy}{' '}
-            <a href="https://wiicode.org" target="_blank" rel="noreferrer"
-              className="font-semibold hover:text-primary transition-colors">
-              WIICODE
-            </a>.
-          </div>
+          <p className="text-xs text-gray-500">{f.credits}</p>
         </div>
       </div>
     </footer>

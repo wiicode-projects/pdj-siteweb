@@ -9,7 +9,7 @@ const TG_URL  = 'https://t.me/+221785421733';
 type QA = { q: string; a: string | null; complex?: true };
 
 const QA_LIST: QA[] = [
-  { q: "Comment télécharger l'app ?",   a: "Disponible gratuitement sur l'App Store (iOS) et Google Play (Android). Cherchez « Plat du Jour » et installez-la !" },
+  { q: "Comment télécharger l'app ?",   a: "Disponible gratuitement sur l'App Store (iOS) et Google Play (Android). Cherchez « Le Plat du Jour » et installez-la !" },
   { q: "L'app est-elle gratuite ?",      a: "Oui ! La version de base est 100% gratuite. Une offre Premium existe pour les utilisateurs et les restaurants souhaitant plus de fonctionnalités." },
   { q: "Comment ça fonctionne ?",        a: "Activez la géolocalisation, parcourez les menus du jour autour de vous, choisissez votre plat et réservez en quelques clics. C'est aussi simple que ça !" },
   { q: "Disponible dans ma ville ?",     a: null, complex: true },
@@ -104,7 +104,7 @@ export function ChatBot() {
             <div className="bg-primary px-4 py-3 flex items-center gap-3">
               <img src={Mascotte} alt="" className="h-10 w-auto drop-shadow-md" draggable={false} />
               <div>
-                <p className="font-bold text-white text-sm leading-tight">Plat du Jour</p>
+                <p className="font-bold text-white text-sm leading-tight">Le Plat du Jour</p>
                 <p className="text-white/80 text-xs">Assistant virtuel</p>
               </div>
               <div className="ml-auto flex items-center gap-1">

@@ -1,17 +1,31 @@
 import { useLanguage } from '../i18n/LanguageContext';
 import { getCguDocuments, getCguLastUpdate } from '../i18n/legal';
-import { LegalDocumentView } from '../components/legal/LegalDocumentView';
-import { LegalPageLayout, useLegalFooterLinks } from '../components/legal/LegalPageLayout';
+import { LegalCmsPageContent } from '../components/legal/LegalCmsPage';
+import { useWebsitePage } from '../hooks/useWebsitePage';
 
 export default function Cgu() {
   const { lang } = useLanguage();
-  const footerLinks = useLegalFooterLinks();
-  const [cguDoc, cgvDoc] = getCguDocuments(lang);
+
+  const cgu = useWebsitePage('cgu', (l) => ({
+    document: getCguDocuments(l)[0],
+    lastUpdate: getCguLastUpdate(l),
+  }));
+  const cgv = useWebsitePage('cgv', (l) => ({
+    document: getCguDocuments(l)[1],
+    lastUpdate: getCguLastUpdate(l),
+  }));
+
+  const staticDocs = getCguDocuments(lang);
+  const lastUpdate = cgu.lastUpdate ?? cgv.lastUpdate ?? getCguLastUpdate(lang);
 
   return (
-    <LegalPageLayout lastUpdate={getCguLastUpdate(lang)} footerLinks={footerLinks}>
-      <LegalDocumentView document={cguDoc} />
-      <LegalDocumentView document={cgvDoc} />
-    </LegalPageLayout>
+    <LegalCmsPageContent
+      loading={!cgu.loaded || !cgv.loaded}
+      lastUpdate={lastUpdate}
+      documents={[
+        cgu.document ?? staticDocs[0],
+        cgv.document ?? staticDocs[1],
+      ]}
+    />
   );
 }

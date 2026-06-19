@@ -404,13 +404,9 @@ export const cgvDoc: LegalDocument = {
         },
         { kind: 'p', text: 'The available plans and prices are as follows:' },
         {
-          kind: 'table',
+          kind: 'subscriptionPricingTable',
           headers: ['Plan', 'Price', 'Main features'],
-          rows: [
-            ['Classique', '0 CHF/month', '3 menus/day, 1 image/dish, 10 profile photos'],
-            ['Premium', '29 CHF/month', '5 menus/day, 3 images/dish, featured profile, mobile-location management, promotional gifts'],
-            ['Platinum', '59 CHF/month', "All Premium features, up to 5 establishments (+5 CHF/additional unit)"],
-          ],
+          targetType: 'RESTAURANT',
         },
         { kind: 'h3', text: '2.2 — Currency' },
         {

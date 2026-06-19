@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "export:legal-seeds": "tsx scripts/export-legal-seeds.ts"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",

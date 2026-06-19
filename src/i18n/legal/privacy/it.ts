@@ -9,7 +9,7 @@ export const privacyDoc: LegalDocument = {
     version: '',
     effectiveDate: 'Giugno 2026',
     intro:
-      'La protezione dei vostri dati personali e una priorita per [strong:Plat du Jour]. Questa informativa spiega quali dati raccogliamo, perche, come li utilizziamo, per quanto tempo li conserviamo e quali sono i vostri diritti. E conforme al Regolamento Generale sulla Protezione dei Dati (GDPR - UE 2016/679) e alla Legge federale svizzera sulla protezione dei dati (nLPD).',
+      'La protezione dei vostri dati personali e una priorita per [strong:Le Plat du Jour]. Questa informativa spiega quali dati raccogliamo, perche, come li utilizziamo, per quanto tempo li conserviamo e quali sono i vostri diritti. E conforme al Regolamento Generale sulla Protezione dei Dati (GDPR - UE 2016/679) e alla Legge federale svizzera sulla protezione dei dati (nLPD).',
   },
   toc: {
     label: 'Sommario',
@@ -36,7 +36,7 @@ export const privacyDoc: LegalDocument = {
       blocks: [
         {
           kind: 'p',
-          text: "Il responsabile del trattamento dei dati raccolti tramite l'applicazione e il sito web [strong:Plat du Jour] e la societa editrice, i cui riferimenti completi sono riportati nelle " + LEGAL_NOTICE + '.',
+          text: "Il responsabile del trattamento dei dati raccolti tramite l'applicazione e il sito web [strong:Le Plat du Jour] e la societa editrice, i cui riferimenti completi sono riportati nelle " + LEGAL_NOTICE + '.',
         },
         {
           kind: 'p',
@@ -314,7 +314,7 @@ export const privacyDoc: LegalDocument = {
         },
         {
           kind: 'p',
-          text: 'Nonostante queste misure, nessun sistema e infallibile. Vi consigliamo di utilizzare una password forte e unica per il vostro account Plat du Jour.',
+          text: 'Nonostante queste misure, nessun sistema e infallibile. Vi consigliamo di utilizzare una password forte e unica per il vostro account Le Plat du Jour.',
         },
       ],
     },

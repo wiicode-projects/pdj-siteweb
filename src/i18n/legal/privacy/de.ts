@@ -9,7 +9,7 @@ export const privacyDoc: LegalDocument = {
     version: '',
     effectiveDate: 'Juni 2026',
     intro:
-      'Der Schutz Ihrer personenbezogenen Daten hat fuer [strong:Plat du Jour] hoechste Prioritaet. Diese Datenschutzerklaerung erlaeutert, welche Daten wir erfassen, warum wir sie erfassen, wie wir sie nutzen, wie lange wir sie speichern und welche Rechte Sie haben. Sie entspricht der Datenschutz-Grundverordnung (DSGVO - EU 2016/679) sowie dem Schweizer Bundesgesetz ueber den Datenschutz (nDSG).',
+      'Der Schutz Ihrer personenbezogenen Daten hat fuer [strong:Le Plat du Jour] hoechste Prioritaet. Diese Datenschutzerklaerung erlaeutert, welche Daten wir erfassen, warum wir sie erfassen, wie wir sie nutzen, wie lange wir sie speichern und welche Rechte Sie haben. Sie entspricht der Datenschutz-Grundverordnung (DSGVO - EU 2016/679) sowie dem Schweizer Bundesgesetz ueber den Datenschutz (nDSG).',
   },
   toc: {
     label: 'Inhaltsverzeichnis',
@@ -36,7 +36,7 @@ export const privacyDoc: LegalDocument = {
       blocks: [
         {
           kind: 'p',
-          text: 'Verantwortliche Stelle fuer die ueber die [strong:Plat du Jour]-App und Website erhobenen Daten ist die herausgebende Gesellschaft, deren vollstaendige Kontaktdaten im ' + LEGAL_NOTICE + ' angegeben sind.',
+          text: 'Verantwortliche Stelle fuer die ueber die [strong:Le Plat du Jour]-App und Website erhobenen Daten ist die herausgebende Gesellschaft, deren vollstaendige Kontaktdaten im ' + LEGAL_NOTICE + ' angegeben sind.',
         },
         {
           kind: 'p',
@@ -314,7 +314,7 @@ export const privacyDoc: LegalDocument = {
         },
         {
           kind: 'p',
-          text: 'Trotz dieser Massnahmen ist kein System unfehlbar. Wir empfehlen Ihnen, ein starkes und einzigartiges Passwort fuer Ihr Plat du Jour-Konto zu verwenden.',
+          text: 'Trotz dieser Massnahmen ist kein System unfehlbar. Wir empfehlen Ihnen, ein starkes und einzigartiges Passwort fuer Ihr Le Plat du Jour-Konto zu verwenden.',
         },
       ],
     },

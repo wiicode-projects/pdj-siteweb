@@ -3,6 +3,7 @@ import { ChevronDown, HelpCircle, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionContainer } from "./ui/SectionContainer";
 import { useLanguage } from "../i18n/LanguageContext";
+import { useWebsiteContent } from "../i18n/WebsiteContentContext";
 
 const itemClass = `
   rounded-2xl overflow-hidden border
@@ -54,7 +55,14 @@ function FaqColumn({ list, offset = 0 }: { list: FaqItem[]; offset?: number }) {
 
 export function Faq() {
   const { t } = useLanguage();
-  const items = t.faq.items;
+  const { faqEnabled, faqItems, loaded, supportEmail } = useWebsiteContent();
+
+  if (loaded && !faqEnabled) return null;
+
+  const items =
+    faqItems.length > 0
+      ? faqItems.map((item) => ({ q: item.question, a: item.answer }))
+      : t.faq.items;
   const midPoint = Math.ceil(items.length / 2);
   const column1 = items.slice(0, midPoint);
   const column2 = items.slice(midPoint);
@@ -95,7 +103,7 @@ export function Faq() {
         >
           <p className="text-gray-600 mb-5">{t.faq.noAnswer}</p>
           <a
-            href="mailto:info@platdujour.ch"
+            href={`mailto:${supportEmail}`}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-primary to-[#ff4757] text-white shadow-[0_12px_30px_rgba(193,17,30,0.25)] hover:shadow-[0_16px_40px_rgba(193,17,30,0.35)] hover:scale-[1.03] transition-all"
           >
             <Mail size={18} />

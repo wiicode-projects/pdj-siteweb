@@ -43,7 +43,7 @@ export default function MascotSection() {
               </span>
               <img
                 src={mascotteQuestion}
-                alt="Mascotte Plat du Jour"
+                alt="Mascotte Le Plat du Jour"
                 className="w-48 sm:w-64 lg:w-[360px] xl:w-[420px] drop-shadow-2xl animate-float"
               />
             </div>

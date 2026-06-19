@@ -9,7 +9,7 @@ export const privacyDoc: LegalDocument = {
     version: '',
     effectiveDate: 'Juin 2026',
     intro:
-      "La protection de vos données personnelles est une priorité pour [strong:Plat du Jour]. Cette politique vous explique quelles données nous collectons, pourquoi, comment nous les utilisons, combien de temps nous les conservons et quels sont vos droits. Elle est conforme au Règlement Général sur la Protection des Données (RGPD – UE 2016/679) et à la Loi fédérale suisse sur la Protection des Données (nLPD).",
+      "La protection de vos données personnelles est une priorité pour [strong:Le Plat du Jour]. Cette politique vous explique quelles données nous collectons, pourquoi, comment nous les utilisons, combien de temps nous les conservons et quels sont vos droits. Elle est conforme au Règlement Général sur la Protection des Données (RGPD – UE 2016/679) et à la Loi fédérale suisse sur la Protection des Données (nLPD).",
   },
   toc: {
     label: 'Sommaire',
@@ -36,7 +36,7 @@ export const privacyDoc: LegalDocument = {
       blocks: [
         {
           kind: 'p',
-          text: "Le responsable du traitement des données collectées via l'application et le site web [strong:Plat du Jour] est la société éditrice dont les coordonnées complètes figurent dans les " + LEGAL_NOTICE + '.',
+          text: "Le responsable du traitement des données collectées via l'application et le site web [strong:Le Plat du Jour] est la société éditrice dont les coordonnées complètes figurent dans les " + LEGAL_NOTICE + '.',
         },
         {
           kind: 'p',
@@ -314,7 +314,7 @@ export const privacyDoc: LegalDocument = {
         },
         {
           kind: 'p',
-          text: "Malgré ces mesures, aucun système n'est infaillible. Nous vous recommandons d'utiliser un mot de passe fort et unique pour votre compte Plat du Jour.",
+          text: "Malgré ces mesures, aucun système n'est infaillible. Nous vous recommandons d'utiliser un mot de passe fort et unique pour votre compte Le Plat du Jour.",
         },
       ],
     },
