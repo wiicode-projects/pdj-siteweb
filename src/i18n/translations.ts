@@ -61,12 +61,12 @@ export interface AppTranslations {
     h2highlight: string;
     subtitle: string;
     featureLabel: string;
-    benefits: [string, string, string];
     discover: string;
     features: Array<{
       title: string;
       subtitle: string;
       description: string;
+      benefits: [string, string, string];
       stats: [{ value: string; label: string }, { value: string; label: string }];
     }>;
   };
@@ -92,43 +92,35 @@ export interface AppTranslations {
     monthly: string;
     yearly: string;
     security: string;
-    plans: {
-      user: {
-        free: { badge: string; title: string; price: string; features: string[]; cta: string };
-        premium: {
-          badge: string;
-          title: string;
-          features: string[];
-          pricing: {
-            monthly: [string, string];
-            yearly: [string, string, string];
-          };
-          cta: string;
-        };
-      };
-      restaurant: {
-        free: { badge: string; title: string; price: string; features: string[]; cta: string };
-        premium: {
-          badge: string;
-          title: string;
-          features: string[];
-          pricing: {
-            monthly: [string, string];
-            yearly: [string, string, string];
-          };
-          cta: string;
-        };
-        platinum: {
-          badge: string;
-          title: string;
-          features: string[];
-          pricing: {
-            monthly: [string, string];
-            yearly: [string, string, string];
-          };
-          cta: string;
-        };
-      };
+    paymentMethodsTitle: string;
+    freeBadge: string;
+    premiumBadge: string;
+    platinumBadge: string;
+    ctaFree: string;
+    ctaPremium: string;
+    ctaPlatinum: string;
+    perMonth: string;
+    perYear: string;
+    saveTwoMonths: string;
+    featureLabels: {
+      accessMenus: string;
+      searchGeo: string;
+      miniGamesWithAds: string;
+      miniGames: string;
+      noAds: string;
+      favorites: string;
+      backOffice: string;
+      referral: string;
+      idCardPremium: string;
+      tombola: string;
+      menusPerDay: string;
+      imagesPerDish: string;
+      profilePhotos: string;
+      menuGift: string;
+      highlighted: string;
+      itinerant: string;
+      multiEstablishment: string;
+      extraEstablishment: string;
     };
   };
   testimonials: {
@@ -185,7 +177,7 @@ export interface AppTranslations {
     privacy: string;
     legalNotice: string;
     allRights: string;
-    madeBy: string;
+    credits: string;
     links: { howItWorks: string; testimonials: string; download: string; tombola: string };
   };
 }
@@ -263,7 +255,7 @@ const fr: AppTranslations = {
     items: [
       { title: 'Recherche Localisée', desc: 'Trouvez les plats disponibles dans un rayon précis autour de vous.' },
       { title: 'Réservation en ligne', desc: "Réservez votre table directement depuis l'application." },
-      { title: 'Favoris & Avis', desc: 'Sauvegardez vos restaurants préférés et notez les plats dégustés.' },
+      { title: 'Favoris', desc: 'Sauvegardez vos restaurants et plats préférés en un clic.' },
       { title: 'Notifications', desc: 'Soyez alerté dès que votre restaurant favori publie son menu.' },
     ],
   },
@@ -273,17 +265,64 @@ const fr: AppTranslations = {
     h2highlight: 'découvrir, choisir, profiter',
     subtitle: 'Une expérience simple côté utilisateur, et des outils efficaces côté restaurant.',
     featureLabel: 'Fonctionnalité',
-    benefits: ["Interface claire et rapide", "Expérience cohérente iOS & Android", "Pensé pour l'utilisateur et le restaurant"],
     discover: "Découvrir l'app",
     features: [
-      { title: "Découvrir le plat du jour", subtitle: "Accueil & suggestions autour de vous", description: "Accédez rapidement aux plats disponibles, repérez les bonnes adresses et explorez les menus du jour sans perdre de temps.", stats: [{ value: "Rapide", label: "Découverte" }, { value: "Local", label: "Autour de vous" }] },
-      { title: "Espace restaurant", subtitle: "Dashboard & performance", description: "Un tableau de bord simple pour suivre vos performances, gérer vos contenus et gagner du temps au quotidien.", stats: [{ value: "Stats", label: "Claires" }, { value: "Gestion", label: "Centralisée" }] },
-      { title: "Onboarding fluide", subtitle: "Présentation en quelques écrans", description: "Une prise en main rapide : l'utilisateur comprend l'app en quelques secondes et passe à l'action immédiatement.", stats: [{ value: "< 1 min", label: "Compréhension" }, { value: "Simple", label: "Expérience" }] },
-      { title: "Recherche & filtres", subtitle: "Trouver vite, choisir mieux", description: "Recherchez un restaurant, un plat ou une catégorie. Filtrez pour trouver exactement ce que vous voulez, au bon moment.", stats: [{ value: "Smart", label: "Recherche" }, { value: "Pertinent", label: "Résultats" }] },
-      { title: "Parrainage & récompenses", subtitle: "Invitez, cumulez, profitez", description: "Partagez votre lien et progressez vers des récompenses. Un système simple qui motive et fidélise.", stats: [{ value: "Bonus", label: "Récompenses" }, { value: "Fun", label: "Challenge" }] },
-      { title: "Carte & ID Premium", subtitle: "Accès & avantages en un scan", description: "Une carte premium claire avec QR Code et informations utiles, pour profiter d'avantages et d'offres exclusives.", stats: [{ value: "QR", label: "Scan rapide" }, { value: "Premium", label: "Avantages" }] },
-      { title: "Restaurants & menus", subtitle: "Vue riche, infos utiles", description: "Photos, menus, badges premium/cadeau, et infos clés : tout est présenté pour vous aider à décider rapidement.", stats: [{ value: "Menus", label: "À jour" }, { value: "Infos", label: "Claires" }] },
-      { title: "Réservation", subtitle: "Passez à l'action", description: "Réservez facilement, sans friction. Une action simple et rapide pour transformer la découverte en visite.", stats: [{ value: "1 clic", label: "Réserver" }, { value: "Direct", label: "Action" }] },
+      {
+        title: "Découvrir le plat du jour",
+        subtitle: "Accueil & suggestions autour de vous",
+        description: "Accédez rapidement aux plats disponibles, repérez les bonnes adresses et explorez les menus du jour sans perdre de temps.",
+        benefits: ['Interface claire et rapide', 'Plats du jour géolocalisés, mis à jour en direct', "Pensé pour l'utilisateur et le restaurant"],
+        stats: [{ value: "Rapide", label: "Découverte" }, { value: "Local", label: "Autour de vous" }],
+      },
+      {
+        title: "Espace restaurant",
+        subtitle: "Dashboard & performance",
+        description: "Un tableau de bord simple pour suivre vos performances, gérer vos contenus et gagner du temps au quotidien.",
+        benefits: ['Interface lisible, données en un coup d\'œil', 'Suivi des ventes et de la fréquentation en temps réel', 'Pensé pour le restaurateur, sans expertise technique'],
+        stats: [{ value: "Stats", label: "Claires" }, { value: "Gestion", label: "Centralisée" }],
+      },
+      {
+        title: "Onboarding fluide",
+        subtitle: "Présentation en quelques écrans",
+        description: "Une prise en main rapide : l'utilisateur comprend l'app en quelques secondes et passe à l'action immédiatement.",
+        benefits: ['Interface guidée, écran par écran', 'Prise en main en moins d\'une minute', 'Pensé pour convertir dès le premier lancement'],
+        stats: [{ value: "< 1 min", label: "Compréhension" }, { value: "Simple", label: "Expérience" }],
+      },
+      {
+        title: "Recherche & filtres",
+        subtitle: "Trouver vite, choisir mieux",
+        description: "Recherchez un restaurant, un plat ou une catégorie. Filtrez pour trouver exactement ce que vous voulez, au bon moment.",
+        benefits: ['Interface de recherche instantanée', 'Filtres précis : cuisine, distance, budget, disponibilité', 'Pensé pour décider en quelques secondes'],
+        stats: [{ value: "Smart", label: "Recherche" }, { value: "Pertinent", label: "Résultats" }],
+      },
+      {
+        title: "Parrainage & récompenses",
+        subtitle: "Invitez, cumulez, profitez",
+        description: "Partagez votre lien et progressez vers des récompenses. Un système simple qui motive et fidélise.",
+        benefits: ['Interface de suivi des gains transparente', 'Points cumulés et crédités automatiquement', 'Pensé pour fidéliser sur la durée'],
+        stats: [{ value: "Bonus", label: "Récompenses" }, { value: "Fun", label: "Challenge" }],
+      },
+      {
+        title: "Carte & ID Premium",
+        subtitle: "Accès & avantages en un scan",
+        description: "Une carte premium claire avec QR Code et informations utiles, pour profiter d'avantages et d'offres exclusives.",
+        benefits: ['Interface carte digitale, toujours accessible', 'Avantages activés en un seul scan, sans contact', 'Pensé pour la rapidité en établissement'],
+        stats: [{ value: "QR", label: "Scan rapide" }, { value: "Premium", label: "Avantages" }],
+      },
+      {
+        title: "Restaurants & menus",
+        subtitle: "Vue riche, infos utiles",
+        description: "Photos, menus, badges premium/cadeau, et infos clés : tout est présenté pour vous aider à décider rapidement.",
+        benefits: ['Interface visuelle : photos, menus, prix détaillés', 'Infos pratiques à jour : horaires, contact, accès', 'Pensé pour choisir en confiance'],
+        stats: [{ value: "Menus", label: "À jour" }, { value: "Infos", label: "Claires" }],
+      },
+      {
+        title: "Réservation",
+        subtitle: "Réservez en un clic",
+        description: "Réservez facilement, sans friction. Une action simple et rapide pour transformer la découverte en visite.",
+        benefits: ['Interface de réservation en quelques clics', 'Confirmation immédiate, sans appel ni attente', "Pensé pour l'utilisateur et le restaurateur"],
+        stats: [{ value: "1 clic", label: "Réserver" }, { value: "Direct", label: "Action" }],
+      },
     ],
   },
   restaurants: {
@@ -312,55 +351,35 @@ const fr: AppTranslations = {
     monthly: 'Mensuel',
     yearly: 'Annuel',
     security: 'Paiement sécurisé • Support réactif • Résiliation en 1 clic',
-    plans: {
-      user: {
-        free: {
-          badge: 'Gratuit',
-          title: 'Classique',
-          price: '0 CHF / mois',
-          features: ['Accès menus & profils', 'Recherche & géo', '3 menus / jour', '1 image / plat', '10 photos profil'],
-          cta: 'Commencer gratuitement',
-        },
-        premium: {
-          badge: 'Premium',
-          title: 'Premium',
-          features: ['Accès menus & profils', 'Recherche & géo', '3 menus / jour', '1 image / plat', '10 photos profil', 'Illimités — sans pub', 'Favoris & avis avancés', 'Notifications personnalisées'],
-          pricing: {
-            monthly: ['4.90 CHF', '/mois'],
-            yearly: ['49.- CHF', '/an', 'Économisez 2 mois'],
-          },
-          cta: 'Passer en Premium',
-        },
-      },
-      restaurant: {
-        free: {
-          badge: 'Standard',
-          title: 'Classique',
-          price: '0 CHF / mois',
-          features: ['3 menus / jour', '1 image / plat', '10 photos profil'],
-          cta: 'Commencer gratuitement',
-        },
-        premium: {
-          badge: 'Premium',
-          title: 'Premium / Itinérant',
-          features: ['3 menus / jour', '1 image / plat', '10 photos profil', '5 menus / jour', '3 images / plat', 'Cadeaux promotionnels', 'Profil mis en avant', 'Gestion emplacements itinérants'],
-          pricing: {
-            monthly: ['29 CHF', '/mois'],
-            yearly: ['290 CHF', '/an', 'Économisez 2 mois'],
-          },
-          cta: 'Choisir ce forfait',
-        },
-        platinum: {
-          badge: 'Platinum',
-          title: 'Platinum / Itinérant Multi',
-          features: ['3 menus / jour', '1 image / plat', '10 photos profil', '5 menus / jour', '3 images / plat', 'Cadeaux promotionnels', 'Profil mis en avant', 'Gestion emplacements itinérants', "Jusqu'à 5 établissements", '+5 CHF / unité supplémentaire'],
-          pricing: {
-            monthly: ['59 CHF', '/mois'],
-            yearly: ['590 CHF', '/an', 'Économisez 2 mois'],
-          },
-          cta: 'Choisir Platinum',
-        },
-      },
+    paymentMethodsTitle: 'Moyens de paiement acceptés',
+    freeBadge: 'Gratuit',
+    premiumBadge: 'Premium',
+    platinumBadge: 'Platinum',
+    ctaFree: 'Commencer gratuitement',
+    ctaPremium: 'Passer en Premium',
+    ctaPlatinum: 'Choisir Platinum',
+    perMonth: '/ mois',
+    perYear: '/ an',
+    saveTwoMonths: 'Économisez 2 mois',
+    featureLabels: {
+      accessMenus: 'Accès menus & profils',
+      searchGeo: 'Recherche & géo',
+      miniGamesWithAds: 'Mini-jeux avec publicité',
+      miniGames: 'Mini-jeux',
+      noAds: 'Sans publicité',
+      favorites: 'Favoris avancés',
+      backOffice: 'Back-office complet',
+      referral: 'Parrainage via code',
+      idCardPremium: 'IDCard premium',
+      tombola: 'Participation aux tirages',
+      menusPerDay: '{{count}} menus / jour',
+      imagesPerDish: '{{count}} images / plat',
+      profilePhotos: '{{count}} photos profil',
+      menuGift: 'Cadeaux promotionnels',
+      highlighted: 'Profil mis en avant',
+      itinerant: 'Gestion emplacements itinérants',
+      multiEstablishment: "Jusqu'à {{count}} établissements",
+      extraEstablishment: '+5 CHF / établissement supplémentaire',
     },
   },
   testimonials: {
@@ -433,7 +452,7 @@ const fr: AppTranslations = {
     privacy: 'Politique de confidentialité',
     legalNotice: 'Mentions légales',
     allRights: 'Tous droits réservés.',
-    madeBy: 'Fait par',
+    credits: 'Concept & Développement : D.G.E. Concept SàRL & WIICODE',
     links: { howItWorks: 'Comment ça marche', testimonials: 'Témoignages', download: "Télécharger l'app", tombola: 'Gagnants tombola' },
   },
 };
@@ -511,7 +530,7 @@ const en: AppTranslations = {
     items: [
       { title: 'Local Search', desc: 'Find available dishes within a precise radius around you.' },
       { title: 'Online Booking', desc: 'Book your table directly from the app.' },
-      { title: 'Favourites & Reviews', desc: 'Save your favourite restaurants and rate dishes you have tried.' },
+      { title: 'Favourites', desc: 'Save your favourite restaurants and dishes in one tap.' },
       { title: 'Notifications', desc: "Get alerted as soon as your favourite restaurant posts today's menu." },
     ],
   },
@@ -521,17 +540,64 @@ const en: AppTranslations = {
     h2highlight: 'discover, choose, enjoy',
     subtitle: 'A simple experience for users, and powerful tools for restaurants.',
     featureLabel: 'Feature',
-    benefits: ['Clean and fast interface', 'Consistent iOS & Android experience', 'Designed for users and restaurants'],
     discover: 'Explore the app',
     features: [
-      { title: "Discover today's special", subtitle: "Home & suggestions near you", description: "Quickly access available dishes, spot the best spots and browse today's menus without wasting time.", stats: [{ value: "Fast", label: "Discovery" }, { value: "Local", label: "Near you" }] },
-      { title: "Restaurant space", subtitle: "Dashboard & performance", description: "A simple dashboard to track your performance, manage your content and save time every day.", stats: [{ value: "Stats", label: "Clear" }, { value: "Manage", label: "Centralised" }] },
-      { title: "Smooth onboarding", subtitle: "Introduction in a few screens", description: "Quick to get started: users understand the app in seconds and take action immediately.", stats: [{ value: "< 1 min", label: "To understand" }, { value: "Simple", label: "Experience" }] },
-      { title: "Search & filters", subtitle: "Find fast, choose better", description: "Search a restaurant, dish or category. Filter to find exactly what you want, at the right time.", stats: [{ value: "Smart", label: "Search" }, { value: "Relevant", label: "Results" }] },
-      { title: "Referral & rewards", subtitle: "Invite, earn, enjoy", description: "Share your link and progress towards rewards. A simple system that motivates and builds loyalty.", stats: [{ value: "Bonus", label: "Rewards" }, { value: "Fun", label: "Challenge" }] },
-      { title: "Premium card & ID", subtitle: "Access & perks in one scan", description: "A clear premium card with QR Code and useful information, to enjoy exclusive offers and benefits.", stats: [{ value: "QR", label: "Quick scan" }, { value: "Premium", label: "Perks" }] },
-      { title: "Restaurants & menus", subtitle: "Rich view, useful info", description: "Photos, menus, premium/gift badges and key info: everything is presented to help you decide fast.", stats: [{ value: "Menus", label: "Up to date" }, { value: "Info", label: "Clear" }] },
-      { title: "Booking", subtitle: "Take action", description: "Book easily, without friction. A simple and fast action to turn discovery into a visit.", stats: [{ value: "1 click", label: "Book" }, { value: "Direct", label: "Action" }] },
+      {
+        title: "Discover today's special",
+        subtitle: "Home & suggestions near you",
+        description: "Quickly access available dishes, spot the best spots and browse today's menus without wasting time.",
+        benefits: ['Clean and fast interface', 'Geolocated daily specials, updated live', 'Designed for users and restaurants'],
+        stats: [{ value: "Fast", label: "Discovery" }, { value: "Local", label: "Near you" }],
+      },
+      {
+        title: "Restaurant space",
+        subtitle: "Dashboard & performance",
+        description: "A simple dashboard to track your performance, manage your content and save time every day.",
+        benefits: ['Readable interface, data at a glance', 'Real-time sales and footfall tracking', 'Designed for restaurateurs, no technical expertise needed'],
+        stats: [{ value: "Stats", label: "Clear" }, { value: "Manage", label: "Centralised" }],
+      },
+      {
+        title: "Smooth onboarding",
+        subtitle: "Introduction in a few screens",
+        description: "Quick to get started: users understand the app in seconds and take action immediately.",
+        benefits: ['Guided interface, screen by screen', 'Up and running in under a minute', 'Designed to convert from first launch'],
+        stats: [{ value: "< 1 min", label: "To understand" }, { value: "Simple", label: "Experience" }],
+      },
+      {
+        title: "Search & filters",
+        subtitle: "Find fast, choose better",
+        description: "Search a restaurant, dish or category. Filter to find exactly what you want, at the right time.",
+        benefits: ['Instant search interface', 'Precise filters: cuisine, distance, budget, availability', 'Designed to decide in seconds'],
+        stats: [{ value: "Smart", label: "Search" }, { value: "Relevant", label: "Results" }],
+      },
+      {
+        title: "Referral & rewards",
+        subtitle: "Invite, earn, enjoy",
+        description: "Share your link and progress towards rewards. A simple system that motivates and builds loyalty.",
+        benefits: ['Transparent earnings tracking interface', 'Points accumulated and credited automatically', 'Designed for long-term loyalty'],
+        stats: [{ value: "Bonus", label: "Rewards" }, { value: "Fun", label: "Challenge" }],
+      },
+      {
+        title: "Premium card & ID",
+        subtitle: "Access & perks in one scan",
+        description: "A clear premium card with QR Code and useful information, to enjoy exclusive offers and benefits.",
+        benefits: ['Digital card interface, always accessible', 'Perks activated in one contactless scan', 'Designed for speed on-site'],
+        stats: [{ value: "QR", label: "Quick scan" }, { value: "Premium", label: "Perks" }],
+      },
+      {
+        title: "Restaurants & menus",
+        subtitle: "Rich view, useful info",
+        description: "Photos, menus, premium/gift badges and key info: everything is presented to help you decide fast.",
+        benefits: ['Visual interface: photos, menus, detailed prices', 'Up-to-date practical info: hours, contact, access', 'Designed to choose with confidence'],
+        stats: [{ value: "Menus", label: "Up to date" }, { value: "Info", label: "Clear" }],
+      },
+      {
+        title: "Booking",
+        subtitle: "Book in one click",
+        description: "Book easily, without friction. A simple and fast action to turn discovery into a visit.",
+        benefits: ['Booking interface in a few clicks', 'Instant confirmation, no call or waiting', 'Designed for users and restaurateurs'],
+        stats: [{ value: "1 click", label: "Book" }, { value: "Direct", label: "Action" }],
+      },
     ],
   },
   restaurants: {
@@ -560,55 +626,35 @@ const en: AppTranslations = {
     monthly: 'Monthly',
     yearly: 'Yearly',
     security: 'Secure payment • Responsive support • Cancel in 1 click',
-    plans: {
-      user: {
-        free: {
-          badge: 'Free',
-          title: 'Classic',
-          price: 'CHF 0 / month',
-          features: ['Menu & profile access', 'Search & geolocation', '3 menus / day', '1 image / dish', '10 profile photos'],
-          cta: 'Start for free',
-        },
-        premium: {
-          badge: 'Premium',
-          title: 'Premium',
-          features: ['Menu & profile access', 'Search & geolocation', '3 menus / day', '1 image / dish', '10 profile photos', 'Unlimited — ad-free', 'Favourites & advanced reviews', 'Personalised notifications'],
-          pricing: {
-            monthly: ['CHF 4.90', '/month'],
-            yearly: ['CHF 49.-', '/year', 'Save 2 months'],
-          },
-          cta: 'Go Premium',
-        },
-      },
-      restaurant: {
-        free: {
-          badge: 'Standard',
-          title: 'Classic',
-          price: 'CHF 0 / month',
-          features: ['3 menus / day', '1 image / dish', '10 profile photos'],
-          cta: 'Start for free',
-        },
-        premium: {
-          badge: 'Premium',
-          title: 'Premium / Mobile',
-          features: ['3 menus / day', '1 image / dish', '10 profile photos', '5 menus / day', '3 images / dish', 'Promotional gifts', 'Featured profile', 'Mobile location management'],
-          pricing: {
-            monthly: ['CHF 29', '/month'],
-            yearly: ['CHF 290', '/year', 'Save 2 months'],
-          },
-          cta: 'Choose this plan',
-        },
-        platinum: {
-          badge: 'Platinum',
-          title: 'Platinum / Multi-Location',
-          features: ['3 menus / day', '1 image / dish', '10 profile photos', '5 menus / day', '3 images / dish', 'Promotional gifts', 'Featured profile', 'Mobile location management', 'Up to 5 establishments', '+CHF 5 / additional unit'],
-          pricing: {
-            monthly: ['CHF 59', '/month'],
-            yearly: ['CHF 590', '/year', 'Save 2 months'],
-          },
-          cta: 'Choose Platinum',
-        },
-      },
+    paymentMethodsTitle: 'Accepted payment methods',
+    freeBadge: 'Free',
+    premiumBadge: 'Premium',
+    platinumBadge: 'Platinum',
+    ctaFree: 'Start for free',
+    ctaPremium: 'Go Premium',
+    ctaPlatinum: 'Choose Platinum',
+    perMonth: '/ month',
+    perYear: '/ year',
+    saveTwoMonths: 'Save 2 months',
+    featureLabels: {
+      accessMenus: 'Menu & profile access',
+      searchGeo: 'Search & geolocation',
+      miniGamesWithAds: 'Mini-games with ads',
+      miniGames: 'Mini-games',
+      noAds: 'Ad-free',
+      favorites: 'Advanced favourites',
+      backOffice: 'Full back-office',
+      referral: 'Referral via code',
+      idCardPremium: 'Premium IDCard',
+      tombola: 'Prize draw participation',
+      menusPerDay: '{{count}} menus / day',
+      imagesPerDish: '{{count}} images / dish',
+      profilePhotos: '{{count}} profile photos',
+      menuGift: 'Promotional gifts',
+      highlighted: 'Featured profile',
+      itinerant: 'Mobile location management',
+      multiEstablishment: 'Up to {{count}} establishments',
+      extraEstablishment: '+CHF 5 / additional establishment',
     },
   },
   testimonials: {
@@ -681,7 +727,7 @@ const en: AppTranslations = {
     privacy: 'Privacy Policy',
     legalNotice: 'Legal Notice',
     allRights: 'All rights reserved.',
-    madeBy: 'Made by',
+    credits: 'Concept & Development: D.G.E. Concept SàRL & WIICODE',
     links: { howItWorks: 'How It Works', testimonials: 'Testimonials', download: 'Download the app', tombola: 'Tombola winners' },
   },
 };
@@ -759,7 +805,7 @@ const de: AppTranslations = {
     items: [
       { title: 'Lokale Suche', desc: 'Finde verfügbare Gerichte in einem genauen Radius um dich herum.' },
       { title: 'Online-Reservierung', desc: 'Reserviere deinen Tisch direkt aus der App.' },
-      { title: 'Favoriten & Bewertungen', desc: 'Speichere deine Lieblingsrestaurants und bewerte gekostete Gerichte.' },
+      { title: 'Favoriten', desc: 'Speichere deine Lieblingsrestaurants und Gerichte mit einem Klick.' },
       { title: 'Benachrichtigungen', desc: 'Werde sofort benachrichtigt, wenn dein Lieblingsrestaurant sein Menü veröffentlicht.' },
     ],
   },
@@ -769,17 +815,16 @@ const de: AppTranslations = {
     h2highlight: 'Entdecken, Wählen, Genießen',
     subtitle: 'Ein einfaches Erlebnis für Nutzer und leistungsstarke Werkzeuge für Restaurants.',
     featureLabel: 'Funktion',
-    benefits: ['Klare und schnelle Oberfläche', 'Einheitliches iOS & Android Erlebnis', 'Für Nutzer und Restaurants gedacht'],
     discover: 'App entdecken',
     features: [
-      { title: "Tagesmenü entdecken", subtitle: "Startseite & Vorschläge in deiner Nähe", description: "Schnell auf verfügbare Gerichte zugreifen, die besten Adressen finden und Tagesmenüs ohne Zeitverlust durchstöbern.", stats: [{ value: "Schnell", label: "Entdeckung" }, { value: "Lokal", label: "In der Nähe" }] },
-      { title: "Restaurant-Bereich", subtitle: "Dashboard & Performance", description: "Ein einfaches Dashboard, um deine Leistung zu verfolgen, Inhalte zu verwalten und täglich Zeit zu sparen.", stats: [{ value: "Stats", label: "Klar" }, { value: "Verwaltung", label: "Zentral" }] },
-      { title: "Flüssiges Onboarding", subtitle: "Einführung in wenigen Screens", description: "Schneller Einstieg: Nutzer verstehen die App in Sekunden und handeln sofort.", stats: [{ value: "< 1 Min", label: "Verstehen" }, { value: "Einfach", label: "Erlebnis" }] },
-      { title: "Suche & Filter", subtitle: "Schnell finden, besser wählen", description: "Suche ein Restaurant, ein Gericht oder eine Kategorie. Filtere, um genau das zu finden, was du willst.", stats: [{ value: "Smart", label: "Suche" }, { value: "Relevant", label: "Ergebnisse" }] },
-      { title: "Empfehlung & Belohnungen", subtitle: "Einladen, sammeln, genießen", description: "Teile deinen Link und schreite Richtung Belohnungen voran. Ein einfaches System, das motiviert und bindet.", stats: [{ value: "Bonus", label: "Belohnungen" }, { value: "Spaß", label: "Challenge" }] },
-      { title: "Premium-Karte & ID", subtitle: "Zugang & Vorteile per Scan", description: "Eine klare Premium-Karte mit QR-Code und nützlichen Informationen, um exklusive Angebote zu genießen.", stats: [{ value: "QR", label: "Schnell-Scan" }, { value: "Premium", label: "Vorteile" }] },
-      { title: "Restaurants & Menüs", subtitle: "Reiche Ansicht, nützliche Infos", description: "Fotos, Menüs, Premium/Geschenk-Badges und wichtige Infos: alles präsentiert, damit du schnell entscheidest.", stats: [{ value: "Menüs", label: "Aktuell" }, { value: "Infos", label: "Klar" }] },
-      { title: "Reservierung", subtitle: "Jetzt handeln", description: "Einfach reservieren, ohne Hürden. Eine schnelle Aktion, die Entdeckung in einen Besuch verwandelt.", stats: [{ value: "1 Klick", label: "Reservieren" }, { value: "Direkt", label: "Aktion" }] },
+      { title: "Tagesmenü entdecken", subtitle: "Startseite & Vorschläge in deiner Nähe", description: "Schnell auf verfügbare Gerichte zugreifen, die besten Adressen finden und Tagesmenüs ohne Zeitverlust durchstöbern.", benefits: ['Klare und schnelle Oberfläche', 'Geolokalisierte Tagesmenüs, live aktualisiert', 'Für Nutzer und Restaurants gedacht'], stats: [{ value: "Schnell", label: "Entdeckung" }, { value: "Lokal", label: "In der Nähe" }] },
+      { title: "Restaurant-Bereich", subtitle: "Dashboard & Performance", description: "Ein einfaches Dashboard, um deine Leistung zu verfolgen, Inhalte zu verwalten und täglich Zeit zu sparen.", benefits: ['Lesbare Oberfläche, Daten auf einen Blick', 'Echtzeit-Verkaufs- und Besuchertracking', 'Für Gastronomen gedacht, ohne technisches Know-how'], stats: [{ value: "Stats", label: "Klar" }, { value: "Verwaltung", label: "Zentral" }] },
+      { title: "Flüssiges Onboarding", subtitle: "Einführung in wenigen Screens", description: "Schneller Einstieg: Nutzer verstehen die App in Sekunden und handeln sofort.", benefits: ['Geführte Oberfläche, Screen für Screen', 'In weniger als einer Minute startklar', 'Für Conversion ab dem ersten Start'], stats: [{ value: "< 1 Min", label: "Verstehen" }, { value: "Einfach", label: "Erlebnis" }] },
+      { title: "Suche & Filter", subtitle: "Schnell finden, besser wählen", description: "Suche ein Restaurant, ein Gericht oder eine Kategorie. Filtere, um genau das zu finden, was du willst.", benefits: ['Sofortige Suchoberfläche', 'Präzise Filter: Küche, Entfernung, Budget, Verfügbarkeit', 'Für schnelle Entscheidungen'], stats: [{ value: "Smart", label: "Suche" }, { value: "Relevant", label: "Ergebnisse" }] },
+      { title: "Empfehlung & Belohnungen", subtitle: "Einladen, sammeln, genießen", description: "Teile deinen Link und schreite Richtung Belohnungen voran. Ein einfaches System, das motiviert und bindet.", benefits: ['Transparente Gewinnübersicht', 'Punkte automatisch gesammelt und gutgeschrieben', 'Für langfristige Kundenbindung'], stats: [{ value: "Bonus", label: "Belohnungen" }, { value: "Spaß", label: "Challenge" }] },
+      { title: "Premium-Karte & ID", subtitle: "Zugang & Vorteile per Scan", description: "Eine klare Premium-Karte mit QR-Code und nützlichen Informationen, um exklusive Angebote zu genießen.", benefits: ['Digitale Karte, immer verfügbar', 'Vorteile per Scan aktiviert, kontaktlos', 'Für schnelle Abläufe vor Ort'], stats: [{ value: "QR", label: "Schnell-Scan" }, { value: "Premium", label: "Vorteile" }] },
+      { title: "Restaurants & Menüs", subtitle: "Reiche Ansicht, nützliche Infos", description: "Fotos, Menüs, Premium/Geschenk-Badges und wichtige Infos: alles präsentiert, damit du schnell entscheidest.", benefits: ['Visuelle Oberfläche: Fotos, Menüs, detaillierte Preise', 'Aktuelle Infos: Öffnungszeiten, Kontakt, Anfahrt', 'Für sichere Entscheidungen'], stats: [{ value: "Menüs", label: "Aktuell" }, { value: "Infos", label: "Klar" }] },
+      { title: "Reservierung", subtitle: "In wenigen Klicks buchen", description: "Einfach reservieren, ohne Hürden. Eine schnelle Aktion, die Entdeckung in einen Besuch verwandelt.", benefits: ['Reservierung in wenigen Klicks', 'Sofortige Bestätigung, ohne Anruf oder Wartezeit', 'Für Nutzer und Gastronomen'], stats: [{ value: "1 Klick", label: "Reservieren" }, { value: "Direkt", label: "Aktion" }] },
     ],
   },
   restaurants: {
@@ -808,55 +853,35 @@ const de: AppTranslations = {
     monthly: 'Monatlich',
     yearly: 'Jährlich',
     security: 'Sichere Zahlung • Reaktiver Support • Kündigung per Klick',
-    plans: {
-      user: {
-        free: {
-          badge: 'Kostenlos',
-          title: 'Klassisch',
-          price: '0 CHF / Monat',
-          features: ['Menü- & Profilzugang', 'Suche & Geolokalisierung', '3 Menüs / Tag', '1 Bild / Gericht', '10 Profilfotos'],
-          cta: 'Kostenlos starten',
-        },
-        premium: {
-          badge: 'Premium',
-          title: 'Premium',
-          features: ['Menü- & Profilzugang', 'Suche & Geolokalisierung', '3 Menüs / Tag', '1 Bild / Gericht', '10 Profilfotos', 'Unbegrenzt — werbefrei', 'Favoriten & erweiterte Bewertungen', 'Personalisierte Benachrichtigungen'],
-          pricing: {
-            monthly: ['4.90 CHF', '/Monat'],
-            yearly: ['49.- CHF', '/Jahr', '2 Monate sparen'],
-          },
-          cta: 'Premium werden',
-        },
-      },
-      restaurant: {
-        free: {
-          badge: 'Standard',
-          title: 'Klassisch',
-          price: '0 CHF / Monat',
-          features: ['3 Menüs / Tag', '1 Bild / Gericht', '10 Profilfotos'],
-          cta: 'Kostenlos starten',
-        },
-        premium: {
-          badge: 'Premium',
-          title: 'Premium / Mobil',
-          features: ['3 Menüs / Tag', '1 Bild / Gericht', '10 Profilfotos', '5 Menüs / Tag', '3 Bilder / Gericht', 'Werbungsgeschenke', 'Hervorgehobenes Profil', 'Verwaltung mobiler Standorte'],
-          pricing: {
-            monthly: ['29 CHF', '/Monat'],
-            yearly: ['290 CHF', '/Jahr', '2 Monate sparen'],
-          },
-          cta: 'Dieses Paket wählen',
-        },
-        platinum: {
-          badge: 'Platinum',
-          title: 'Platinum / Multi-Standort',
-          features: ['3 Menüs / Tag', '1 Bild / Gericht', '10 Profilfotos', '5 Menüs / Tag', '3 Bilder / Gericht', 'Werbungsgeschenke', 'Hervorgehobenes Profil', 'Verwaltung mobiler Standorte', 'Bis zu 5 Betriebe', '+5 CHF / zusätzliche Einheit'],
-          pricing: {
-            monthly: ['59 CHF', '/Monat'],
-            yearly: ['590 CHF', '/Jahr', '2 Monate sparen'],
-          },
-          cta: 'Platinum wählen',
-        },
-      },
+    paymentMethodsTitle: 'Akzeptierte Zahlungsmittel',
+    freeBadge: 'Kostenlos',
+    premiumBadge: 'Premium',
+    platinumBadge: 'Platinum',
+    ctaFree: 'Kostenlos starten',
+    ctaPremium: 'Premium werden',
+    ctaPlatinum: 'Platinum wählen',
+    perMonth: '/ Monat',
+    perYear: '/ Jahr',
+    saveTwoMonths: '2 Monate sparen',
+    featureLabels: {
+      accessMenus: 'Menü- & Profilzugang',
+      searchGeo: 'Suche & Geolokalisierung',
+      miniGamesWithAds: 'Mini-Spiele mit Werbung',
+      miniGames: 'Mini-Spiele',
+      noAds: 'Werbefrei',
+      favorites: 'Erweiterte Favoriten',
+      backOffice: 'Vollständiges Back-Office',
+      referral: 'Empfehlung per Code',
+      idCardPremium: 'Premium IDCard',
+      tombola: 'Teilnahme an Verlosungen',
+      menusPerDay: '{{count}} Menüs / Tag',
+      imagesPerDish: '{{count}} Bilder / Gericht',
+      profilePhotos: '{{count}} Profilfotos',
+      menuGift: 'Werbungsgeschenke',
+      highlighted: 'Hervorgehobenes Profil',
+      itinerant: 'Verwaltung mobiler Standorte',
+      multiEstablishment: 'Bis zu {{count}} Betriebe',
+      extraEstablishment: '+5 CHF / zusätzlicher Betrieb',
     },
   },
   testimonials: {
@@ -929,7 +954,7 @@ const de: AppTranslations = {
     privacy: 'Datenschutzerklärung',
     legalNotice: 'Impressum',
     allRights: 'Alle Rechte vorbehalten.',
-    madeBy: 'Gemacht von',
+    credits: 'Konzept & Entwicklung: D.G.E. Concept SàRL & WIICODE',
     links: { howItWorks: 'So funktioniert es', testimonials: 'Bewertungen', download: 'App herunterladen', tombola: 'Tombola-Gewinner' },
   },
 };
@@ -1007,7 +1032,7 @@ const it: AppTranslations = {
     items: [
       { title: 'Ricerca Locale', desc: "Trova i piatti disponibili in un raggio preciso intorno a te." },
       { title: 'Prenotazione online', desc: "Prenota il tuo tavolo direttamente dall'app." },
-      { title: 'Preferiti & Recensioni', desc: 'Salva i tuoi ristoranti preferiti e valuta i piatti assaggiati.' },
+      { title: 'Preferiti', desc: 'Salva i tuoi ristoranti e piatti preferiti con un tap.' },
       { title: 'Notifiche', desc: 'Ricevi un avviso non appena il tuo ristorante preferito pubblica il menu.' },
     ],
   },
@@ -1017,17 +1042,16 @@ const it: AppTranslations = {
     h2highlight: 'scoprire, scegliere, gustare',
     subtitle: "Un'esperienza semplice per gli utenti e strumenti potenti per i ristoranti.",
     featureLabel: 'Funzionalità',
-    benefits: ['Interfaccia chiara e veloce', 'Esperienza coerente iOS & Android', 'Pensato per utenti e ristoranti'],
     discover: "Scopri l'app",
     features: [
-      { title: "Scopri il piatto del giorno", subtitle: "Home & suggerimenti vicino a te", description: "Accedi rapidamente ai piatti disponibili, trova i posti migliori ed esplora i menu del giorno senza perdere tempo.", stats: [{ value: "Veloce", label: "Scoperta" }, { value: "Locale", label: "Vicino a te" }] },
-      { title: "Spazio ristorante", subtitle: "Dashboard & performance", description: "Una dashboard semplice per monitorare le tue performance, gestire i contenuti e risparmiare tempo ogni giorno.", stats: [{ value: "Stats", label: "Chiare" }, { value: "Gestione", label: "Centralizzata" }] },
-      { title: "Onboarding fluido", subtitle: "Presentazione in pochi schermi", description: "Avvio rapido: l'utente capisce l'app in pochi secondi e agisce immediatamente.", stats: [{ value: "< 1 min", label: "Capire" }, { value: "Semplice", label: "Esperienza" }] },
-      { title: "Ricerca & filtri", subtitle: "Trova veloce, scegli meglio", description: "Cerca un ristorante, un piatto o una categoria. Filtra per trovare esattamente quello che vuoi.", stats: [{ value: "Smart", label: "Ricerca" }, { value: "Rilevante", label: "Risultati" }] },
-      { title: "Referral & premi", subtitle: "Invita, accumula, goditi", description: "Condividi il tuo link e progredisci verso i premi. Un sistema semplice che motiva e fidelizza.", stats: [{ value: "Bonus", label: "Premi" }, { value: "Fun", label: "Challenge" }] },
-      { title: "Carta Premium & ID", subtitle: "Accesso & vantaggi con un scan", description: "Una carta premium chiara con QR Code e informazioni utili, per godere di offerte ed esclusive.", stats: [{ value: "QR", label: "Scan rapido" }, { value: "Premium", label: "Vantaggi" }] },
-      { title: "Ristoranti & menu", subtitle: "Vista ricca, info utili", description: "Foto, menu, badge premium/regalo e info chiave: tutto presentato per aiutarti a decidere rapidamente.", stats: [{ value: "Menu", label: "Aggiornati" }, { value: "Info", label: "Chiare" }] },
-      { title: "Prenotazione", subtitle: "Agisci subito", description: "Prenota facilmente, senza attrito. Un'azione semplice e rapida per trasformare la scoperta in una visita.", stats: [{ value: "1 clic", label: "Prenota" }, { value: "Diretto", label: "Azione" }] },
+      { title: "Scopri il piatto del giorno", subtitle: "Home & suggerimenti vicino a te", description: "Accedi rapidamente ai piatti disponibili, trova i posti migliori ed esplora i menu del giorno senza perdere tempo.", benefits: ['Interfaccia chiara e veloce', 'Piatti del giorno geolocalizzati, aggiornati in tempo reale', 'Pensato per utenti e ristoranti'], stats: [{ value: "Veloce", label: "Scoperta" }, { value: "Locale", label: "Vicino a te" }] },
+      { title: "Spazio ristorante", subtitle: "Dashboard & performance", description: "Una dashboard semplice per monitorare le tue performance, gestire i contenuti e risparmiare tempo ogni giorno.", benefits: ['Interfaccia leggibile, dati a colpo d\'occhio', 'Monitoraggio vendite e affluenza in tempo reale', 'Pensato per i ristoratori, senza competenze tecniche'], stats: [{ value: "Stats", label: "Chiare" }, { value: "Gestione", label: "Centralizzata" }] },
+      { title: "Onboarding fluido", subtitle: "Presentazione in pochi schermi", description: "Avvio rapido: l'utente capisce l'app in pochi secondi e agisce immediatamente.", benefits: ['Interfaccia guidata, schermo per schermo', 'Presa in mano in meno di un minuto', 'Pensato per convertire dal primo avvio'], stats: [{ value: "< 1 min", label: "Capire" }, { value: "Semplice", label: "Esperienza" }] },
+      { title: "Ricerca & filtri", subtitle: "Trova veloce, scegli meglio", description: "Cerca un ristorante, un piatto o una categoria. Filtra per trovare esattamente quello che vuoi.", benefits: ['Interfaccia di ricerca istantanea', 'Filtri precisi: cucina, distanza, budget, disponibilità', 'Pensato per decidere in pochi secondi'], stats: [{ value: "Smart", label: "Ricerca" }, { value: "Rilevante", label: "Risultati" }] },
+      { title: "Referral & premi", subtitle: "Invita, accumula, goditi", description: "Condividi il tuo link e progredisci verso i premi. Un sistema semplice che motiva e fidelizza.", benefits: ['Interfaccia trasparente per i guadagni', 'Punti accumulati e accreditati automaticamente', 'Pensato per la fidelizzazione nel tempo'], stats: [{ value: "Bonus", label: "Premi" }, { value: "Fun", label: "Challenge" }] },
+      { title: "Carta Premium & ID", subtitle: "Accesso & vantaggi con un scan", description: "Una carta premium chiara con QR Code e informazioni utili, per godere di offerte ed esclusive.", benefits: ['Carta digitale sempre accessibile', 'Vantaggi attivati con un solo scan, senza contatto', 'Pensato per la rapidità in locale'], stats: [{ value: "QR", label: "Scan rapido" }, { value: "Premium", label: "Vantaggi" }] },
+      { title: "Ristoranti & menu", subtitle: "Vista ricca, info utili", description: "Foto, menu, badge premium/regalo e info chiave: tutto presentato per aiutarti a decidere rapidamente.", benefits: ['Interfaccia visiva: foto, menu, prezzi dettagliati', 'Info pratiche aggiornate: orari, contatto, accesso', 'Pensato per scegliere con fiducia'], stats: [{ value: "Menu", label: "Aggiornati" }, { value: "Info", label: "Chiare" }] },
+      { title: "Prenotazione", subtitle: "Prenota in un clic", description: "Prenota facilmente, senza attrito. Un'azione semplice e rapida per trasformare la scoperta in una visita.", benefits: ['Interfaccia di prenotazione in pochi clic', 'Conferma immediata, senza chiamate né attesa', 'Pensato per utenti e ristoratori'], stats: [{ value: "1 clic", label: "Prenota" }, { value: "Diretto", label: "Azione" }] },
     ],
   },
   restaurants: {
@@ -1056,55 +1080,35 @@ const it: AppTranslations = {
     monthly: 'Mensile',
     yearly: 'Annuale',
     security: 'Pagamento sicuro • Supporto reattivo • Cancellazione in 1 clic',
-    plans: {
-      user: {
-        free: {
-          badge: 'Gratuito',
-          title: 'Classico',
-          price: '0 CHF / mese',
-          features: ['Accesso menu & profili', 'Ricerca & geolocalizzazione', '3 menu / giorno', '1 immagine / piatto', '10 foto profilo'],
-          cta: 'Inizia gratuitamente',
-        },
-        premium: {
-          badge: 'Premium',
-          title: 'Premium',
-          features: ['Accesso menu & profili', 'Ricerca & geolocalizzazione', '3 menu / giorno', '1 immagine / piatto', '10 foto profilo', 'Illimitati — senza pubblicità', 'Preferiti & recensioni avanzate', 'Notifiche personalizzate'],
-          pricing: {
-            monthly: ['4.90 CHF', '/mese'],
-            yearly: ['49.- CHF', '/anno', 'Risparmia 2 mesi'],
-          },
-          cta: 'Passa a Premium',
-        },
-      },
-      restaurant: {
-        free: {
-          badge: 'Standard',
-          title: 'Classico',
-          price: '0 CHF / mese',
-          features: ['3 menu / giorno', '1 immagine / piatto', '10 foto profilo'],
-          cta: 'Inizia gratuitamente',
-        },
-        premium: {
-          badge: 'Premium',
-          title: 'Premium / Itinerante',
-          features: ['3 menu / giorno', '1 immagine / piatto', '10 foto profilo', '5 menu / giorno', '3 immagini / piatto', 'Omaggi promozionali', 'Profilo in evidenza', 'Gestione posizioni itineranti'],
-          pricing: {
-            monthly: ['29 CHF', '/mese'],
-            yearly: ['290 CHF', '/anno', 'Risparmia 2 mesi'],
-          },
-          cta: 'Scegli questo piano',
-        },
-        platinum: {
-          badge: 'Platinum',
-          title: 'Platinum / Multi-Itinerante',
-          features: ['3 menu / giorno', '1 immagine / piatto', '10 foto profilo', '5 menu / giorno', '3 immagini / piatto', 'Omaggi promozionali', 'Profilo in evidenza', 'Gestione posizioni itineranti', 'Fino a 5 stabilimenti', '+5 CHF / unità aggiuntiva'],
-          pricing: {
-            monthly: ['59 CHF', '/mese'],
-            yearly: ['590 CHF', '/anno', 'Risparmia 2 mesi'],
-          },
-          cta: 'Scegli Platinum',
-        },
-      },
+    paymentMethodsTitle: 'Metodi di pagamento accettati',
+    freeBadge: 'Gratuito',
+    premiumBadge: 'Premium',
+    platinumBadge: 'Platinum',
+    ctaFree: 'Inizia gratuitamente',
+    ctaPremium: 'Passa a Premium',
+    ctaPlatinum: 'Scegli Platinum',
+    perMonth: '/ mese',
+    perYear: '/ anno',
+    saveTwoMonths: 'Risparmia 2 mesi',
+    featureLabels: {
+      accessMenus: 'Accesso menu & profili',
+      searchGeo: 'Ricerca & geolocalizzazione',
+      miniGamesWithAds: 'Mini-giochi con pubblicità',
+      miniGames: 'Mini-giochi',
+      noAds: 'Senza pubblicità',
+      favorites: 'Preferiti avanzati',
+      backOffice: 'Back-office completo',
+      referral: 'Referral via codice',
+      idCardPremium: 'IDCard premium',
+      tombola: 'Partecipazione alle estrazioni',
+      menusPerDay: '{{count}} menu / giorno',
+      imagesPerDish: '{{count}} immagini / piatto',
+      profilePhotos: '{{count}} foto profilo',
+      menuGift: 'Omaggi promozionali',
+      highlighted: 'Profilo in evidenza',
+      itinerant: 'Gestione posizioni itineranti',
+      multiEstablishment: 'Fino a {{count}} stabilimenti',
+      extraEstablishment: '+5 CHF / stabilimento aggiuntivo',
     },
   },
   testimonials: {
@@ -1177,7 +1181,7 @@ const it: AppTranslations = {
     privacy: 'Informativa sulla privacy',
     legalNotice: 'Note legali',
     allRights: 'Tutti i diritti riservati.',
-    madeBy: 'Fatto da',
+    credits: 'Concept & Sviluppo: D.G.E. Concept SàRL & WIICODE',
     links: { howItWorks: 'Come funziona', testimonials: 'Recensioni', download: "Scarica l'app", tombola: 'Vincitori tombola' },
   },
 };

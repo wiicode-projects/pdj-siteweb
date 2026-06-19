@@ -5,9 +5,12 @@ import PlayHero from '../assets/play3.gif';
 import PlayHeroHover from '../assets/playcolor.png';
 import Logo from '../assets/Logomascotte.svg';
 import { useLanguage } from '../i18n/LanguageContext';
+import { useWebsiteContent } from '../i18n/WebsiteContentContext';
 
 const Hero: React.FC = () => {
   const { t } = useLanguage();
+  const { heroBadgeEnabled, loaded } = useWebsiteContent();
+  const showBadge = !loaded || heroBadgeEnabled;
 
   return (
     <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-visible bg-transparent">
@@ -21,10 +24,12 @@ const Hero: React.FC = () => {
           {/* Texte */}
           <div className="w-full lg:w-1/2 text-center lg:text-left z-20">
             {/* Badge mascotte */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border border-orange-100 shadow-lg shadow-orange-100/50 text-primary font-bold text-sm mb-8 animate-pop-in hover:scale-105 transition-transform cursor-default">
-              <img src={Logo} alt="" aria-hidden className="w-9 h-9 object-contain animate-bounce" draggable={false} />
-              <span>{t.hero.badge}</span>
-            </div>
+            {showBadge && (
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border border-orange-100 shadow-lg shadow-orange-100/50 text-primary font-bold text-sm mb-8 animate-pop-in hover:scale-105 transition-transform cursor-default">
+                <img src={Logo} alt="" aria-hidden className="w-9 h-9 object-contain animate-bounce" draggable={false} />
+                <span>{t.hero.badge}</span>
+              </div>
+            )}
 
             <h1
               className="text-5xl lg:text-7xl font-black text-gray-900 leading-[1.1] mb-8 opacity-0 animate-slide-up"

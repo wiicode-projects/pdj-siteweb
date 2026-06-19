@@ -404,13 +404,9 @@ export const cgvDoc: LegalDocument = {
         },
         { kind: 'p', text: 'Le formule disponibili e le relative tariffe sono le seguenti:' },
         {
-          kind: 'table',
+          kind: 'subscriptionPricingTable',
           headers: ['Formula', 'Tariffa', 'Funzionalità principali'],
-          rows: [
-            ['Classique (Standard)', '0 CHF/mese', '3 menu/giorno, 1 immagine/piatto, 10 foto profilo'],
-            ['Premium / Itinerante', '29 CHF/mese', '5 menu/giorno, 3 immagini/piatto, profilo in evidenza, gestione posizioni itineranti, omaggi promozionali'],
-            ['Platinum / Itinerante Multi', "59 CHF/mese", 'Tutte le funzionalità Premium, fino a 5 esercizi (+5 CHF/unità aggiuntiva)'],
-          ],
+          targetType: 'RESTAURANT',
         },
         { kind: 'h3', text: '2.2 — Valuta' },
         {

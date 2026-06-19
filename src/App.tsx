@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LanguageProvider } from './i18n/LanguageContext';
 import { WebsiteContentProvider } from './i18n/WebsiteContentContext';
+import { PricingCatalogProvider } from './i18n/PricingCatalogContext';
 import Cgu from './pages/Cgu';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import MentionsLegales from './pages/MentionsLegales';
@@ -90,13 +91,15 @@ const HomePageContent: React.FC = () => (
 const App: React.FC = () => (
   <BrowserRouter>
     <LanguageProvider>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/cgu" element={<Cgu />} />
-        <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
-        <Route path="/mentions-legales" element={<MentionsLegales />} />
-        <Route path="/tombola" element={<TombolaHistory />} />
-      </Routes>
+      <PricingCatalogProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cgu" element={<Cgu />} />
+          <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+          <Route path="/mentions-legales" element={<MentionsLegales />} />
+          <Route path="/tombola" element={<TombolaHistory />} />
+        </Routes>
+      </PricingCatalogProvider>
     </LanguageProvider>
   </BrowserRouter>
 );

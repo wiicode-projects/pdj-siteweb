@@ -1,7 +1,59 @@
 import type { LegalBlock, LegalDocument, LegalSection } from '../../i18n/legal/types';
 import { InlineText } from '../../i18n/legal/inline';
 import { useLanguage } from '../../i18n/LanguageContext';
+import { usePricingCatalog } from '../../hooks/usePricingCatalog';
+import { buildLegalPricingRows } from '../../lib/buildLegalPricingRows';
 import { legalUi } from '../../i18n/legal/ui';
+
+function PricingTable({ block }: { block: Extract<LegalBlock, { kind: 'subscriptionPricingTable' }> }) {
+  const { lang, t } = useLanguage();
+  const catalog = usePricingCatalog();
+  const subscriptions = block.targetType === 'USER' ? catalog.user : catalog.restaurant;
+
+  if (!catalog.loaded) {
+    return (
+      <div className="mt-4 flex justify-center py-8">
+        <div className="h-8 w-8 rounded-full border-2 border-gray-300 border-t-gray-600 animate-spin" />
+      </div>
+    );
+  }
+
+  const rows = buildLegalPricingRows(
+    subscriptions,
+    lang,
+    t.pricing.perMonth,
+    t.pricing.featureLabels,
+  );
+
+  return (
+    <div className="mt-4 overflow-x-auto rounded-xl border border-gray-200">
+      <table className="w-full text-sm">
+        <thead>
+          <tr className="bg-gray-50 text-left">
+            {block.headers.map((h, i) => (
+              <th key={i} className="px-4 py-3 font-semibold text-gray-700">{h}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-100">
+          {rows.length === 0 ? (
+            <tr>
+              <td colSpan={block.headers.length} className="px-4 py-6 text-center text-gray-500">—</td>
+            </tr>
+          ) : rows.map((row, ri) => (
+            <tr key={ri}>
+              {row.map((cell, ci) => (
+                <td key={ci} className={`px-4 py-3 ${ci > 0 ? 'text-gray-600' : 'font-medium'}`}>
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 function Block({ block }: { block: LegalBlock }) {
   switch (block.kind) {
@@ -60,6 +112,8 @@ function Block({ block }: { block: LegalBlock }) {
           </table>
         </div>
       );
+    case 'subscriptionPricingTable':
+      return <PricingTable block={block} />;
     case 'card':
       return (
         <div className="bg-gray-50 rounded-lg p-4">

@@ -154,7 +154,7 @@ export function AppShowcase() {
                 <p className="leading-relaxed text-gray-300">{active.description}</p>
 
                 <div className="space-y-3 pt-2">
-                  {s.benefits.map((benefit, idx) => (
+                  {active.benefits.map((benefit, idx) => (
                     <motion.div key={idx}
                       initial={{ opacity: 0, x: -14 }} animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.25 + idx * 0.08 }}

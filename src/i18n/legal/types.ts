@@ -20,6 +20,7 @@ export type LegalBlock =
   | { kind: 'ol'; items: string[] }
   | { kind: 'callout'; variant: 'warning' | 'info'; text: string }
   | { kind: 'table'; headers: string[]; rows: string[][] }
+  | { kind: 'subscriptionPricingTable'; headers: string[]; targetType: 'USER' | 'RESTAURANT' }
   | { kind: 'card'; title: string; text: string }
   | { kind: 'cards'; items: Array<{ title: string; text: string }> }
   | { kind: 'keyValue'; items: Array<{ label: string; value: string }> }
