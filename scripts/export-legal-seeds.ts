@@ -7,7 +7,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import type { Lang } from '../src/i18n/translations';
-import { getCguDocuments, getCguLastUpdate } from '../src/i18n/legal/cgu';
+import { getCguDocument, getCgvDocument, getCguLastUpdate } from '../src/i18n/legal/cgu';
 import { getPrivacyDocument, getPrivacyLastUpdate } from '../src/i18n/legal/privacy';
 import { getMentionsDocument, getMentionsLastUpdate } from '../src/i18n/legal/mentions';
 
@@ -32,12 +32,12 @@ const pages: Array<{
 }> = [
   {
     slug: 'cgu',
-    document: (lang) => getCguDocuments(lang)[0],
+    document: getCguDocument,
     lastUpdate: getCguLastUpdate,
   },
   {
     slug: 'cgv',
-    document: (lang) => getCguDocuments(lang)[1],
+    document: getCgvDocument,
     lastUpdate: getCguLastUpdate,
   },
   {

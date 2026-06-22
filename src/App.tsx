@@ -4,6 +4,8 @@ import { LanguageProvider } from './i18n/LanguageContext';
 import { WebsiteContentProvider } from './i18n/WebsiteContentContext';
 import { PricingCatalogProvider } from './i18n/PricingCatalogContext';
 import Cgu from './pages/Cgu';
+import Cgv from './pages/Cgv';
+import Tarifs from './pages/Tarifs';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import MentionsLegales from './pages/MentionsLegales';
 import TombolaHistory from './pages/TombolaHistory';
@@ -95,8 +97,10 @@ const App: React.FC = () => (
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/cgu" element={<Cgu />} />
+          <Route path="/cgv" element={<Cgv />} />
           <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
           <Route path="/mentions-legales" element={<MentionsLegales />} />
+          <Route path="/tarifs" element={<Tarifs />} />
           <Route path="/tombola" element={<TombolaHistory />} />
         </Routes>
       </PricingCatalogProvider>
