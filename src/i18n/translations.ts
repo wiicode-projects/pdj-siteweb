@@ -174,6 +174,7 @@ export interface AppTranslations {
     help: string;
     contactSupport: string;
     terms: string;
+    salesTerms: string;
     privacy: string;
     legalNotice: string;
     allRights: string;
@@ -449,6 +450,7 @@ const fr: AppTranslations = {
     help: "Besoin d'aide ?",
     contactSupport: 'Contactez le support',
     terms: 'CGU',
+    salesTerms: 'CGV',
     privacy: 'Politique de confidentialité',
     legalNotice: 'Mentions légales',
     allRights: 'Tous droits réservés.',
@@ -724,6 +726,7 @@ const en: AppTranslations = {
     help: 'Need help?',
     contactSupport: 'Contact support',
     terms: 'Terms of Use',
+    salesTerms: 'Terms of Sale',
     privacy: 'Privacy Policy',
     legalNotice: 'Legal Notice',
     allRights: 'All rights reserved.',
@@ -951,6 +954,7 @@ const de: AppTranslations = {
     help: 'Hilfe benötigt?',
     contactSupport: 'Support kontaktieren',
     terms: 'Nutzungsbedingungen',
+    salesTerms: 'AGB',
     privacy: 'Datenschutzerklärung',
     legalNotice: 'Impressum',
     allRights: 'Alle Rechte vorbehalten.',
@@ -1178,6 +1182,7 @@ const it: AppTranslations = {
     help: 'Hai bisogno di aiuto?',
     contactSupport: 'Contatta il supporto',
     terms: 'Termini di utilizzo',
+    salesTerms: 'Condizioni di vendita',
     privacy: 'Informativa sulla privacy',
     legalNotice: 'Note legali',
     allRights: 'Tutti i diritti riservati.',

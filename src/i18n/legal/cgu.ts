@@ -16,6 +16,14 @@ export function getCguDocuments(lang: Lang): LegalDocument[] {
   return cguDocuments[lang];
 }
 
+export function getCguDocument(lang: Lang): LegalDocument {
+  return getCguDocuments(lang)[0];
+}
+
+export function getCgvDocument(lang: Lang): LegalDocument {
+  return getCguDocuments(lang)[1];
+}
+
 const lastUpdates: Record<Lang, string> = {
   fr: 'Juin 2026',
   en: 'June 2026',

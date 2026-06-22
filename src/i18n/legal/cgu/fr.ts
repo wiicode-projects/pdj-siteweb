@@ -5,7 +5,7 @@ const EFFECTIVE = '04 mai 2026';
 const ADMIN = '[mailto:admin@dgeconcept.ch|admin@dgeconcept.ch]';
 const SITE = '[link:https://www.leplatdujour.ch|https://www.leplatdujour.ch]';
 const PRIVACY = '[route:/politique-de-confidentialite|Politique de Confidentialité]';
-const PRICING = '[route:/#tarifs|page Tarifs]';
+const PRICING = '[route:/tarifs|page Tarifs]';
 const ODR = '[link:https://ec.europa.eu/consumers/odr|ec.europa.eu/consumers/odr]';
 
 export const cguDoc: LegalDocument = {

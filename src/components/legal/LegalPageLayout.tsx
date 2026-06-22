@@ -55,6 +55,7 @@ export function useLegalFooterLinks() {
   const { t } = useLanguage();
   return [
     { to: '/cgu', label: t.footer.terms },
+    { to: '/cgv', label: t.footer.salesTerms },
     { to: '/politique-de-confidentialite', label: t.footer.privacy },
     { to: '/mentions-legales', label: t.footer.legalNotice },
   ];
