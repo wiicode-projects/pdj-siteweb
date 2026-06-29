@@ -1,11 +1,16 @@
 import React from 'react';
+import twintLogo from '../assets/payments/twint.svg';
+import visaLogo from '../assets/payments/visa.svg';
+import mastercardLogo from '../assets/payments/mastercard.svg';
+import bankTransferLogo from '../assets/payments/bank-transfer.svg';
+import paypalLogo from '../assets/payments/paypal.svg';
 
 const METHODS = [
-  { id: 'visa', label: 'VISA', className: 'bg-[#1a1f71] text-white' },
-  { id: 'mastercard', label: 'Mastercard', className: 'bg-[#111827] text-white' },
-  { id: 'twint', label: 'TWINT', className: 'bg-black text-white font-bold tracking-wide' },
-  { id: 'paypal', label: 'PayPal', className: 'bg-[#003087] text-white' },
-  { id: 'transfer', label: 'Virement', className: 'bg-[#166534] text-white' },
+  { id: 'twint', src: twintLogo, alt: 'TWINT', className: 'h-7' },
+  { id: 'visa', src: visaLogo, alt: 'Visa', className: 'h-5' },
+  { id: 'mastercard', src: mastercardLogo, alt: 'Mastercard', className: 'h-7' },
+  { id: 'transfer', src: bankTransferLogo, alt: 'Virement bancaire', className: 'h-7' },
+  { id: 'paypal', src: paypalLogo, alt: 'PayPal', className: 'h-5' },
 ] as const;
 
 type PaymentMethodsProps = {
@@ -16,14 +21,16 @@ export function PaymentMethods({ title }: PaymentMethodsProps) {
   return (
     <div className="mt-10 text-center">
       <p className="mb-5 text-sm font-medium text-gray-600">{title}</p>
-      <div className="flex flex-wrap items-center justify-center gap-3">
+      <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
         {METHODS.map((method) => (
-          <div
+          <img
             key={method.id}
-            className={`flex h-11 min-w-[92px] items-center justify-center rounded-xl px-4 text-sm font-semibold shadow-sm ${method.className}`}
-          >
-            {method.label}
-          </div>
+            src={method.src}
+            alt={method.alt}
+            className={`${method.className} w-auto max-w-[120px] object-contain opacity-90 transition-opacity hover:opacity-100`}
+            loading="lazy"
+            decoding="async"
+          />
         ))}
       </div>
     </div>

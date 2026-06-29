@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 32" fill="none">
+  <path fill="#1d4ed8" d="M16 6 4 12v2h24v-2L16 6Zm0 4.5 6 3.5v1.5H10v-1.5l6-3.5ZM6 16h20v10H6V16Zm2 2v6h4v-6H8Zm6 0v6h4v-6h-4Zm6 0v6h4v-6h-4Z"/>
+  <text x="34" y="14" fill="#1d4ed8" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600">Virement</text>
+  <text x="34" y="25" fill="#1d4ed8" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600">Bancaire</text>
+</svg>
