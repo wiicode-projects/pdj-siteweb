@@ -6,11 +6,11 @@ import bankTransferLogo from '../assets/payments/bank-transfer.svg';
 import paypalLogo from '../assets/payments/paypal.svg';
 
 const METHODS = [
-  { id: 'twint', src: twintLogo, alt: 'TWINT', className: 'h-7' },
-  { id: 'visa', src: visaLogo, alt: 'Visa', className: 'h-5' },
-  { id: 'mastercard', src: mastercardLogo, alt: 'Mastercard', className: 'h-7' },
-  { id: 'transfer', src: bankTransferLogo, alt: 'Virement bancaire', className: 'h-7' },
-  { id: 'paypal', src: paypalLogo, alt: 'PayPal', className: 'h-5' },
+  { id: 'twint', src: twintLogo, alt: 'TWINT', className: 'h-9' },
+  { id: 'visa', src: visaLogo, alt: 'Visa', className: 'h-7' },
+  { id: 'mastercard', src: mastercardLogo, alt: 'Mastercard', className: 'h-9' },
+  { id: 'transfer', src: bankTransferLogo, alt: 'Virement bancaire', className: 'h-9' },
+  { id: 'paypal', src: paypalLogo, alt: 'PayPal', className: 'h-7' },
 ] as const;
 
 type PaymentMethodsProps = {
@@ -27,7 +27,7 @@ export function PaymentMethods({ title }: PaymentMethodsProps) {
             key={method.id}
             src={method.src}
             alt={method.alt}
-            className={`${method.className} w-auto max-w-[120px] object-contain opacity-90 transition-opacity hover:opacity-100`}
+            className={`${method.className} w-auto max-w-[150px] object-contain opacity-90 transition-opacity hover:opacity-100`}
             loading="lazy"
             decoding="async"
           />
