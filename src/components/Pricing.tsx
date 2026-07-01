@@ -28,8 +28,12 @@ function planFeatures(
   return buildSubscriptionFeatureLabels(sub, labels);
 }
 
+function isFreeTier(sub: PublicPricingSubscription): boolean {
+  return sub.monthlyPrice === 0;
+}
+
 function yearlySavings(sub: PublicPricingSubscription | null): boolean {
-  if (!sub || sub.isDefault) return false;
+  if (!sub || isFreeTier(sub)) return false;
   const yearly = findPlanByPeriod(sub, "YEARLY");
   if (!yearly) return false;
   return yearly.totalPrice < sub.monthlyPrice * 12;
@@ -243,7 +247,7 @@ function tierVariant(
   index: number,
   total: number,
 ): "free" | "premium" | "platinum" {
-  if (sub.isDefault) return "free";
+  if (isFreeTier(sub)) return "free";
   if (total > 2 && index === total - 1) return "platinum";
   return "premium";
 }
@@ -354,7 +358,7 @@ export function Pricing() {
                     perMonth={p.perMonth}
                     perYear={p.perYear}
                     saveTwoMonths={p.saveTwoMonths}
-                    showBillingToggle={!sub.isDefault && Boolean(findPlanByPeriod(sub, "YEARLY"))}
+                    showBillingToggle={!isFreeTier(sub) && Boolean(findPlanByPeriod(sub, "YEARLY"))}
                     onBillingChange={setBilling}
                     monthlyLabel={p.monthly}
                     yearlyLabel={p.yearly}
