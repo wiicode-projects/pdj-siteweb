@@ -135,11 +135,7 @@ function PricingCard({
         <p className={`text-sm mb-4 ${isPlatinum ? "text-gray-400" : "text-gray-600"}`}>{sub.description}</p>
       )}
 
-      {sub?.isDefault ? (
-        <div className={`text-2xl font-bold mb-6 ${isPlatinum ? "text-white" : "text-gray-500"}`}>
-          {formatPeriodPrice(0, lang, perMonth)}
-        </div>
-      ) : showBillingToggle && onBillingChange ? (
+      {showBillingToggle && onBillingChange ? (
         <div className="mb-6">
           <div className="flex justify-center mb-4">
             <div className="inline-flex items-center gap-1 bg-gray-100 p-1 rounded-lg border border-black/10">
