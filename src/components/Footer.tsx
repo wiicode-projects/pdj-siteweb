@@ -68,6 +68,21 @@ const Footer: React.FC = () => {
             <a href={`mailto:${supportEmail}`} className="text-primary font-medium hover:underline">
               {supportEmail}
             </a>
+            <address className="mt-4 text-sm text-gray-400 not-italic leading-relaxed">
+              {f.address.company}{' '}
+              <a
+                href="https://www.leplatdujour.ch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline"
+              >
+                {f.address.website}
+              </a>
+              <br />
+              {f.address.street}<br />
+              {f.address.city}<br />
+              {f.address.country}
+            </address>
             {supportPhone && (
               <a
                 href={`tel:${supportPhone.replace(/\s/g, '')}`}

@@ -179,6 +179,13 @@ export interface AppTranslations {
     legalNotice: string;
     allRights: string;
     credits: string;
+    address: {
+      company: string;
+      website: string;
+      street: string;
+      city: string;
+      country: string;
+    };
     links: { howItWorks: string; testimonials: string; download: string; tombola: string };
   };
 }
@@ -455,6 +462,13 @@ const fr: AppTranslations = {
     legalNotice: 'Mentions légales',
     allRights: 'Tous droits réservés.',
     credits: 'Concept & Développement : D.G.E. Concept SàRL & WIICODE',
+    address: {
+      company: 'D.G.E.Concept SàRL /',
+      website: 'Leplatdujour.ch',
+      street: 'Rue du Village 8b',
+      city: '1273 Arzier-Le Muids (Vaud)',
+      country: 'Suisse',
+    },
     links: { howItWorks: 'Comment ça marche', testimonials: 'Témoignages', download: "Télécharger l'app", tombola: 'Gagnants tombola' },
   },
 };
@@ -731,6 +745,13 @@ const en: AppTranslations = {
     legalNotice: 'Legal Notice',
     allRights: 'All rights reserved.',
     credits: 'Concept & Development: D.G.E. Concept SàRL & WIICODE',
+    address: {
+      company: 'D.G.E.Concept SàRL /',
+      website: 'Leplatdujour.ch',
+      street: 'Rue du Village 8b',
+      city: '1273 Arzier-Le Muids (Vaud)',
+      country: 'Switzerland',
+    },
     links: { howItWorks: 'How It Works', testimonials: 'Testimonials', download: 'Download the app', tombola: 'Tombola winners' },
   },
 };
@@ -959,6 +980,13 @@ const de: AppTranslations = {
     legalNotice: 'Impressum',
     allRights: 'Alle Rechte vorbehalten.',
     credits: 'Konzept & Entwicklung: D.G.E. Concept SàRL & WIICODE',
+    address: {
+      company: 'D.G.E.Concept SàRL /',
+      website: 'Leplatdujour.ch',
+      street: 'Rue du Village 8b',
+      city: '1273 Arzier-Le Muids (Vaud)',
+      country: 'Schweiz',
+    },
     links: { howItWorks: 'So funktioniert es', testimonials: 'Bewertungen', download: 'App herunterladen', tombola: 'Tombola-Gewinner' },
   },
 };
@@ -1187,6 +1215,13 @@ const it: AppTranslations = {
     legalNotice: 'Note legali',
     allRights: 'Tutti i diritti riservati.',
     credits: 'Concept & Sviluppo: D.G.E. Concept SàRL & WIICODE',
+    address: {
+      company: 'D.G.E.Concept SàRL /',
+      website: 'Leplatdujour.ch',
+      street: 'Rue du Village 8b',
+      city: '1273 Arzier-Le Muids (Vaud)',
+      country: 'Svizzera',
+    },
     links: { howItWorks: 'Come funziona', testimonials: 'Recensioni', download: "Scarica l'app", tombola: 'Vincitori tombola' },
   },
 };
