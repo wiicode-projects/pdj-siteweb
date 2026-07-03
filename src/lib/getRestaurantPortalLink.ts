@@ -28,7 +28,7 @@ export function getRestaurantSignupLink(): string {
   return `${getPortalBaseUrl()}/register`;
 }
 
-/** Demo signup — free trial account */
+/** Demo signup — demonstration mode account */
 export function getDemoSignupLink(): string {
   return `${getPortalBaseUrl()}/register?mode=demo`;
 }
