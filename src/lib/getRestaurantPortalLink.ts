@@ -23,7 +23,22 @@ export function getRestaurantPortalLink(): string {
   return `${getPortalBaseUrl()}/login`;
 }
 
-/** Backoffice signup — new restaurateurs */
+/** Backoffice signup — default entry (mode selection) */
 export function getRestaurantSignupLink(): string {
   return `${getPortalBaseUrl()}/register`;
+}
+
+/** Demo signup — free trial account */
+export function getDemoSignupLink(): string {
+  return `${getPortalBaseUrl()}/register?mode=demo`;
+}
+
+/** Direct subscription signup with pre-selected plan */
+export function getSubscribeSignupLink(
+  catalogKey: string,
+  billingPeriod?: string,
+): string {
+  const params = new URLSearchParams({ mode: 'subscribe', plan: catalogKey });
+  if (billingPeriod) params.set('period', billingPeriod);
+  return `${getPortalBaseUrl()}/register?${params.toString()}`;
 }

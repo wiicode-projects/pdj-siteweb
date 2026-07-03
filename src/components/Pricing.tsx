@@ -9,6 +9,7 @@ import { PaymentMethods } from "./PaymentMethods";
 import { usePricingCatalog } from "../hooks/usePricingCatalog";
 import { buildSubscriptionFeatureLabels, findPlanByPeriod } from "../lib/pricingFeatures";
 import { formatChf, formatPeriodPrice } from "../lib/formatPrice";
+import { getDemoSignupLink, getSubscribeSignupLink } from "../lib/getRestaurantPortalLink";
 import type { PublicPricingSubscription } from "../lib/websiteApi";
 
 type Axis = "user" | "restaurant";
@@ -96,6 +97,7 @@ type PricingCardProps = {
   monthlyLabel?: string;
   yearlyLabel?: string;
   noCommitment?: string;
+  ctaHref?: string;
 };
 
 function PricingCard({
@@ -115,6 +117,7 @@ function PricingCard({
   monthlyLabel,
   yearlyLabel,
   noCommitment,
+  ctaHref,
 }: PricingCardProps) {
   const isPlatinum = variant === "platinum";
   const isPremium = variant === "premium";
@@ -198,15 +201,30 @@ function PricingCard({
         })}
       </ul>
 
-      <button type="button" className={`w-full py-3.5 px-6 rounded-xl font-semibold transition-all ${
-        isPlatinum
-          ? "bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-400 text-gray-900 shadow-[0_18px_40px_rgba(245,158,11,0.25)] hover:scale-[1.02]"
-          : isPremium
-            ? "bg-gradient-to-r from-[#c1111e] to-[#ff4757] hover:from-[#ff4757] hover:to-[#c1111e] text-white shadow-[0_18px_40px_rgba(193,17,30,0.25)] hover:scale-[1.02]"
-            : "bg-white hover:bg-gray-50 text-gray-900 border border-black/15 shadow-sm"
-      }`}>
-        {cta}
-      </button>
+      {ctaHref ? (
+        <a
+          href={ctaHref}
+          className={`block text-center w-full py-3.5 px-6 rounded-xl font-semibold transition-all ${
+            isPlatinum
+              ? "bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-400 text-gray-900 shadow-[0_18px_40px_rgba(245,158,11,0.25)] hover:scale-[1.02]"
+              : isPremium
+                ? "bg-gradient-to-r from-[#c1111e] to-[#ff4757] hover:from-[#ff4757] hover:to-[#c1111e] text-white shadow-[0_18px_40px_rgba(193,17,30,0.25)] hover:scale-[1.02]"
+                : "bg-white hover:bg-gray-50 text-gray-900 border border-black/15 shadow-sm"
+          }`}
+        >
+          {cta}
+        </a>
+      ) : (
+        <button type="button" className={`w-full py-3.5 px-6 rounded-xl font-semibold transition-all ${
+          isPlatinum
+            ? "bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-400 text-gray-900 shadow-[0_18px_40px_rgba(245,158,11,0.25)] hover:scale-[1.02]"
+            : isPremium
+              ? "bg-gradient-to-r from-[#c1111e] to-[#ff4757] hover:from-[#ff4757] hover:to-[#c1111e] text-white shadow-[0_18px_40px_rgba(193,17,30,0.25)] hover:scale-[1.02]"
+              : "bg-white hover:bg-gray-50 text-gray-900 border border-black/15 shadow-sm"
+        }`}>
+          {cta}
+        </button>
+      )}
     </>
   );
 
@@ -284,7 +302,11 @@ export function Pricing() {
   const [billing, setBilling] = useState<Billing>("monthly");
 
   const labels = p.featureLabels;
-  const tiers = axis === "user" ? catalog.user : catalog.restaurant;
+  const tiers = axis === "user"
+    ? catalog.user
+    : catalog.restaurant.filter((s) => s.monthlyPrice > 0);
+  const demoFeatures = p.demoFeatures;
+  const REST_DEMO_ICONS = [Check, Users, MapPin];
 
   return (
     <section id="tarifs" className="relative overflow-hidden py-24 bg-gray-50">
@@ -339,11 +361,54 @@ export function Pricing() {
               transition={{ duration: 0.35 }}
               className={axis === "user"
                 ? "grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
-                : "grid md:grid-cols-3 gap-6 max-w-6xl mx-auto"
+                : "grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
               }>
+
+              {axis === "restaurant" && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.02, duration: 0.35 }}
+                  className="relative group"
+                >
+                  <div className="absolute inset-0 rounded-3xl blur-xl group-hover:blur-2xl transition-all bg-gradient-to-br from-black/5 to-transparent" />
+                  <div className="relative rounded-3xl p-8 h-full flex flex-col backdrop-blur-xl border border-black/10 bg-white/80 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold mb-4 w-fit bg-gray-100 text-gray-800 border border-black/10">
+                      <Check size={16} className="text-[#c1111e]" />
+                      {p.demoBadge}
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2 text-gray-900">{p.demoTitle}</h3>
+                    <p className="text-sm mb-4 text-gray-600">{p.demoDesc}</p>
+                    <div className="text-2xl font-bold mb-6 text-gray-500">
+                      {formatPeriodPrice(0, lang, p.perMonth)}
+                    </div>
+                    <ul className="space-y-3 mb-8 flex-grow">
+                      {demoFeatures.map((text, idx) => {
+                        const Icon = REST_DEMO_ICONS[idx] ?? Check;
+                        return (
+                          <li key={idx} className="flex items-start gap-3 text-gray-700">
+                            <Icon size={18} className="text-[#c1111e] mt-0.5 flex-shrink-0" />
+                            <span className="text-sm leading-relaxed">{text}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <a
+                      href={getDemoSignupLink()}
+                      className="block text-center w-full py-3.5 px-6 rounded-xl font-semibold transition-all bg-white hover:bg-gray-50 text-gray-900 border border-black/15 shadow-sm"
+                    >
+                      {p.ctaDemo}
+                    </a>
+                  </div>
+                </motion.div>
+              )}
 
               {tiers.map((sub, index) => {
                 const variant = tierVariant(sub, index, tiers.length);
+                const catalogKey = sub.catalogKey ?? undefined;
+                const subscribeHref = axis === "restaurant" && catalogKey
+                  ? getSubscribeSignupLink(catalogKey, billing === "yearly" ? "YEARLY" : "SEMI_ANNUALLY")
+                  : undefined;
                 return (
                   <PricingCard
                     key={sub.id}
@@ -363,11 +428,21 @@ export function Pricing() {
                     monthlyLabel={p.monthly}
                     yearlyLabel={p.yearly}
                     noCommitment={axis === "user" && variant === "premium" ? p.noCommitment : undefined}
+                    ctaHref={subscribeHref}
                   />
                 );
               })}
             </motion.div>
           </AnimatePresence>
+        )}
+
+        {axis === "restaurant" && catalog.loaded && (
+          <motion.p
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+            className="text-center text-gray-500 text-sm mt-6 max-w-2xl mx-auto"
+          >
+            {p.minCommitment}
+          </motion.p>
         )}
 
         <motion.p

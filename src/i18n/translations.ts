@@ -102,6 +102,12 @@ export interface AppTranslations {
     perMonth: string;
     perYear: string;
     saveTwoMonths: string;
+    demoBadge: string;
+    demoTitle: string;
+    demoDesc: string;
+    demoFeatures: [string, string, string];
+    ctaDemo: string;
+    minCommitment: string;
     featureLabels: {
       accessMenus: string;
       searchGeo: string;
@@ -369,6 +375,16 @@ const fr: AppTranslations = {
     perMonth: '/ mois',
     perYear: '/ an',
     saveTwoMonths: 'Économisez 2 mois',
+    demoBadge: 'Démo',
+    demoTitle: 'Essai gratuit',
+    demoDesc: 'Testez la plateforme avec votre établissement — vos plats et votre menu sont conservés lors du passage à un abonnement payant.',
+    demoFeatures: [
+      'Accès complet au back-office',
+      'Création de plats et prévisualisation du menu',
+      'Publication bloquée jusqu\'à souscription',
+    ],
+    ctaDemo: 'Essayer en Démo',
+    minCommitment: 'Engagement minimum : 6 mois (formules payantes)',
     featureLabels: {
       accessMenus: 'Accès menus & profils',
       searchGeo: 'Recherche & géo',
@@ -652,6 +668,16 @@ const en: AppTranslations = {
     perMonth: '/ month',
     perYear: '/ year',
     saveTwoMonths: 'Save 2 months',
+    demoBadge: 'Demo',
+    demoTitle: 'Free trial',
+    demoDesc: 'Try the platform with your restaurant — your dishes and menu preview are kept when you upgrade to a paid plan.',
+    demoFeatures: [
+      'Full back-office access',
+      'Create dishes and preview your menu',
+      'Publishing blocked until subscription',
+    ],
+    ctaDemo: 'Try Demo',
+    minCommitment: 'Minimum commitment: 6 months (paid plans)',
     featureLabels: {
       accessMenus: 'Menu & profile access',
       searchGeo: 'Search & geolocation',
@@ -887,6 +913,16 @@ const de: AppTranslations = {
     perMonth: '/ Monat',
     perYear: '/ Jahr',
     saveTwoMonths: '2 Monate sparen',
+    demoBadge: 'Demo',
+    demoTitle: 'Kostenlose Testversion',
+    demoDesc: 'Testen Sie die Plattform mit Ihrem Restaurant — Gerichte und Menüvorschau bleiben beim Upgrade erhalten.',
+    demoFeatures: [
+      'Voller Backoffice-Zugang',
+      'Gerichte erstellen und Menüvorschau',
+      'Veröffentlichung erst nach Abo',
+    ],
+    ctaDemo: 'Demo testen',
+    minCommitment: 'Mindestlaufzeit: 6 Monate (kostenpflichtige Pläne)',
     featureLabels: {
       accessMenus: 'Menü- & Profilzugang',
       searchGeo: 'Suche & Geolokalisierung',
@@ -1122,6 +1158,16 @@ const it: AppTranslations = {
     perMonth: '/ mese',
     perYear: '/ anno',
     saveTwoMonths: 'Risparmia 2 mesi',
+    demoBadge: 'Demo',
+    demoTitle: 'Prova gratuita',
+    demoDesc: 'Prova la piattaforma con il tuo ristorante — piatti e anteprima menu restano al passaggio a un abbonamento.',
+    demoFeatures: [
+      'Accesso completo al back-office',
+      'Creazione piatti e anteprima menu',
+      'Pubblicazione bloccata fino all\'abbonamento',
+    ],
+    ctaDemo: 'Prova Demo',
+    minCommitment: 'Impegno minimo: 6 mesi (piani a pagamento)',
     featureLabels: {
       accessMenus: 'Accesso menu & profili',
       searchGeo: 'Ricerca & geolocalizzazione',
