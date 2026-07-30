@@ -77,5 +77,5 @@ else
 fi
 
 # Faire échouer le pipeline pour alerter l'équipe
-exit 1
 docker image prune -f
+exit 1
