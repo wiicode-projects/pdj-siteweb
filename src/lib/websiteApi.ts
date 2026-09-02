@@ -292,3 +292,31 @@ export async function fetchTombolaHistory(
     limit: data.limit ?? limit,
   };
 }
+
+export type ContactFormPayload = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  subject: string;
+  message: string;
+  website?: string;
+};
+
+export async function submitContactForm(payload: ContactFormPayload): Promise<void> {
+  const apiUrl = getWebsiteApiUrl();
+  if (!apiUrl) throw new Error('API URL not configured');
+
+  const res = await fetch(`${apiUrl}/website/contact`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status}`);
+  }
+}

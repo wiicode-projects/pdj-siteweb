@@ -9,6 +9,7 @@ import Tarifs from './pages/Tarifs';
 import PolitiqueConfidentialite from './pages/PolitiqueConfidentialite';
 import MentionsLegales from './pages/MentionsLegales';
 import TombolaHistory from './pages/TombolaHistory';
+import Contact from './pages/Contact';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import MascotSection from './components/MascotSection';
@@ -44,12 +45,6 @@ const Fondu = ({ de, vers }: { de: string; vers: string }) => (
 
 /** Page d'accueil complète */
 const HomePage: React.FC = () => (
-  <WebsiteContentProvider>
-    <HomePageContent />
-  </WebsiteContentProvider>
-);
-
-const HomePageContent: React.FC = () => (
   <div className="relative font-sans text-gray-800 bg-white selection:bg-primary selection:text-white w-full overflow-x-hidden">
     <div className="fa">
       <div className="fa-tinte" />
@@ -93,17 +88,20 @@ const HomePageContent: React.FC = () => (
 const App: React.FC = () => (
   <BrowserRouter>
     <LanguageProvider>
-      <PricingCatalogProvider>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/cgu" element={<Cgu />} />
-          <Route path="/cgv" element={<Cgv />} />
-          <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
-          <Route path="/mentions-legales" element={<MentionsLegales />} />
-          <Route path="/tarifs" element={<Tarifs />} />
-          <Route path="/tombola" element={<TombolaHistory />} />
-        </Routes>
-      </PricingCatalogProvider>
+      <WebsiteContentProvider>
+        <PricingCatalogProvider>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/cgu" element={<Cgu />} />
+            <Route path="/cgv" element={<Cgv />} />
+            <Route path="/politique-de-confidentialite" element={<PolitiqueConfidentialite />} />
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="/tarifs" element={<Tarifs />} />
+            <Route path="/tombola" element={<TombolaHistory />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </PricingCatalogProvider>
+      </WebsiteContentProvider>
     </LanguageProvider>
   </BrowserRouter>
 );
