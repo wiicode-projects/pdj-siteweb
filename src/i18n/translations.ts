@@ -171,6 +171,37 @@ export interface AppTranslations {
     view_prize: string;
     close: string;
   };
+  contact: {
+    pageTitle: string;
+    subtitle: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    phoneHint: string;
+    subject: string;
+    subjectPlaceholder: string;
+    subjects: {
+      app: string;
+      restaurant: string;
+      billing: string;
+      technical: string;
+      other: string;
+    };
+    message: string;
+    messagePlaceholder: string;
+    submit: string;
+    sending: string;
+    successTitle: string;
+    successBody: string;
+    sendAnother: string;
+    errorGeneric: string;
+    required: string;
+    invalidEmail: string;
+    messageTooShort: string;
+    infoTitle: string;
+    writeUs: string;
+  };
   footer: {
     tagline: string;
     quickLinks: string;
@@ -464,6 +495,37 @@ const fr: AppTranslations = {
     view_prize: 'Voir le détail du prix',
     close: 'Fermer',
   },
+  contact: {
+    pageTitle: 'Contactez-nous',
+    subtitle: 'Une question, un partenariat ou un souci technique ? Décrivez-nous votre besoin, notre équipe vous répond rapidement.',
+    firstName: 'Prénom',
+    lastName: 'Nom',
+    email: 'Email',
+    phone: 'Téléphone',
+    phoneHint: 'Facultatif',
+    subject: 'Sujet',
+    subjectPlaceholder: 'Sélectionnez un sujet',
+    subjects: {
+      app: 'Application / utilisateur',
+      restaurant: 'Restaurant / partenariat',
+      billing: 'Facturation / abonnement',
+      technical: 'Problème technique',
+      other: 'Autre',
+    },
+    message: 'Message',
+    messagePlaceholder: 'Décrivez votre demande en quelques lignes…',
+    submit: 'Envoyer le message',
+    sending: 'Envoi en cours…',
+    successTitle: 'Message envoyé',
+    successBody: 'Merci. Notre équipe support vous répondra dès que possible.',
+    sendAnother: 'Envoyer un autre message',
+    errorGeneric: 'Impossible d’envoyer le message. Veuillez réessayer.',
+    required: 'Ce champ est obligatoire',
+    invalidEmail: 'Adresse email invalide',
+    messageTooShort: 'Le message doit contenir au moins 10 caractères.',
+    infoTitle: 'Support',
+    writeUs: 'Écrivez-nous',
+  },
   footer: {
     tagline: 'La meilleure façon de découvrir les menus du jour autour de vous. Simple, rapide et gourmand.',
     quickLinks: 'Liens Rapides',
@@ -477,7 +539,7 @@ const fr: AppTranslations = {
     privacy: 'Politique de confidentialité',
     legalNotice: 'Mentions légales',
     allRights: 'Tous droits réservés.',
-    credits: 'Concept & Développement : D.G.E. Concept SàRL & WIICODE',
+    credits: 'Concept & Développement :',
     address: {
       company: 'D.G.E.Concept SàRL /',
       website: 'Leplatdujour.ch',
@@ -757,6 +819,37 @@ const en: AppTranslations = {
     view_prize: 'View prize details',
     close: 'Close',
   },
+  contact: {
+    pageTitle: 'Contact us',
+    subtitle: 'A question, a partnership or a technical issue? Tell us what you need — our team will get back to you quickly.',
+    firstName: 'First name',
+    lastName: 'Last name',
+    email: 'Email',
+    phone: 'Phone',
+    phoneHint: 'Optional',
+    subject: 'Subject',
+    subjectPlaceholder: 'Select a subject',
+    subjects: {
+      app: 'App / user',
+      restaurant: 'Restaurant / partnership',
+      billing: 'Billing / subscription',
+      technical: 'Technical issue',
+      other: 'Other',
+    },
+    message: 'Message',
+    messagePlaceholder: 'Describe your request in a few lines…',
+    submit: 'Send message',
+    sending: 'Sending…',
+    successTitle: 'Message sent',
+    successBody: 'Thank you. Our support team will get back to you as soon as possible.',
+    sendAnother: 'Send another message',
+    errorGeneric: 'Unable to send the message. Please try again.',
+    required: 'This field is required',
+    invalidEmail: 'Invalid email address',
+    messageTooShort: 'The message must be at least 10 characters.',
+    infoTitle: 'Support',
+    writeUs: 'Write to us',
+  },
   footer: {
     tagline: 'The best way to discover daily menus around you. Simple, fast and delicious.',
     quickLinks: 'Quick Links',
@@ -770,7 +863,7 @@ const en: AppTranslations = {
     privacy: 'Privacy Policy',
     legalNotice: 'Legal Notice',
     allRights: 'All rights reserved.',
-    credits: 'Concept & Development: D.G.E. Concept SàRL & WIICODE',
+    credits: 'Concept & Development:',
     address: {
       company: 'D.G.E.Concept SàRL /',
       website: 'Leplatdujour.ch',
@@ -1002,6 +1095,37 @@ const de: AppTranslations = {
     view_prize: 'Preisdetails anzeigen',
     close: 'Schließen',
   },
+  contact: {
+    pageTitle: 'Kontaktieren Sie uns',
+    subtitle: 'Eine Frage, eine Partnerschaft oder ein technisches Problem? Beschreiben Sie uns Ihr Anliegen — unser Team antwortet rasch.',
+    firstName: 'Vorname',
+    lastName: 'Nachname',
+    email: 'E-Mail',
+    phone: 'Telefon',
+    phoneHint: 'Optional',
+    subject: 'Betreff',
+    subjectPlaceholder: 'Betreff wählen',
+    subjects: {
+      app: 'App / Nutzer',
+      restaurant: 'Restaurant / Partnerschaft',
+      billing: 'Abrechnung / Abo',
+      technical: 'Technisches Problem',
+      other: 'Sonstiges',
+    },
+    message: 'Nachricht',
+    messagePlaceholder: 'Beschreiben Sie Ihr Anliegen in wenigen Zeilen…',
+    submit: 'Nachricht senden',
+    sending: 'Wird gesendet…',
+    successTitle: 'Nachricht gesendet',
+    successBody: 'Vielen Dank. Unser Support-Team antwortet so schnell wie möglich.',
+    sendAnother: 'Weitere Nachricht senden',
+    errorGeneric: 'Die Nachricht konnte nicht gesendet werden. Bitte erneut versuchen.',
+    required: 'Dieses Feld ist Pflicht',
+    invalidEmail: 'Ungültige E-Mail-Adresse',
+    messageTooShort: 'Die Nachricht muss mindestens 10 Zeichen enthalten.',
+    infoTitle: 'Support',
+    writeUs: 'Schreiben Sie uns',
+  },
   footer: {
     tagline: 'Der beste Weg, Tagesmenüs in Ihrer Nähe zu entdecken. Einfach, schnell und lecker.',
     quickLinks: 'Schnelllinks',
@@ -1015,7 +1139,7 @@ const de: AppTranslations = {
     privacy: 'Datenschutzerklärung',
     legalNotice: 'Impressum',
     allRights: 'Alle Rechte vorbehalten.',
-    credits: 'Konzept & Entwicklung: D.G.E. Concept SàRL & WIICODE',
+    credits: 'Konzept & Entwicklung:',
     address: {
       company: 'D.G.E.Concept SàRL /',
       website: 'Leplatdujour.ch',
@@ -1247,6 +1371,37 @@ const it: AppTranslations = {
     view_prize: 'Vedi dettagli del premio',
     close: 'Chiudi',
   },
+  contact: {
+    pageTitle: 'Contattaci',
+    subtitle: 'Una domanda, una partnership o un problema tecnico? Descrivi il tuo bisogno: il nostro team ti risponde rapidamente.',
+    firstName: 'Nome',
+    lastName: 'Cognome',
+    email: 'Email',
+    phone: 'Telefono',
+    phoneHint: 'Facoltativo',
+    subject: 'Oggetto',
+    subjectPlaceholder: 'Seleziona un oggetto',
+    subjects: {
+      app: 'App / utente',
+      restaurant: 'Ristorante / partnership',
+      billing: 'Fatturazione / abbonamento',
+      technical: 'Problema tecnico',
+      other: 'Altro',
+    },
+    message: 'Messaggio',
+    messagePlaceholder: 'Descrivi la tua richiesta in poche righe…',
+    submit: 'Invia il messaggio',
+    sending: 'Invio in corso…',
+    successTitle: 'Messaggio inviato',
+    successBody: 'Grazie. Il nostro team di supporto ti risponderà al più presto.',
+    sendAnother: 'Invia un altro messaggio',
+    errorGeneric: 'Impossibile inviare il messaggio. Riprova.',
+    required: 'Questo campo è obbligatorio',
+    invalidEmail: 'Indirizzo email non valido',
+    messageTooShort: 'Il messaggio deve contenere almeno 10 caratteri.',
+    infoTitle: 'Supporto',
+    writeUs: 'Scrivici',
+  },
   footer: {
     tagline: 'Il modo migliore per scoprire i menu del giorno intorno a te. Semplice, veloce e gustoso.',
     quickLinks: 'Link Rapidi',
@@ -1260,7 +1415,7 @@ const it: AppTranslations = {
     privacy: 'Informativa sulla privacy',
     legalNotice: 'Note legali',
     allRights: 'Tutti i diritti riservati.',
-    credits: 'Concept & Sviluppo: D.G.E. Concept SàRL & WIICODE',
+    credits: 'Concept & Sviluppo:',
     address: {
       company: 'D.G.E.Concept SàRL /',
       website: 'Leplatdujour.ch',

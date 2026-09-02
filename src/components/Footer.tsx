@@ -94,9 +94,10 @@ const Footer: React.FC = () => {
             )}
             <div className="mt-6 text-sm text-gray-400">
               {f.help}{' '}
-              <a href={`mailto:${supportEmail}`} className="text-primary font-semibold hover:underline">
+              <Link to="/contact" className="text-primary font-semibold hover:underline">
                 {f.contactSupport}
-              </a>.
+              </Link>
+              .
             </div>
           </div>
 
@@ -107,7 +108,26 @@ const Footer: React.FC = () => {
           <p className="text-sm text-gray-500">
             © {year} <strong className="text-gray-300">Le Plat du Jour</strong>. {f.allRights}
           </p>
-          <p className="text-xs text-gray-500">{f.credits}</p>
+          <p className="text-xs text-gray-500">
+            {f.credits}{' '}
+            <a
+              href="https://dgeconcept.ch/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-primary transition-colors"
+            >
+              D.G.E. Concept SàRL
+            </a>
+            {' & '}
+            <a
+              href="https://wiicode.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-primary transition-colors"
+            >
+              WIICODE
+            </a>
+          </p>
         </div>
       </div>
     </footer>

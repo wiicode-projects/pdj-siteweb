@@ -1,6 +1,7 @@
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDown, HelpCircle, Mail } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { SectionContainer } from "./ui/SectionContainer";
 import { useLanguage } from "../i18n/LanguageContext";
 import { useWebsiteContent } from "../i18n/WebsiteContentContext";
@@ -55,7 +56,7 @@ function FaqColumn({ list, offset = 0 }: { list: FaqItem[]; offset?: number }) {
 
 export function Faq() {
   const { t } = useLanguage();
-  const { faqEnabled, faqItems, loaded, supportEmail } = useWebsiteContent();
+  const { faqEnabled, faqItems, loaded } = useWebsiteContent();
 
   if (loaded && !faqEnabled) return null;
 
@@ -102,13 +103,13 @@ export function Faq() {
           className="mt-16 text-center"
         >
           <p className="text-gray-600 mb-5">{t.faq.noAnswer}</p>
-          <a
-            href={`mailto:${supportEmail}`}
+          <Link
+            to="/contact"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-primary to-[#ff4757] text-white shadow-[0_12px_30px_rgba(193,17,30,0.25)] hover:shadow-[0_16px_40px_rgba(193,17,30,0.35)] hover:scale-[1.03] transition-all"
           >
             <Mail size={18} />
             {t.faq.contact}
-          </a>
+          </Link>
         </motion.div>
       </SectionContainer>
     </section>
