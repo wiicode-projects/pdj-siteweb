@@ -6,6 +6,7 @@ import PlayHeroHover from '../assets/playcolor.png';
 import Logo from '../assets/Logomascotte.svg';
 import { useLanguage } from '../i18n/LanguageContext';
 import { useWebsiteContent } from '../i18n/WebsiteContentContext';
+import { APPLE_STORE_URL, PLAY_STORE_URL } from '../lib/getStoreLink';
 
 const Hero: React.FC = () => {
   const { t } = useLanguage();
@@ -62,7 +63,7 @@ const Hero: React.FC = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 {/* Apple Store */}
                 <a
-                  href="https://apps.apple.com/app/plat-du-jour"
+                  href={APPLE_STORE_URL}
                   target="_blank" rel="noreferrer"
                   className="group flex items-center gap-3 bg-gray-900 text-white px-8 py-4 rounded-2xl hover:bg-primary transition-all duration-300 transform hover:-translate-y-1 shadow-2xl hover:shadow-orange-500/30"
                 >
@@ -78,7 +79,7 @@ const Hero: React.FC = () => {
 
                 {/* Google Play */}
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.platdujour"
+                  href={PLAY_STORE_URL}
                   target="_blank" rel="noreferrer"
                   className="group flex items-center gap-3 bg-white text-gray-900 border-2 border-gray-100 px-8 py-4 rounded-2xl hover:border-gray-900 transition-all duration-300 transform hover:-translate-y-1 shadow-xl"
                 >

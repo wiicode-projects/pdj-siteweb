@@ -5,6 +5,7 @@ import AppleHover from '../assets/apple3.gif';
 import PlayBase from '../assets/play4.png';
 import PlayHover from '../assets/play6.png';
 import { useLanguage } from '../i18n/LanguageContext';
+import { APPLE_STORE_URL, PLAY_STORE_URL } from '../lib/getStoreLink';
 
 const DownloadSection: React.FC = () => {
   const { t } = useLanguage();
@@ -40,7 +41,7 @@ const DownloadSection: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
               {/* App Store */}
-              <a href="https://apps.apple.com/app/plat-du-jour" target="_blank" rel="noreferrer"
+              <a href={APPLE_STORE_URL} target="_blank" rel="noreferrer"
                 className="group flex items-center justify-center gap-3 bg-white text-gray-900 px-8 py-4 rounded-xl hover:bg-gray-100 transition-transform transform hover:-translate-y-1 font-bold shadow-lg shadow-white/10">
                 <div className="relative w-7 h-7">
                   <img src={AppleBase} alt="App Store" className="absolute inset-0 w-full h-full transition-opacity group-hover:opacity-0" draggable={false} />
@@ -53,7 +54,7 @@ const DownloadSection: React.FC = () => {
               </a>
 
               {/* Google Play */}
-              <a href="https://play.google.com/store/apps/details?id=com.platdujour" target="_blank" rel="noreferrer"
+              <a href={PLAY_STORE_URL} target="_blank" rel="noreferrer"
                 className="group flex items-center justify-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 text-white px-8 py-4 rounded-xl hover:bg-white/10 transition-transform transform hover:-translate-y-1 font-bold">
                 <div className="relative w-7 h-7">
                   <img src={PlayBase} alt="Google Play" className="absolute inset-0 w-full h-full transition-opacity group-hover:opacity-0" draggable={false} />

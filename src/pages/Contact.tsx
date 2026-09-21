@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import { CheckCircle2, Loader2, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/Logomascotte.svg';
@@ -18,7 +18,23 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const inputClass =
   'w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20';
 
-type FieldErrors = Partial<Record<'firstName' | 'lastName' | 'email' | 'subject' | 'message', string>>;
+type FieldErrors = Partial<Record<'firstName' | 'lastName' | 'email' | 'subject' | 'message' | 'captcha', string>>;
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: HTMLElement, options: {
+        sitekey: string;
+        callback: (token: string) => void;
+        'expired-callback': () => void;
+        'error-callback': () => void;
+        theme: 'light' | 'dark' | 'auto';
+      }) => string;
+      reset: (widgetId?: string) => void;
+      remove: (widgetId: string) => void;
+    };
+  }
+}
 
 export default function Contact() {
   const { lang, t } = useLanguage();
@@ -34,15 +50,59 @@ export default function Contact() {
   const [subjectKey, setSubjectKey] = useState<SubjectKey | ''>('');
   const [message, setMessage] = useState('');
   const [honeypot, setHoneypot] = useState('');
+  const [captchaToken, setCaptchaToken] = useState('');
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const captchaRef = useRef<HTMLDivElement>(null);
+  const captchaWidgetId = useRef<string | undefined>(undefined);
+  const captchaSiteKey = import.meta.env.VITE_TURNSTILE_SITE_KEY?.trim();
 
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = `${c.pageTitle} — Le Plat du Jour`;
   }, [lang, c.pageTitle]);
+
+  useEffect(() => {
+    if (!captchaSiteKey || !captchaRef.current) return;
+
+    const renderCaptcha = () => {
+      if (!captchaRef.current || !window.turnstile) return;
+      captchaWidgetId.current = window.turnstile.render(captchaRef.current, {
+        sitekey: captchaSiteKey,
+        theme: 'light',
+        callback: setCaptchaToken,
+        'expired-callback': () => setCaptchaToken(''),
+        'error-callback': () => setCaptchaToken(''),
+      });
+    };
+
+    if (window.turnstile) {
+      renderCaptcha();
+      return;
+    }
+
+    const script = document.querySelector<HTMLScriptElement>('script[data-turnstile]');
+    if (script) {
+      script.addEventListener('load', renderCaptcha, { once: true });
+      return () => script.removeEventListener('load', renderCaptcha);
+    }
+
+    const newScript = document.createElement('script');
+    newScript.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+    newScript.async = true;
+    newScript.defer = true;
+    newScript.dataset.turnstile = 'true';
+    newScript.addEventListener('load', renderCaptcha, { once: true });
+    document.head.appendChild(newScript);
+
+    return () => {
+      if (captchaWidgetId.current && window.turnstile) {
+        window.turnstile.remove(captchaWidgetId.current);
+      }
+    };
+  }, [captchaSiteKey]);
 
   function validate(): FieldErrors {
     const next: FieldErrors = {};
@@ -53,6 +113,7 @@ export default function Contact() {
     if (!subjectKey) next.subject = c.required;
     if (!message.trim()) next.message = c.required;
     else if (message.trim().length < 10) next.message = c.messageTooShort;
+    if (!captchaToken) next.captcha = c.captchaRequired;
     return next;
   }
 
@@ -72,6 +133,7 @@ export default function Contact() {
         phone: phone.trim() || undefined,
         subject: c.subjects[subjectKey as SubjectKey],
         message: message.trim(),
+        captchaToken,
         website: honeypot,
       });
       setSuccess(true);
@@ -90,6 +152,7 @@ export default function Contact() {
     setSubjectKey('');
     setMessage('');
     setHoneypot('');
+    setCaptchaToken('');
     setErrors({});
     setSubmitError('');
     setSuccess(false);
@@ -258,6 +321,13 @@ export default function Contact() {
                   />
                   {errors.message && (
                     <p className="mt-1.5 text-xs text-primary">{errors.message}</p>
+                  )}
+                </div>
+                <div>
+                  <p className="block text-sm font-semibold text-gray-800 mb-2">{c.captchaLabel}</p>
+                  <div ref={captchaRef} className="min-h-[65px]" />
+                  {errors.captcha && (
+                    <p className="mt-1.5 text-xs text-primary">{errors.captcha}</p>
                   )}
                 </div>
                 <div className="sr-only" aria-hidden>

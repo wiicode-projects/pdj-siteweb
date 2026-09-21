@@ -300,6 +300,7 @@ export type ContactFormPayload = {
   phone?: string;
   subject: string;
   message: string;
+  captchaToken: string;
   website?: string;
 };
 
