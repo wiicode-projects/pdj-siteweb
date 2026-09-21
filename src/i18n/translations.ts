@@ -190,6 +190,8 @@ export interface AppTranslations {
     };
     message: string;
     messagePlaceholder: string;
+    captchaLabel: string;
+    captchaRequired: string;
     submit: string;
     sending: string;
     successTitle: string;
@@ -514,6 +516,8 @@ const fr: AppTranslations = {
     },
     message: 'Message',
     messagePlaceholder: 'Décrivez votre demande en quelques lignes…',
+    captchaLabel: 'Vérification anti-spam',
+    captchaRequired: 'Veuillez terminer la vérification anti-spam.',
     submit: 'Envoyer le message',
     sending: 'Envoi en cours…',
     successTitle: 'Message envoyé',
@@ -838,6 +842,8 @@ const en: AppTranslations = {
     },
     message: 'Message',
     messagePlaceholder: 'Describe your request in a few lines…',
+    captchaLabel: 'Spam protection',
+    captchaRequired: 'Please complete the spam protection check.',
     submit: 'Send message',
     sending: 'Sending…',
     successTitle: 'Message sent',
@@ -1114,6 +1120,8 @@ const de: AppTranslations = {
     },
     message: 'Nachricht',
     messagePlaceholder: 'Beschreiben Sie Ihr Anliegen in wenigen Zeilen…',
+    captchaLabel: 'Spam-Schutz',
+    captchaRequired: 'Bitte schließen Sie die Spam-Schutzprüfung ab.',
     submit: 'Nachricht senden',
     sending: 'Wird gesendet…',
     successTitle: 'Nachricht gesendet',
@@ -1390,6 +1398,8 @@ const it: AppTranslations = {
     },
     message: 'Messaggio',
     messagePlaceholder: 'Descrivi la tua richiesta in poche righe…',
+    captchaLabel: 'Protezione anti-spam',
+    captchaRequired: 'Completa la verifica anti-spam.',
     submit: 'Invia il messaggio',
     sending: 'Invio in corso…',
     successTitle: 'Messaggio inviato',

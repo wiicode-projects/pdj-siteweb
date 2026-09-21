@@ -24,6 +24,7 @@ env:
   PROD_PORTAL_URL: https://backoffice.leplatdujour.ch
   STAGING_API_URL: https://pdj-dev-api.wiicode.tech/api/v1
   PROD_API_URL: https://backoffice.leplatdujour.ch/api/v1
+  TURNSTILE_SITE_KEY: 0x4AAAAAAE_QXGFM3JsVkByi
 
 jobs:
 
@@ -73,6 +74,7 @@ jobs:
             VITE_APP_ENV=${{ steps.vite.outputs.app_env }}
             VITE_RESTAURANT_PORTAL_URL=${{ steps.vite.outputs.portal_url }}
             VITE_API_URL=${{ steps.vite.outputs.api_url }}
+            VITE_TURNSTILE_SITE_KEY=${{ env.TURNSTILE_SITE_KEY }}
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.SHA_SHORT }}
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
