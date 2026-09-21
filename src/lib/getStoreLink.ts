@@ -1,5 +1,6 @@
 export const APPLE_STORE_URL = 'https://apps.apple.com/app/plat-du-jour';
-export const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.platdujour';
+export const PLAY_STORE_URL =
+  'https://play.google.com/store/apps/details?id=tech.pdjmobile.wiicode&hl=en&pli=1';
 
 export function getStoreLink(): string {
   const ua = navigator.userAgent || navigator.vendor || (window as any).opera;
