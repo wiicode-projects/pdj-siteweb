@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import Logo from '../assets/Logomascotte.svg';
 import { useScrolled } from '../hooks/useScrolled';
-import { getStoreLink } from '../lib/getStoreLink';
 import { getRestaurantPortalLink } from '../lib/getRestaurantPortalLink';
 import { useLanguage } from '../i18n/LanguageContext';
 import { useWebsiteContent } from '../i18n/WebsiteContentContext';
@@ -52,7 +51,7 @@ const Header: React.FC = () => {
               {t.nav.restaurantPortal}
             </a>
 
-            <a href={getStoreLink()} target="_blank" rel="noreferrer"
+            <a href="#download"
               className="bg-gray-900 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-primary transition-all hover:scale-105 shadow-md whitespace-nowrap">
               {t.nav.download}
             </a>
@@ -94,7 +93,7 @@ const Header: React.FC = () => {
             {t.nav.restaurantPortal}
           </a>
 
-          <a href={getStoreLink()} target="_blank" rel="noreferrer"
+          <a href="#download"
             className="w-full text-center bg-primary text-white px-6 py-3.5 rounded-xl font-bold hover:brightness-95 transition-all shadow-md"
             onClick={close}
           >
